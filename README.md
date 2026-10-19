@@ -1,15 +1,35 @@
-# Pollazo Galapagueño — Presentación empresarial
+# Pollazo Galapagueño — Presentación del 23 de octubre
 
-Presentación web interactiva para el encuentro del 23 de octubre de 2026.
+Versión inicial interactiva con ocho escenas. **La web está publicada, pero sus recursos multimedia y datos comerciales definitivos aún están pendientes de incorporar.**
 
-## Uso
+## Enlaces
 
-Abre `index.html` para presentar sin conexión. Navega con las flechas, pulsa `F` para pantalla completa, `N` para notas o usa el menú Escenas.
+- [Abrir presentación en Vercel](https://pollazo-galapagueno-pitch.vercel.app)
+- [Repositorio de código](https://github.com/verdesotostiven4-commits/pollazo-galapagueno-pitch)
 
-## Publicación
+## Uso y controles
 
-Proyecto estático sin compilación ni dependencias: importar este repositorio a Vercel, elegir preset `Other`, directorio raíz `/`.
+- Flechas izquierda/derecha para cambiar de escena.
+- `F` para pantalla completa.
+- `N` para notas del presentador.
+- Botón **Escenas** para navegar directamente.
+- Móvil: deslizar a izquierda o derecha.
+- Para trabajar sin internet, descarga todos los archivos y abre `index.html`.
 
-## Contenido
+## Edición
 
-La presentación usa textos de apoyo y espacios para incorporar el logo, fotografías y videos aprobados. No atribuir a la empresa estadísticas ni instalaciones inventadas; confirmar datos, material y autorizaciones antes del evento.
+- Editar textos y escenas desde `content.js`.
+- Guardar fotos, videos y logo definitivos dentro de `assets/`.
+- Cada objeto `media` contiene `src: null`. Sustituye por `src: "assets/nombre.mp4"` o `src: "assets/nombre.jpg"`.
+- No introducir contactos, clientes, capacidades, certificaciones o cifras no verificadas.
+- Materiales con IA: identificarlos como recreaciones cuando no sean documentación fiel.
+
+## Despliegue
+
+Proyecto estático sin dependencias, framework ni compilación. La primera versión se publicó a Vercel directamente desde los archivos del repositorio.
+
+**Importante:** Los cambios nuevos en GitHub todavía **no** se despliegan automáticamente porque la cuenta de Vercel requiere que se autorice la conexión de GitHub (Login Connection). Al autorizarla, vincula este repo al proyecto ya existente `pollazo-galapagueno-pitch` en Vercel; **no crees otro proyecto**.
+
+## Pendientes
+
+Incorporar logo oficial, fotografías y videos aprobados, información comercial validada y contacto autorizado; revisar la presentación final antes del evento.
