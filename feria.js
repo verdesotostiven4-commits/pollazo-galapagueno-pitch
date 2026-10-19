@@ -14,6 +14,7 @@ const q=s=>document.querySelector(s), slide=q("#slide"), wrap=q("#presentacion")
 function processVisual(s){
 const symbols=["◎","≋","✓"];
 const nodes=s.labels.map((label,j)=>'<div class="processNode"><small>'+String(j+1).padStart(2,"0")+'</small><span class="processSymbol">'+symbols[j]+'</span><b>'+label+'</b></div>').join('<span class="processArrow" aria-hidden="true">→</span>');
+if(s.tag.includes("HIDRATACIÓN"))return '<div class="processPanel waterDiagram"><img src="./assets/esquema-agua.svg" alt="Esquema ilustrativo de tratamiento por verificar, tuberías y bebederos de tetina" loading="lazy"/></div>';
 return '<div class="processPanel"><small class="diagramType">POLLAZO · ASÍ CONTAMOS EL PROCESO</small><div class="processRow">'+nodes+'</div><small class="diagramDisclaimer">ESQUEMA ILUSTRATIVO: NO REPRESENTA EQUIPOS O INSTALACIONES REALES</small></div>';
 }
 function render(){
