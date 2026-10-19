@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#171916">
+<meta name="description" content="Presentación empresarial interactiva de Pollazo Galapagueño.">
+<title>Pollazo Galapagueño · Presentación empresarial</title>
+<link rel="stylesheet" href="./styles.css">
+<script src="./content.js" defer></script>
+<script src="./app.js" defer></script>
+</head>
+<body>
+<noscript>Activa JavaScript para utilizar esta presentación.</noscript>
+<div class="shell">
+<header class="topbar">
+<a href="#inicio" id="homeLink" class="brand" aria-label="Ir al inicio">
+<span class="symbol" aria-hidden="true"><i></i></span>
+<span class="brandtype"><b>Pollazo</b><strong>Galapagueño</strong></span>
+</a>
+<p class="topline"><span class="dot"></span> PRESENTACIÓN EMPRESARIAL <span class="year">/ 2026</span></p>
+<div class="tools">
+<button id="menuBtn" title="Ver escenas" aria-label="Ver escenas" aria-expanded="false">☷ <span>Escenas</span></button>
+<button id="notesBtn" title="Guion de apoyo (N)" aria-label="Guion de apoyo">☰ <span>Guion</span></button>
+<button id="fullscreenBtn" title="Pantalla completa (F)" aria-label="Pantalla completa">⛶</button>
+</div>
+</header>
+<main id="stage" class="stage" aria-label="Presentación" tabindex="-1">
+<div id="scene" class="scene" aria-live="polite"></div>
+<div class="stage-mark" aria-hidden="true">P / G — 2026</div>
+</main>
+<footer class="footer">
+<div class="progress"><span>RECORRIDO</span><div class="track"><div id="progressBar" class="progressBar"></div></div></div>
+<div class="counter"><strong id="currentNum">01</strong><span>/</span><span id="totalNum">08</span><span id="sectionName" class="sectionName">Inicio</span></div>
+<div class="nav"><span class="hint">← → para avanzar</span><button id="prevBtn" class="navBtn" aria-label="Anterior">←</button><button id="nextBtn" class="navBtn primary" aria-label="Siguiente">→</button></div>
+</footer>
+<div id="menu" class="overlay" hidden>
+<div class="menuPanel" role="dialog" aria-modal="true" aria-label="Seleccionar escena">
+<div class="panelHeader"><div><small>NAVEGACIÓN</small><h2>Elige una escena</h2></div><button id="closeMenu" aria-label="Cerrar menú">×</button></div><div id="sceneGrid" class="sceneGrid"></div><p class="panelTip">Usa las flechas para navegar, F para pantalla completa y N para el guion.</p>
+</div>
+</div>
+<aside id="notes" class="notesPanel" aria-hidden="true"><div class="panelHeader"><div><small>GUION DE APOYO</small><h2 id="noteTitle">Notas</h2></div><button id="closeNotes" aria-label="Cerrar notas">×</button></div><p id="noteBody"></p><p class="panelTip">Estas notas son solo para el presentador. Ocúltalas antes de proyectar.</p></aside>
+</div>
+</body>
+</html>
