@@ -11,3 +11,128 @@
 .shell{grid-template-rows:69px minmax(0,1fr) 65px}
 .brand--official{flex:0 1 145px;height:57px;padding:1px 4px}
 }
+
+
+/* POLLAZO | Brand-first white visual system — v2 (Oct 2026) */
+:root {
+  --bg:#fff; --surface:#fff; --surface2:#fff8f0;
+  --text:#211711; --muted:#746d66; --accent:#fa6300; --gold:#ffab05;
+  --line:#eadfd4; color-scheme:light;
+  font-family:"Segoe UI",Arial,Helvetica,sans-serif;
+}
+html,body {background:#fff;color:var(--text);}
+.shell {max-width:2200px;grid-template-rows:102px minmax(0,1fr) 78px;padding:0 clamp(15px,2vw,40px);}
+.topbar {background:#fff;border-bottom:1px solid #eee5dc;}
+.brand--official {
+  flex:0 0 clamp(175px,16vw,255px);width:clamp(175px,16vw,255px);
+  height:94px; padding:0; margin-left:0;
+  background:transparent;border:none;border-radius:0;
+  overflow:hidden;box-shadow:none;
+}
+.officialBrandLogo {width:100%;height:100%;object-fit:contain;object-position:left center;}
+.topline {font-size:10px;letter-spacing:2px;color:#43372c;}
+.year {color:#9d9489;}
+.dot,.kicker i {background:var(--accent);}
+.tools button {border-color:#eadfd4;background:#fff;color:#3f2a1b;border-radius:10px;min-height:40px;box-shadow:none;}
+.tools button:hover,.tools button:focus-visible {background:#fff4e7;border-color:#f4ba83;}
+.stage {padding-top:18px;padding-bottom:12px;}
+.scene {
+  background:white;border:1px solid #efe3d7;border-radius:18px;
+  box-shadow:0 12px 35px rgba(79,49,22,.055);
+  grid-template-columns:47% 53%;
+}
+.slideCopy {
+  padding:clamp(24px,3.9vw,78px);
+  background:radial-gradient(circle at 1% 100%,rgba(255,180,55,.085),transparent 30%),#fff;
+}
+.kicker {color:var(--accent);letter-spacing:2.3px;font-size:10px;}
+.copyTop .overline {color:#8a7060;font-size:11px;}
+.copyCenter h1 {font-weight:900;letter-spacing:-.065em;line-height:1.04;}
+.lightTitle {color:#22150f;}
+.accentTitle {color:#fb6507;}
+.description {color:#675951;font-size:clamp(15px,1.43vw,23px);line-height:1.6;}
+.feature {color:#bd5910;}
+.featureLine {background:var(--accent);}
+.copyBottom {color:#937f6f;border-color:#e8d9ca;}
+.slideVisual {
+  background:radial-gradient(circle at 92% 15%,rgba(255,184,57,.16),transparent 42%),linear-gradient(135deg,#fff8f0 0%,#fff0de 100%);
+  border-left:1px solid #f2e2ce;
+}
+.visualHeader,.visualBottom {color:#967f6d;}
+.visualBottom {border-color:#e9d3bd;}
+.visualBottom span:last-child {color:var(--accent);}
+.mediaCard {border-color:#e8cdb4;background:#fff;border-radius:12px;box-shadow:0 6px 14px rgba(109,75,44,.06);}
+.mediaBody {background:#ffe5c4;}
+.mediaCaption {background:white;color:#413025;}
+.mediaKind {color:#aa917f;}
+.mediaPlaceholder {
+  background:radial-gradient(circle at 70% 38%,rgba(255,178,49,.43),transparent 37%),linear-gradient(138deg,#ffc483 0%,#fb7e26 55%,#e95715 100%);
+  color:white;
+}
+.mediaPlaceholder:after {border-color:rgba(255,255,255,.18);}
+.orbit {border-color:rgba(255,255,255,.19);border-right-color:rgba(255,255,255,.38);}
+.ghostIndex {color:rgba(255,255,255,.25);}
+.placeholderText {color:#fff;font-weight:800;text-shadow:0 1px 2px rgba(143,57,6,.12);}
+.gallery-hero .mediaPlaceholder,.gallery-end .mediaPlaceholder {
+  background:
+   radial-gradient(circle at 72% 38%,rgba(255,198,82,.65),transparent 38%),
+   linear-gradient(125deg,#f46a0e 3%,#ff9a17 70%,#f4ad30);
+}
+.gallery-hero .orbit {width:66%;top:4%;right:7%;border-width:clamp(18px,2vw,35px);}
+.gallery-hero .ghostIndex {font-size:clamp(58px,9vw,164px);letter-spacing:-.07em;top:4%;left:5%;}
+.gallery-hero .placeholderText {font-size:clamp(13px,1.5vw,22px);letter-spacing:1.1px;line-height:1.4;}
+.gallery-hero .mediaBody {min-height:0;}
+.step,.fact {background:rgba(255,255,255,.88);border:1px solid #efdbc9;border-radius:12px;box-shadow:0 5px 16px rgba(66,34,6,.035);}
+.step>b {color:var(--accent);}
+.step strong,.fact strong {color:#24170d;}
+.step small,.fact small {color:#8b7561;}
+.step>span {color:#df8016;}
+.fact span {color:#b55b14;}
+.chips span {background:white;color:#8c510c;border-color:#f0d1ac;}
+.stage-mark {background:white;color:#aa988a;}
+.footer {background:white;}
+.progress>span {color:#937764;}
+.track {background:#eddfd4;}
+.progressBar {background:var(--accent);}
+.counter {color:#9f8775;}
+.counter strong {color:#382012;}
+.sectionName {color:#5f4939;border-color:#eddac9;}
+.hint {color:#9c8a7c;}
+.navBtn {background:#fff;color:#623717;border-color:#efdac7;}
+.navBtn:hover:not(:disabled) {background:#fff3e9;border-color:#f5b579;}
+.navBtn.primary {background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 4px 15px rgba(250,99,0,.19);}
+.navBtn.primary:hover:not(:disabled) {background:#e65d00;}
+.overlay {background:rgba(26,17,11,.52);backdrop-filter:blur(6px);}
+.menuPanel,.notesPanel {background:#fff;color:#251810;border-color:#f0d9c4;box-shadow:0 15px 80px rgba(52,34,11,.2);}
+.panelHeader h2 {color:#21150f;}
+.panelHeader button {background:#fff4e8;color:#6c3d1c;border-color:#edd2b6;}
+.panelTip {color:#917b68;}
+.sceneGrid button {background:#fff9f3;color:#321e11;border-color:#eedcca;}
+.sceneGrid button:hover,.sceneGrid button[aria-current="step"] {background:#fff1e3;border-color:var(--accent);}
+.sceneGrid button small {color:var(--accent);}
+.sceneGrid button span {color:#9c7a61;}
+.notesPanel>p#noteBody {color:#493a2e;}
+.visual-end .mediaPlaceholder {background:linear-gradient(135deg,#ffc469,#f16f11);}
+@media (max-width:860px){
+ .shell {grid-template-rows:82px minmax(0,1fr) 69px;}
+ .brand--official {flex:0 0 175px;width:175px;height:76px;}
+ .stage {padding-top:12px;padding-bottom:8px;}
+ .scene {grid-template-columns:1fr;grid-template-rows:minmax(0,40%) minmax(0,60%);}
+ .slideCopy {padding:clamp(17px,3.4vw,30px);}
+ .slideVisual {border-left:none;border-top:1px solid #f2e2ce;}
+}
+@media (max-width:520px){
+ .shell {grid-template-rows:70px minmax(0,1fr) 65px;}
+ .brand--official {flex:0 0 136px;width:136px;height:65px;}
+ .stage {padding-top:8px;padding-bottom:6px;}
+ .scene {grid-template-rows:minmax(0,42%) minmax(0,58%);border-radius:12px;}
+ .copyCenter h1 {font-size:clamp(27px,7vw,40px);}
+ .copyTop .overline {font-size:8px;}
+ .topline {display:none;}
+ .gallery-hero .placeholderText {font-size:12px;}
+ .slideVisual {padding:12px;}
+ .tools button {min-height:35px;}
+}
+/* Video controls: avoid zooming/repainting the footage. */
+.mediaBody video {object-fit:cover;image-rendering:auto;}
+.mediaBody video:focus-visible {outline:2px solid var(--accent);outline-offset:-2px;}
