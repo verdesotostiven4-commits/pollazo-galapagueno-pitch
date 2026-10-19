@@ -46,3 +46,31 @@ Incorporar logo oficial, fotografías y videos aprobados, información comercial
 5. Probar la reproducción en computadora y móvil; mantener un respaldo offline con todos los archivos.
 
 No mostrar reconstrucciones de IA como evidencia documental si cambian realmente los galpones, las aves, la maquinaria o las personas.
+
+
+## Feria 20 octubre — recorrido completo
+
+Se añadieron páginas independientes para la feria (sin modificar el proyecto de web comercial que pudiera existir fuera de este repositorio):
+
+- **/feria.html** — experiencia VIDEO NARRADO → PRESENTACIÓN INTERACTIVA (8 escenas, notas y pantalla completa).
+- **/pantalla.html** — pantalla de atracción con video en bucle, silencioso. Mientras no haya MP4, aparece un **diseño animado de demostración**, no el comercial final.
+- **/sitio-concepto.html** — muestra visual del **futuro sitio oficial**, servicio separado y no incluido en los honorarios del evento.
+- **/** — presentación previa del día 23, que se mantiene disponible.
+
+### Añadir los videos (nombres exactos)
+
+1. **Video principal con narración:** subir como \`assets/relato-pollazo.mp4\`. Se reproduce a petición del visitante desde \`/feria.html\`. Si falta el archivo, el sitio muestra que está pendiente.
+2. **Video del televisor en la carpa:** subir como \`assets/loop-feria.mp4\`. Se reproduce continuamente, sin audio, desde \`/pantalla.html\`. Evitar textos demasiado pequeños porque es una pantalla de atracción.
+3. Exportar ambos en MP4/H.264, 16:9, 1920×1080, ~24–30 fps; considerar compresión adecuada para carga por internet.
+4. Los MP4 grandes pueden ser inapropiados para GitHub: en ese caso utilizar almacenamiento de archivos/video con enlaces estables y actualizar la etiqueta \`<source>\` correspondiente. Para la feria conservar copia en USB y ordenador sin depender del Wi-Fi.
+5. La cuenta de Vercel aún requiere autorizar su conexión a GitHub. Tras un cambio en GitHub, se debe desplegar manualmente o habilitar esa integración. No crear un segundo proyecto de presentación.
+
+### Datos indispensables antes de mostrar como documental
+
+- Solicitar al responsable: foto/video auténtico del tratamiento de agua; fotos de bebederos y comederos reales; evidencia o descripción técnica precisa del sistema y registros de cuidado/alimentación.
+- Definir qué mensajes pueden respaldarse; confirmar autorizaciones del personal, datos de contacto comercial, logos, productos y capacidades.
+- Nunca presentar instalaciones/personas/máquinas generadas por IA como registros documentales de Pollazo.
+
+### Diferencias del paquete comercial
+
+El video en bucle y el recorrido interactivo son para el evento del 20. La propuesta de web corporativa (/sitio-concepto.html) es un trabajo **cotizable aparte**. El sitio corporativo existente —si lo hay— no fue reemplazado.
