@@ -4,9 +4,9 @@
 <title>Pollazo Galapagueño — Experiencia para la Feria</title><link rel="stylesheet" href="./feria.css"><script src="./feria.js" defer></script>
 </head><body>
 <header class="masthead">
-<a class="logo" href="./sitio-concepto.html" title="Conocer propuesta de web"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPiFlnDAIqYkcjYOq7GqeHClxkSC9yrmNm0UypICcP-HfjzV2zxtWUrPqqYrYgU-acx7q4lHjYuN4qIqrxozuphAsy0Ezq5dhZy0u5ZG5rKH2xC7OKyI-n4HwlhLQ2WZKj6ydM1UOLEKw_LDh04yQEqYU_QuA1OqAB90XfhmZ9fw-Rzkvm4TNRvV180YQ/s1600/image.png" alt="Pollazo Galapagueño"></a>
+<a class="logo" href="./sitio-concepto.html" title="Ver concepto independiente de sitio web"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPiFlnDAIqYkcjYOq7GqeHClxkSC9yrmNm0UypICcP-HfjzV2zxtWUrPqqYrYgU-acx7q4lHjYuN4qIqrxozuphAsy0Ezq5dhZy0u5ZG5rKH2xC7OKyI-n4HwlhLQ2WZKj6ydM1UOLEKw_LDh04yQEqYU_QuA1OqAB90XfhmZ9fw-Rzkvm4TNRvV180YQ/s1600/image.png" alt="Pollazo Galapagueño"></a>
 <span class="eventid"><span class="liveDot"></span> FERIA 20 OCTUBRE <span class="event-year">/ 2026</span></span>
-<nav class="headnav"><a href="./pantalla.html">Pantalla en bucle ↗</a><a href="./sitio-concepto.html">Volver al sitio ↗</a></nav>
+<nav class="headnav"><a href="./pantalla.html">Pantalla en bucle ↗</a><a href="./sitio-concepto.html">Concepto web ↗</a></nav>
 </header>
 <main>
 <section class="welcome" id="inicio">
@@ -15,7 +15,7 @@
 <h1>Todo comienza <em>desde el cuidado.</em></h1>
 <p>Descubre la historia que hay detrás de Pollazo Galapagueño: crianza, alimentación, supervisión y el producto que llega al mercado.</p>
 <div class="welcomeButtons">
-<button class="btn orange" id="startVideo"><span class="playcircle">▶</span> Reproducir video explicativo</button>
+<button class="btn orange" id="startVideo"><span class="playcircle">▶</span> Iniciar experiencia</button>
 <button class="btn outline" id="startSlides">Ver presentación <span aria-hidden="true">→</span></button>
 </div>
 <div class="subline"><span><b>01</b> Video narrado</span><i></i><span><b>02</b> Presentación guiada</span><i></i><span><b>03</b> Conversación comercial</span></div>
@@ -28,24 +28,31 @@
 </video>
 <div class="videoEmpty" id="videoEmpty">
 <div class="videoArt"><span class="largeNumber">01</span><div class="artRing"></div><div class="artMini">P / G</div></div>
-<div class="emptyMessage"><span class="minor">PRÓXIMAMENTE</span><strong>El cuidado comienza en la granja.</strong><small>Espacio reservado para el video narrado definitivo.</small></div>
+<div class="emptyMessage"><span class="minor">VIDEO EN PREPARACIÓN</span><strong>El cuidado comienza en la granja.</strong><small>Espacio reservado para el video narrado definitivo.</small></div>
 </div>
 </div>
-<div class="mediaFoot"><span>01 — EL ORIGEN DE NUESTRO PRODUCTO</span><span>VIDEO NARRADO · POR INCORPORAR</span></div>
+<div class="mediaFoot"><span>01 — EL ORIGEN DE NUESTRO PRODUCTO</span><span id="videoStatus">VIDEO NARRADO · POR INCORPORAR</span></div>
 </div>
 </section>
-<section class="experienceIntro">
+<section class="experienceIntro" aria-label="Los temas de la exposición">
 <div><span class="sectionTag">UNA HISTORIA PARA CONOCER</span><h2>Más que mostrar un producto,<br><em>queremos contar su proceso.</em></h2></div>
 <p>Esta demostración utiliza textos provisionales que se revisarán con la empresa. Las instalaciones y prácticas descritas se respaldarán con fotografías o videos reales antes de la entrega definitiva.</p>
+<div class="proofGrid">
+<article><span>01 / CRIANZA</span><strong>La historia comienza en el galpón</strong><small>Desde los pollitos hasta su crecimiento.</small></article>
+<article><span>02 / CUIDADO</span><strong>Agua y alimentación</strong><small>Un proceso que queremos mostrar con evidencia real.</small></article>
+<article><span>03 / PRODUCTO</span><strong>Enfundado en Santa Cruz</strong><small>Pollo crudo, con la identidad original de Pollazo.</small></article>
+</div>
 </section>
 <section class="presentation" id="presentacion" hidden tabindex="-1" aria-label="Presentación guiada de Pollazo">
 <div class="presentationHead">
 <div><span class="sectionTag">PRESENTACIÓN INTERACTIVA</span><h2>Conozcamos Pollazo</h2></div>
 <div class="presentationActions"><button id="showNotes" aria-pressed="false" class="textButton">Guion para presentar</button><button id="enterFull" class="textButton">⛶ Pantalla completa</button><button id="closeSlides" class="textButton">Cerrar ×</button></div>
 </div>
+<nav class="chapterRail" id="chapterRail" aria-label="Capítulos de la exposición"></nav>
+<div class="presenterNotice"><span>RECORRIDO GUIADO · CONTROLES MANUALES</span><span>Usa las flechas ← → o selecciona un capítulo</span></div>
 <div id="slide" class="slide" aria-live="polite"></div>
 <div class="slideToolbar"><span class="slideIndex" id="slideIndex">01 / 08</span><div class="ticks" id="ticks"></div><div class="slideNav"><button id="prev" aria-label="Anterior">← Anterior</button><button id="next" class="orange" aria-label="Siguiente">Siguiente →</button></div></div>
-<aside id="speaker" class="speaker" hidden><b>NOTAS PARA TU TÍO</b><p id="speakerText"></p></aside>
+<aside id="speaker" class="speaker" hidden aria-label="Notas privadas de preparación"><b>NOTAS PARA TU TÍO</b><p id="speakerText"></p></aside>
 </section>
 <footer class="footer"><span>POLLAZO GALAPAGUEÑO</span><span>20 OCTUBRE 2026 · DEMOSTRACIÓN EN DESARROLLO</span><a href="./sitio-concepto.html">Explorar la propuesta de web ↗</a></footer>
 </main>
