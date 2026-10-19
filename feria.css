@@ -16,3 +16,55 @@
 
 .waterDiagram{max-width:none;width:100%;padding:10px;overflow:hidden}
 .waterDiagram img{display:block;width:100%;height:auto;max-height:100%;object-fit:contain;border-radius:12px}
+
+
+/* FERIA · Presentación editorial 2026: capítulos, claridad y modo exposición */
+:root{--orange:#f5660d;--deep:#27160e;--cream:#fff8f1;--line:#ecddd0}
+body{background:#fff}
+.masthead{background:#fff;box-shadow:0 4px 25px rgba(85,54,22,.03)}
+.logo{max-width:235px}
+.headnav a:last-child{color:#a86535}
+.welcome{min-height:min(820px,calc(100svh - 100px))}
+.heroMedia{background:radial-gradient(circle at 76% 23%,#fff7d6,transparent 39%),linear-gradient(145deg,#fff6e8 0%,#ffe3bd 100%)}
+.welcomeCopy>p{max-width:580px}
+.videoCard{border:5px solid rgba(255,255,255,.7);box-shadow:0 26px 52px #9d642c27}
+.videoEmpty{background:radial-gradient(circle at 75% 10%,#ffca69 0,transparent 40%),linear-gradient(135deg,#fa951f 0%,#f77616 55%,#f4610a 100%)}
+.emptyMessage strong{font-size:clamp(24px,3vw,48px);max-width:480px}
+.experienceIntro{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(280px,.7fr);gap:34px;background:#fff;padding-top:65px;padding-bottom:75px}
+.experienceIntro h2{max-width:760px}
+.experienceIntro>p{align-self:end}
+.proofGrid{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:12px}
+.proofGrid article{min-height:170px;border-radius:16px;border:1px solid #f0ded0;background:#fffbf7;padding:27px 26px;display:flex;flex-direction:column;gap:13px}
+.proofGrid article:nth-child(2){background:#fff6e9}
+.proofGrid article span{font-size:10px;font-weight:900;letter-spacing:1.6px;color:#c66b27}
+.proofGrid article strong{font-size:clamp(18px,1.6vw,26px);line-height:1.16;letter-spacing:-.04em}
+.proofGrid article small{font-size:13px;line-height:1.5;color:#786657}
+.presentation{background:#fffaf5;border-top:1px solid #f4e8dc}
+.presentation:fullscreen{background:#fffaf5;overflow-y:auto;padding:clamp(16px,3vw,50px)}
+.presentation:fullscreen .presentationHead{margin-bottom:10px}
+.presentation:fullscreen .presentationHead h2{font-size:25px}
+.presentation:fullscreen .slide{height:min(70vh,740px)}
+.presentation:fullscreen #showNotes{display:none}
+.presentation:fullscreen #closeSlides{display:none}
+.chapterRail{display:flex;gap:7px;align-items:stretch;overflow-x:auto;max-width:100%;padding:3px 1px 16px;margin-bottom:14px;scrollbar-width:thin;scrollbar-color:#e9bc92 transparent}
+.chapterRail button{flex:1 0 108px;min-width:108px;min-height:66px;border-radius:10px;border:1px solid #efdcc9;background:#fff;color:#786252;text-align:left;padding:13px 13px;display:flex;flex-direction:column;gap:6px;transition:background .15s,border-color .15s}
+.chapterRail button strong{font-size:11px;color:inherit;white-space:nowrap}
+.chapterRail button small{font-size:10px;font-weight:900;letter-spacing:1px;color:#ce7131}
+.chapterRail button[aria-current="step"]{background:#f5660d;border-color:#f5660d;color:white;box-shadow:0 7px 14px #f5660d2c}
+.chapterRail button[aria-current="step"] small{color:#fff9}
+.chapterRail button:hover:not([aria-current="step"]){background:#fff2e4;border-color:#f3af72}
+.presenterNotice{display:flex;justify-content:space-between;align-items:center;gap:12px;color:#aa8872;font-size:10px;letter-spacing:1.1px;font-weight:800;margin:0 0 12px}
+.slide{min-height:490px;box-shadow:0 17px 42px #7d4c2612}
+.slideWords{background:radial-gradient(circle at 7% 95%,#fff7ed,transparent 36%),#fff}
+.slideWords h3{max-width:720px}
+.slidePicture{background:radial-gradient(circle at 74% 20%,#fff6db,transparent 42%),linear-gradient(135deg,#fff4e4,#ffdfb2)}
+.processPanel{background:#fffcf8}
+.ticks button{cursor:pointer;min-width:12px;height:6px}
+.slideToolbar .slideIndex{color:#ed690e}
+.slideNav button{min-height:48px}
+.slideNav button:focus-visible,.chapterRail button:focus-visible{outline:3px solid #d65710;outline-offset:3px}
+.speaker{box-shadow:0 15px 32px rgba(81,52,22,.065)}
+@media(min-width:1240px){.chapterRail button{flex-basis:0;min-width:0}}
+@media(max-width:940px){.welcome{min-height:0}.experienceIntro{grid-template-columns:1fr}.experienceIntro>p{max-width:700px}.proofGrid{grid-template-columns:repeat(3,minmax(0,1fr))}.proofGrid article{padding:18px}.chapterRail button{flex:0 0 136px}.presenterNotice{font-size:9px}}
+@media(max-width:600px){.proofGrid{grid-template-columns:1fr}.proofGrid article{min-height:0;padding:22px}.experienceIntro{padding:45px 20px}.chapterRail button{min-height:59px;flex-basis:115px;padding:10px}.presenterNotice{align-items:start;flex-direction:column;font-size:8px;gap:5px}.presentation:fullscreen{padding:10px}.presentation:fullscreen .slide{height:65vh;min-height:485px}.presentation:fullscreen .chapterRail{display:none}.slideWords h3{font-size:clamp(31px,7vw,41px)}}
+@media(prefers-reduced-motion:reduce){.chapterRail button{transition:none}}
