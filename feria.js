@@ -59,12 +59,24 @@ const slides=[
   "caption": "SUMINISTRO DE AGUA Y BEBEDEROS",
   "alt": "Sistema de agua y bebederos en el galpón",
   "foot": "AGUA · TUBERÍAS · BEBEDEROS",
-  "detail": "El recorrido visual permite hablar del acceso al agua y de los elementos que forman parte de ese sistema.",
+  "detail": "Observa dos partes del suministro de agua: los bebederos utilizados en el galpón y los filtros del sistema. Las imágenes cambian automáticamente para mostrar ambas instalaciones.",
   "note": "Si el expositor conoce la configuración real del suministro, podrá ampliarla verbalmente. Evitar afirmar tratamientos o certificaciones sin confirmación.",
   "media": {
    "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgSF5CC2_DG_N5FGyVwJVAGsNnpHoZc6slNmRdo-IEwThZ9rNOmpH9IW99Nm3POHZo2SCqtHKMY5HGtRnCM_5ohKatbGTD9ANztNotlPEn2Mi_af1FuoyoYcm2oVR06bu1VTLxvBe0Op0jadfJ0aB3BchnbQfmmn_LStSYJVuS7K4V5fadJMzyKJjzskqk/s1600/image.png",
    "alt": "Sistema de agua y bebederos en el galpón",
-   "caption": "SUMINISTRO DE AGUA Y BEBEDEROS"
+   "caption": "SUMINISTRO, FILTROS Y BEBEDEROS",
+   "gallery": [
+    {
+     "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgSF5CC2_DG_N5FGyVwJVAGsNnpHoZc6slNmRdo-IEwThZ9rNOmpH9IW99Nm3POHZo2SCqtHKMY5HGtRnCM_5ohKatbGTD9ANztNotlPEn2Mi_af1FuoyoYcm2oVR06bu1VTLxvBe0Op0jadfJ0aB3BchnbQfmmn_LStSYJVuS7K4V5fadJMzyKJjzskqk/s1600/image.png",
+     "alt": "Bebederos y suministro de agua en el galpón",
+     "label": "BEBEDEROS"
+    },
+    {
+     "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjOUY_KGxqPaf7gaSV279yw-RnAw2XNLsXjiKSPYwWF13hGjuTjcyPPeYGs98rMvMAuiB38oq0OV-PbJlgHGQQZ0CpYF4uHSKZHqwtKYXBf5MKUfVfHspsR9v3D0IIiKOzZvwVyLp8VLNo1x-DWEUs-dwBnSfQ7Nqq6ayTxtIAkGjli2and0Vj8AZbjRMY/s1600/image.png",
+     "alt": "Filtros del sistema de suministro de agua",
+     "label": "FILTROS DE AGUA"
+    }
+   ]
   }
  },
  {
@@ -177,7 +189,15 @@ return '<div class="processPanel"><small class="diagramType">ASÍ CONTAMOS EL PR
 }
 function mediaVisual(s){
 if(!s.media)return processVisual(s);
-return '<figure class="chapterPhoto" style="--media-image:url(&quot;'+s.media.src+'&quot;)"><img src="'+s.media.src+'" alt="'+s.media.alt+'" loading="eager" decoding="async" referrerpolicy="no-referrer"><figcaption><span>EL POLLAZO GALAPAGUEÑO</span><strong>'+s.media.caption+'</strong></figcaption><a class="photoView" href="'+s.media.src+'" target="_blank" rel="noopener noreferrer" aria-label="Abrir imagen de '+s.sub+' en tamaño completo">Ver imagen completa ↗</a></figure>';
+const m=s.media, gallery=Array.isArray(m.gallery)&&m.gallery.length>1;
+const label=gallery?"DOS VISTAS · CAMBIO AUTOMÁTICO":"EL POLLAZO GALAPAGUEÑO";
+const primary='<img class="photoLayer photoLayerPrimary" src="'+m.src+'" alt="'+m.alt+'" loading="eager" decoding="async" referrerpolicy="no-referrer">';
+const secondary=gallery?'<img class="photoLayer photoLayerSecondary" src="'+m.gallery[1].src+'" alt="'+m.gallery[1].alt+'" loading="eager" decoding="async" referrerpolicy="no-referrer">':'';
+const links=gallery?
+ '<div class="photoGalleryLinks"><a href="'+m.src+'" target="_blank" rel="noopener noreferrer" aria-label="Ampliar fotografía de bebederos">Bebederos ↗</a><a href="'+m.gallery[1].src+'" target="_blank" rel="noopener noreferrer" aria-label="Ampliar fotografía de filtros">Filtros ↗</a></div>':
+ '<a class="photoView" href="'+m.src+'" target="_blank" rel="noopener noreferrer" aria-label="Ampliar imagen de '+s.sub+'">Ampliar ↗</a>';
+const indicators=gallery?'<div class="galleryIndicators" aria-hidden="true"><span class="galleryLabelFirst">01 · BEBEDEROS</span><span class="galleryLabelSecond">02 · FILTROS DE AGUA</span></div>':'';
+return '<figure class="chapterPhoto'+(gallery?' photoGallery':'')+'" style="--media-image:url(&quot;'+m.src+'&quot;)">'+primary+secondary+'<figcaption><span>'+label+'</span><strong>'+m.caption+'</strong></figcaption>'+indicators+links+'</figure>';
 }
 function render(){
 const s=slides[i];
@@ -192,21 +212,35 @@ slide.classList.toggle("isClosing",s.visual==="closing");
 slide.classList.remove("slideReveal");
 void slide.offsetWidth;
 slide.classList.add("slideReveal");
-slide.innerHTML='<div class="slideWords" data-step="'+String(i+1).padStart(2,"0")+'"><span class="sectionTag">'+s.tag+'</span><span class="miniLine"></span><p class="slideSub">'+s.sub+'</p><h3>'+s.title+'</h3><p class="slideCopy">'+s.copy+'</p><button type="button" class="slideMore" aria-expanded="false" aria-controls="slideDetails">Ver más información <span aria-hidden="true">+</span></button><div class="slideDetails" id="slideDetails" hidden><p>'+s.detail+'</p></div><div class="slideCaption">'+s.foot+'</div></div><div class="slidePicture'+(s.media?' withMedia':'')+'"><span class="overprint">SANTA CRUZ · GALÁPAGOS</span>'+mediaVisual(s)+'<span class="pictureCount">'+String(i+1).padStart(2,"0")+' / '+String(slides.length).padStart(2,"0")+'</span></div>';
-const currentImage=slide.querySelector(".chapterPhoto img");
-if(currentImage){
- currentImage.addEventListener("error",()=>{
-  if(s.media.fallback && !currentImage.dataset.fallbackTried){
-   currentImage.dataset.fallbackTried="1";
-   currentImage.src=s.media.fallback;
-   return;
-  }
-  currentImage.style.display="none";
-  const notice=document.createElement("div");
-  notice.className="photoFallback";
-  notice.textContent="Imagen temporalmente no disponible";
-  currentImage.parentNode.insertBefore(notice,currentImage);
+slide.innerHTML='<div class="slideWords" data-step="'+String(i+1).padStart(2,"0")+'"><div class="slideIntro"><span class="sectionTag">'+s.tag+'</span><span class="slideStoryLine">EL POLLAZO GALAPAGUEÑO</span></div><span class="miniLine"></span><p class="slideSub">'+s.sub+'</p><h3>'+s.title+'</h3><p class="slideCopy">'+s.copy+'</p><button type="button" class="slideMore" aria-expanded="false" aria-controls="slideDetails">Descubrir más <span aria-hidden="true">↗</span></button><div class="slideDetails" id="slideDetails" hidden><p>'+s.detail+'</p></div><div class="slideCaption">'+s.foot+'</div></div><div class="slidePicture'+(s.media?' withMedia':'')+'">'+mediaVisual(s)+'</div>';
+const frame=slide.querySelector(".chapterPhoto");
+if(frame){
+ const allImages=frame.querySelectorAll("img.photoLayer");
+ allImages.forEach((image,index)=>{
+  image.addEventListener("error",()=>{
+   if(index===1){
+    frame.classList.add("galleryUnavailable");
+    image.hidden=true;
+    return;
+   }
+   if(s.media.fallback&&!image.dataset.fallbackTried){
+    image.dataset.fallbackTried="1";image.src=s.media.fallback;return;
+   }
+   image.hidden=true;
+   if(!frame.querySelector(".photoFallback")){
+    const notice=document.createElement("div");
+    notice.className="photoFallback";
+    notice.textContent="Imagen temporalmente no disponible";
+    frame.appendChild(notice);
+   }
+  });
  });
+ if(allImages.length>1){
+  const second=allImages[1];
+  const galleryReady=()=>{if(second.naturalWidth>0&&!second.hidden)frame.classList.add("galleryReady")};
+  second.addEventListener("load",galleryReady,{once:true});
+  if(second.complete)galleryReady();
+ }
 }
 q("#slideIndex").textContent=String(i+1).padStart(2,"0")+" / "+String(slides.length).padStart(2,"0");
 q("#prev").disabled=i===0;
@@ -223,7 +257,7 @@ slide.addEventListener("click",e=>{
 const button=e.target.closest(".slideMore");if(!button)return;
 const panel=slide.querySelector("#slideDetails");if(!panel)return;
 const willOpen=panel.hidden;panel.hidden=!willOpen;button.setAttribute("aria-expanded",String(willOpen));
-button.innerHTML=willOpen?'Ocultar información <span aria-hidden="true">−</span>':'Ver más información <span aria-hidden="true">+</span>';
+button.innerHTML=willOpen?'Mostrar menos <span aria-hidden="true">↑</span>':'Descubrir más <span aria-hidden="true">↗</span>';
 });
 q("#startSlides").addEventListener("click",openSlides);
 q("#prev").addEventListener("click",()=>go(i-1));
