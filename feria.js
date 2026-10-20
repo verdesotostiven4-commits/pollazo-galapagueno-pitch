@@ -166,7 +166,7 @@ const slides=[
   }
  }
 ];
-const q=s=>document.querySelector(s), slide=q("#slide"), wrap=q("#presentacion"), speaker=q("#speaker");let i=0;
+const q=s=>document.querySelector(s), slide=q("#slide"), wrap=q("#presentacion");let i=0;
 function processVisual(s){
 if(s.visual==="opening")return '<div class="brandPanel"><span class="brandKicker">TE DAMOS LA BIENVENIDA</span><strong>POLLAZO<br>GALAPAGUEÑO</strong><div class="brandDivider"></div><p>CONOCE EL RECORRIDO DE NUESTRO PRODUCTO</p><div class="brandPills"><span>GRANJA</span><span>EMPAQUE</span><span>ENTREGA</span></div></div>';
 if(s.visual==="closing")return '<div class="brandPanel closingPanel"><span class="brandKicker">POLLAZO GALAPAGUEÑO</span><strong>¡GRACIAS!</strong><div class="brandDivider"></div><p>¿PREGUNTAS? ESTAMOS AQUÍ PARA CONVERSAR.</p></div>';
@@ -177,17 +177,22 @@ return '<div class="processPanel"><small class="diagramType">ASÍ CONTAMOS EL PR
 }
 function mediaVisual(s){
 if(!s.media)return processVisual(s);
-return '<figure class="chapterPhoto"><img src="'+s.media.src+'" alt="'+s.media.alt+'" loading="eager" decoding="async" referrerpolicy="no-referrer"><figcaption><span>EL POLLAZO GALAPAGUEÑO</span><strong>'+s.media.caption+'</strong></figcaption><a class="photoView" href="'+s.media.src+'" target="_blank" rel="noopener noreferrer" aria-label="Abrir imagen de '+s.sub+' en tamaño completo">Ver imagen completa ↗</a></figure>';
+return '<figure class="chapterPhoto" style="--media-image:url(&quot;'+s.media.src+'&quot;)"><img src="'+s.media.src+'" alt="'+s.media.alt+'" loading="eager" decoding="async" referrerpolicy="no-referrer"><figcaption><span>EL POLLAZO GALAPAGUEÑO</span><strong>'+s.media.caption+'</strong></figcaption><a class="photoView" href="'+s.media.src+'" target="_blank" rel="noopener noreferrer" aria-label="Abrir imagen de '+s.sub+' en tamaño completo">Ver imagen completa ↗</a></figure>';
 }
 function render(){
 const s=slides[i];
 const rail=q("#chapterRail");
 if(rail){
+const previousRailScroll=rail.scrollLeft;
 rail.innerHTML=slides.map((item,j)=>'<button type="button" data-chapter="'+j+'" aria-current="'+(j===i?'step':'false')+'" aria-label="Abrir capítulo '+(j+1)+': '+item.sub+'"><small>'+String(j+1).padStart(2,"0")+'</small><strong>'+item.sub+'</strong></button>').join("");
+rail.scrollLeft=previousRailScroll;
 }
 slide.classList.toggle("isOpening",s.visual==="opening");
 slide.classList.toggle("isClosing",s.visual==="closing");
-slide.innerHTML='<div class="slideWords"><span class="sectionTag">'+s.tag+'</span><span class="miniLine"></span><p class="slideSub">'+s.sub+'</p><h3>'+s.title+'</h3><p class="slideCopy">'+s.copy+'</p><button type="button" class="slideMore" aria-expanded="false" aria-controls="slideDetails">Ver más información <span aria-hidden="true">+</span></button><div class="slideDetails" id="slideDetails" hidden><p>'+s.detail+'</p></div><div class="slideCaption">'+s.foot+'</div></div><div class="slidePicture'+(s.media?' withMedia':'')+'"><span class="overprint">SANTA CRUZ · GALÁPAGOS</span>'+mediaVisual(s)+'<span class="pictureCount">'+String(i+1).padStart(2,"0")+' / '+String(slides.length).padStart(2,"0")+'</span></div>';
+slide.classList.remove("slideReveal");
+void slide.offsetWidth;
+slide.classList.add("slideReveal");
+slide.innerHTML='<div class="slideWords" data-step="'+String(i+1).padStart(2,"0")+'"><span class="sectionTag">'+s.tag+'</span><span class="miniLine"></span><p class="slideSub">'+s.sub+'</p><h3>'+s.title+'</h3><p class="slideCopy">'+s.copy+'</p><button type="button" class="slideMore" aria-expanded="false" aria-controls="slideDetails">Ver más información <span aria-hidden="true">+</span></button><div class="slideDetails" id="slideDetails" hidden><p>'+s.detail+'</p></div><div class="slideCaption">'+s.foot+'</div></div><div class="slidePicture'+(s.media?' withMedia':'')+'"><span class="overprint">SANTA CRUZ · GALÁPAGOS</span>'+mediaVisual(s)+'<span class="pictureCount">'+String(i+1).padStart(2,"0")+' / '+String(slides.length).padStart(2,"0")+'</span></div>';
 const currentImage=slide.querySelector(".chapterPhoto img");
 if(currentImage){
  currentImage.addEventListener("error",()=>{
@@ -204,20 +209,16 @@ if(currentImage){
  });
 }
 q("#slideIndex").textContent=String(i+1).padStart(2,"0")+" / "+String(slides.length).padStart(2,"0");
-q("#speakerText").textContent=s.note;
 q("#prev").disabled=i===0;
 q("#next").textContent=i===slides.length-1?"Volver al inicio ↺":"Siguiente →";
 q("#ticks").innerHTML=slides.map((_,j)=>'<button class="'+(j===i?'active':'')+'" aria-label="Escena '+(j+1)+'" data-slide="'+j+'"></button>').join("");
 }
 function openSlides(){
 wrap.hidden=false;
-speaker.hidden=true;
-q("#showNotes").setAttribute("aria-pressed","false");
 render();wrap.scrollIntoView({behavior:"smooth",block:"start"});
 history.replaceState(null,"","#presentacion");
 }
 function go(x){if(x<0)return;i=x>=slides.length?0:x;render();}
-function close(){wrap.hidden=true;history.replaceState(null,"","#inicio");q("#inicio").scrollIntoView({behavior:"smooth"});}
 slide.addEventListener("click",e=>{
 const button=e.target.closest(".slideMore");if(!button)return;
 const panel=slide.querySelector("#slideDetails");if(!panel)return;
@@ -225,29 +226,29 @@ const willOpen=panel.hidden;panel.hidden=!willOpen;button.setAttribute("aria-exp
 button.innerHTML=willOpen?'Ocultar información <span aria-hidden="true">−</span>':'Ver más información <span aria-hidden="true">+</span>';
 });
 q("#startSlides").addEventListener("click",openSlides);
-q("#closeSlides").addEventListener("click",close);
 q("#prev").addEventListener("click",()=>go(i-1));
 q("#next").addEventListener("click",()=>go(i+1));
 q("#ticks").addEventListener("click",e=>{const t=e.target.closest("[data-slide]");if(t)go(Number(t.dataset.slide))});
 q("#chapterRail").addEventListener("click",e=>{const t=e.target.closest("[data-chapter]");if(t)go(Number(t.dataset.chapter))});
-q("#showNotes").addEventListener("click",()=>{
-if(document.fullscreenElement)return;
-speaker.hidden=!speaker.hidden;
-q("#showNotes").setAttribute("aria-pressed",String(!speaker.hidden));
-});
-q("#enterFull").addEventListener("click",()=>{
-speaker.hidden=true;q("#showNotes").setAttribute("aria-pressed","false");
-if(document.fullscreenElement){document.exitFullscreen?.()}
-else {wrap.requestFullscreen?.().catch(()=>{})}
-});
-document.addEventListener("fullscreenchange",()=>{
-if(document.fullscreenElement){speaker.hidden=true;q("#showNotes").setAttribute("aria-pressed","false")}
-q("#enterFull").textContent=document.fullscreenElement?"⛶ Salir de pantalla completa":"⛶ Pantalla completa";
-});
-document.addEventListener("keydown",e=>{if(wrap.hidden||["INPUT","TEXTAREA","SELECT"].includes(document.activeElement.tagName))return;if(e.key==="ArrowRight"||e.key==="PageDown"){e.preventDefault();go(i+1)}else if(e.key==="ArrowLeft"||e.key==="PageUp"){e.preventDefault();go(i-1)}else if(e.key==="Escape"&&document.fullscreenElement)document.exitFullscreen?.()});
+document.addEventListener("keydown",e=>{if(wrap.hidden||["INPUT","TEXTAREA","SELECT"].includes(document.activeElement.tagName))return;if(e.key==="ArrowRight"||e.key==="PageDown"){e.preventDefault();go(i+1)}else if(e.key==="ArrowLeft"||e.key==="PageUp"){e.preventDefault();go(i-1)}});
 let touchStartX=0,touchStartY=0;
 slide.addEventListener("touchstart",e=>{if(e.touches.length===1){touchStartX=e.touches[0].clientX;touchStartY=e.touches[0].clientY}},{passive:true});
 slide.addEventListener("touchend",e=>{if(!e.changedTouches.length)return;const dx=e.changedTouches[0].clientX-touchStartX;const dy=e.changedTouches[0].clientY-touchStartY;if(Math.abs(dx)>75&&Math.abs(dy)<60)go(i+(dx<0?1:-1))},{passive:true});
+
+const brandLogo=q(".masthead .logo");
+if(brandLogo){
+ const restartLogoMotion=()=>{
+  brandLogo.classList.remove("logoPop");
+  void brandLogo.offsetWidth;
+  brandLogo.classList.add("logoPop");
+ };
+ brandLogo.addEventListener("click",e=>{
+  restartLogoMotion();
+  if(location.hash==="#inicio"||window.scrollY<20){e.preventDefault();q("#inicio").scrollIntoView({behavior:"smooth"});}
+ });
+ brandLogo.addEventListener("animationend",e=>{if(e.animationName==="logoClickPop")brandLogo.classList.remove("logoPop")});
+}
+
 const video=q("#storyVideo"),empty=q("#videoEmpty");
 const showVideo=()=>{
  empty.hidden=true;video.classList.add("hasMedia");
