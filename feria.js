@@ -2,138 +2,168 @@
 "use strict";
 const slides=[
  {
-  "tag": "01 / NUESTRA PROPUESTA",
-  "visual": "opening",
-  "title": "¿Por qué conocer al Pollazo Galapagueño?",
+  "tag": "01 / BIENVENIDA",
   "sub": "Nuestra propuesta",
-  "copy": "Te invitamos a conocer el recorrido de nuestro producto: la granja, el trabajo del equipo, el empaque y la distribución en Santa Cruz, Galápagos.",
-  "labels": [
-   "Crianza",
-   "Preparación",
-   "Distribución"
-  ],
-  "foot": "CONOCE NUESTRA HISTORIA EN SANTA CRUZ",
-  "detail": "Hoy recorreremos las etapas que forman parte de la historia de Pollazo Galapagueño, desde la granja hasta la llegada de sus productos a los clientes.",
-  "note": "Abrir con la pregunta tal como se pidió en la llamada. Dar una bienvenida breve y explicar que el recorrido mostrará granja, alimentación, agua, personal, empaque y distribución. No afirmar certificados ni cifras no verificadas."
+  "title": "¿Por qué conocer al Pollazo Galapagueño?",
+  "copy": "Te invitamos a descubrir el recorrido del Pollazo Galapagueño, desde el ingreso a nuestras instalaciones hasta la entrega de sus productos en Santa Cruz.",
+  "caption": "EL INICIO DE NUESTRO RECORRIDO",
+  "alt": "Imagen de entrada y presentación del recorrido",
+  "foot": "SANTA CRUZ · GALÁPAGOS",
+  "detail": "Conoce el recorrido visual del proceso: crianza, alimentación, agua, personal, empaque, conservación y distribución.",
+  "note": "Iniciar con una bienvenida y presentar el objetivo. La imagen sirve de apoyo visual; confirmar con la empresa qué tomas corresponden a instalaciones reales.",
+  "media": {
+   "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhm8Zh-Pd546b63tQekbcmBoZBTu49z4OnOfpQz3BY96mlTHnk4Uk3P0QybVSyPIYHfOm-Zb9i4Kc0JWSDNw_QM_mzxU2HTTNzLtPsJJEuffMsQZUdMuUFpHivpCg4SzZ2JfRvIMZH6FOAYgb27gPx4Dstdn-wR3so2fz_2OhXAfAXQucYwXoy91o7e60A/s1600/image.png",
+   "alt": "Imagen de entrada y presentación del recorrido",
+   "caption": "EL INICIO DE NUESTRO RECORRIDO"
+  }
  },
  {
   "tag": "02 / CRIANZA",
-  "media": {
-   "src": "./assets/granja.png",
-   "alt": "Imagen de la granja de Pollazo Galapagueño",
-   "caption": "LA GRANJA"
-  },
+  "sub": "Pollitos bebés",
   "title": "El cuidado comienza desde el primer día.",
-  "sub": "Crianza",
-  "copy": "Conoce cómo comienza la historia de los pollitos cuando llegan a la granja y cómo continúa durante sus etapas de crecimiento.",
-  "labels": [
-   "Llegada",
-   "Crecimiento",
-   "Cuidado"
-  ],
-  "foot": "CRIANZA · PRIMERAS ETAPAS",
-  "detail": "La crianza es el punto de partida. El recorrido muestra la llegada de las aves y su crecimiento dentro de la granja.",
-  "note": "REEMPLAZAR imagen de la granja por fotografía auténtica de pollitos bebés recién llegados en cuanto esté disponible. De momento se conserva granja.png para no inventar ni sustituir por stock."
+  "copy": "El recorrido comienza con la llegada de los pollitos. Desde sus primeros días, acompañamos las etapas de su crecimiento.",
+  "caption": "PRIMEROS DÍAS DE CRIANZA",
+  "alt": "Pollitos bebés en el galpón avícola",
+  "foot": "CRIANZA · LLEGADA DE LOS POLLITOS",
+  "detail": "Durante esta etapa conocemos los primeros días de las aves y el entorno donde se desarrolla su crecimiento.",
+  "note": "Explicar la llegada de los pollitos y el cuidado en los primeros días sin atribuir controles o estándares no confirmados.",
+  "media": {
+   "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjmbsdztBPDEQkXxFFtSevUKQXHvci3x3vdsdm-yFEFLbmPHDUQg_b3BhtO3_c2ycz9lfSlNeSZDKbHgJPhAa_5WjA3T6essjTnIfK9r2nOdF8YiGdLIJkx3JBlP26qKo8euQCc0Wlks1lhlQBZwpk2AquHJMSY5ya8ba1OGjiulpMUzbUB8IcxLeagNI8/s1600/image.png",
+   "alt": "Pollitos bebés en el galpón avícola",
+   "caption": "PRIMEROS DÍAS DE CRIANZA",
+   "fallback": "./assets/granja.png"
+  }
  },
  {
   "tag": "03 / ALIMENTACIÓN",
-  "media": {
-   "src": "./assets/comederos.png",
-   "alt": "Imagen de los comederos de la granja",
-   "caption": "ALIMENTACIÓN EN LA GRANJA"
-  },
-  "title": "Alimentación y cuidado durante el crecimiento.",
   "sub": "Alimentación",
-  "copy": "Los comederos y las tareas de alimentación forman parte de las actividades diarias de la granja.",
-  "labels": [
-   "Comederos",
-   "Alimentación",
-   "Crecimiento"
-  ],
-  "foot": "ALIMENTACIÓN · RECORRIDO POR LA GRANJA",
-  "detail": "Aquí mostramos los comederos y hablamos de la alimentación durante el crecimiento. Los procedimientos específicos deberán ser confirmados por la empresa.",
-  "note": "El título anterior «La alimentación también se organiza» no convenció. Se utiliza una frase más natural. Mostrar la foto ya subida de comederos."
+  "title": "Una etapa importante del crecimiento.",
+  "copy": "La alimentación forma parte del trabajo diario en los galpones, donde los comederos permiten el acceso de las aves a su alimento.",
+  "caption": "ALIMENTACIÓN EN LOS GALPONES",
+  "alt": "Pollitos y comederos durante la alimentación",
+  "foot": "COMEDEROS · ALIMENTACIÓN",
+  "detail": "En esta etapa se muestran los comederos y las tareas de alimentación que acompañan el crecimiento de las aves.",
+  "note": "Presentar la fotografía y explicar la alimentación sin inventar raciones, edades ni horarios.",
+  "media": {
+   "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiGDMBpHpo1p3ifr5AYhQTB0AsMhfaoQDWLwPDVreBZY2JVToff8p_hi6vttwti4ntuGLzajzxyhSUQfevRHWfzTTlKIdf2cS17XLH2PHYQPVpenhQF7lAF4L4dNP5YmadJrayXDoLcayRpcLbu-KRKIKYPbrKzPvLaKylyQVfKapPqyW8KdxtsRB7jcpM/s1600/image.png",
+   "alt": "Pollitos y comederos durante la alimentación",
+   "caption": "ALIMENTACIÓN EN LOS GALPONES",
+   "fallback": "./assets/comederos.png"
+  }
  },
  {
-  "tag": "04 / AGUA Y BEBEDEROS",
-  "title": "Agua y bebederos en cada etapa.",
+  "tag": "04 / AGUA",
   "sub": "Agua y bebederos",
-  "copy": "Conoce cómo se presenta el circuito de agua y dónde están los bebederos utilizados dentro de los galpones.",
-  "labels": [
-   "Circuito de agua",
-   "Bebederos",
-   "Galpones"
-  ],
-  "foot": "AGUA · INSTALACIONES Y BEBEDEROS",
-  "detail": "Esta sección permite explicar el recorrido del agua hasta los galpones y el uso de los bebederos. El diagrama es ilustrativo.",
-  "note": "El tío pidió usar su imagen CON UN POLLITO y UNIFORME dentro del galpón, y el recorrido del agua (tanques, filtro, tuberías y bebederos). No hay esos archivos en assets; el diagrama actual se mantiene identificado como ilustrativo."
+  "title": "El agua también cumple un papel fundamental.",
+  "copy": "Desde las instalaciones de suministro y las tuberías hasta los bebederos, cada elemento forma parte del funcionamiento cotidiano de los galpones.",
+  "caption": "SUMINISTRO DE AGUA Y BEBEDEROS",
+  "alt": "Sistema de agua y bebederos en el galpón",
+  "foot": "AGUA · TUBERÍAS · BEBEDEROS",
+  "detail": "El recorrido visual permite hablar del acceso al agua y de los elementos que forman parte de ese sistema.",
+  "note": "Si el expositor conoce la configuración real del suministro, podrá ampliarla verbalmente. Evitar afirmar tratamientos o certificaciones sin confirmación.",
+  "media": {
+   "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgSF5CC2_DG_N5FGyVwJVAGsNnpHoZc6slNmRdo-IEwThZ9rNOmpH9IW99Nm3POHZo2SCqtHKMY5HGtRnCM_5ohKatbGTD9ANztNotlPEn2Mi_af1FuoyoYcm2oVR06bu1VTLxvBe0Op0jadfJ0aB3BchnbQfmmn_LStSYJVuS7K4V5fadJMzyKJjzskqk/s1600/image.png",
+   "alt": "Sistema de agua y bebederos en el galpón",
+   "caption": "SUMINISTRO DE AGUA Y BEBEDEROS"
+  }
  },
  {
-  "tag": "05 / EQUIPO",
+  "tag": "05 / PERSONAS",
+  "sub": "Personal y supervisión",
+  "title": "Personas detrás de cada etapa.",
+  "copy": "Nuestro equipo participa en las actividades diarias, la supervisión y la preparación del producto, aportando esfuerzo y dedicación.",
+  "caption": "EL TRABAJO DE NUESTRO EQUIPO",
+  "alt": "Equipo de personal y supervisión",
+  "foot": "PERSONAL · TRABAJO DIARIO",
+  "detail": "Cada etapa de la actividad requiere coordinación, trabajo y atención de las personas que forman parte del proceso.",
+  "note": "En el video narrado, la capacitación del personal funciona como transición hacia la preparación. Respetar identidad y autorizaciones de las personas reales.",
   "media": {
-   "src": "./assets/equipo.jpg",
-   "alt": "Imagen del equipo de Pollazo Galapagueño",
-   "caption": "PERSONAS DETRÁS DEL PROCESO"
-  },
-  "title": "Personal y cuidado en cada etapa.",
-  "sub": "Equipo y supervisión",
-  "copy": "Detrás del proceso hay personas que participan en las actividades diarias, la supervisión y la preparación del producto.",
-  "labels": [
-   "Personal",
-   "Supervisión",
-   "Preparación"
-  ],
-  "foot": "EQUIPO · TRABAJO DIARIO",
-  "detail": "La imagen del equipo acompaña la explicación del paso desde las actividades en la granja hacia el área de preparación.",
-  "note": "En el VIDEO NARRADO colocar la capacitación del personal justo antes de pasar del pollo vivo a las instalaciones de faenamiento. No identificar personas sin autorización."
+   "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJ3zo8ByHtFnb4d-wL8CXClKfQix9nuUW1WLOp2MnUqeSEA36jNAO4bn8nHRLipMlWOwqZ_XopJNGJ0Nib8QM4D9N8QyVBrQZwPvEhyziePG7wWmL6TfFUSG3RM12-ql_JSGh78BJ10WTknZ6PChtTzPiifXYjrciEcjNURNHGx3vGam7mcL6RFBc_Aes/s1600/image.png",
+   "alt": "Equipo de personal y supervisión",
+   "caption": "EL TRABAJO DE NUESTRO EQUIPO",
+   "fallback": "./assets/equipo.jpg"
+  }
  },
  {
-  "tag": "06 / ÁREA BLANCA",
-  "media": {
-   "src": "./assets/area-blanca.jpg",
-   "alt": "Imagen del área blanca de preparación",
-   "caption": "ÁREA BLANCA · EMPAQUE"
-  },
-  "title": "Del trabajo al producto empacado.",
+  "tag": "06 / PREPARACIÓN",
   "sub": "Preparación y empaque",
-  "copy": "Una mirada al área de preparación y al empaque del pollo crudo, con la identidad de Pollazo Galapagueño.",
-  "labels": [
-   "Área blanca",
-   "Empaque",
-   "Presentación"
-  ],
-  "foot": "PREPARACIÓN · PRODUCTO ENFUNDADO",
-  "detail": "Conoce la etapa de preparación y el empaque del pollo crudo con su presentación de marca.",
-  "note": "La prioridad solicitada es una imagen REAL o recreación fiel de alguien enfundando o empacando, en que se vea la funda de la marca y su logo original. No mostrar desplume en el video."
+  "title": "Del trabajo al producto empacado.",
+  "copy": "El recorrido continúa hacia el área de preparación, donde el pollo crudo se coloca en su empaque con la identidad del Pollazo Galapagueño.",
+  "caption": "PREPARACIÓN Y EMPAQUE",
+  "alt": "Proceso de preparación y enfundado del pollo",
+  "foot": "ÁREA DE PREPARACIÓN · EMPAQUE",
+  "detail": "Conoce la etapa de presentación del producto y el trabajo de empaque que lo prepara para los siguientes procesos.",
+  "note": "Mostrar la acción de empacar o enfundar con la marca visible. No presentar recreaciones como grabaciones documentales.",
+  "media": {
+   "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg0M6eW4DuzGMoyV9k0BGSsNYZTNd0UBsXjztg7Enw2U0sHlO0EIRUebCFhVv3gvjaPAi-2eQrM9PO3LJDdKqKlyfjbBGmJ3XWgjxUqokaE5aShUqvG5X1gRLon6UlGyvfzDJRO2umW1YgTujBeqZ2qsioUJBIr5JrxBhLmrlkeTA0Buk3ZUDQ0mkPY6lo/s1600/image.png",
+   "alt": "Proceso de preparación y enfundado del pollo",
+   "caption": "PREPARACIÓN Y EMPAQUE",
+   "fallback": "./assets/area-blanca.jpg"
+  }
  },
  {
-  "tag": "07 / DISTRIBUCIÓN",
-  "title": "Del empaque a nuestros clientes.",
-  "sub": "Conservación y distribución",
-  "copy": "El recorrido continúa con el pesaje, la conservación refrigerada y el transporte de los productos hacia sus puntos de entrega.",
-  "labels": [
-   "Pesaje",
-   "Conservación en frío",
-   "Transporte"
-  ],
-  "foot": "PESAJE · CÁMARA FRÍA · CAMIÓN",
-  "detail": "Una vez empacado, el producto continúa por etapas de pesaje, conservación en frío y transporte hacia los clientes.",
-  "note": "REEMPLAZAR esquema provisional por tomas reales del pesaje, cámara fría, camión Hino exterior/interior y una tienda autorizada. No inventar clientes o acuerdos comerciales. La voz del video puede continuar: «Día a día, realizamos nuestro recorrido para entregar los productos a nuestros clientes», tras confirmar la rutina."
+  "tag": "07 / PRODUCTO",
+  "sub": "Producto empacado",
+  "title": "Una presentación que nos identifica.",
+  "copy": "El pollo crudo empacado llega a su presentación final, con los colores y la identidad de la marca.",
+  "caption": "PRESENTACIÓN DEL PRODUCTO",
+  "alt": "Pollo crudo en el empaque de Pollazo Galapagueño",
+  "foot": "PRODUCTO · IDENTIDAD DE MARCA",
+  "detail": "La presentación empacada ayuda a reconocer el producto y la identidad visual de la empresa.",
+  "note": "Comprobar con el responsable la fidelidad de cualquier etiqueta o logotipo representado en la imagen.",
+  "media": {
+   "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlQpxGdvW92bMS1ui0IWAKPesrfYWDytrHoxYh8MWl_owF7WHxxlAeSGGWXR3NexCsUg2WdRvtwfc-oDLKAE-Qpu1fePYSkBNVkkDfviMdEKplHnXAdD4aFxP0tukaZ6QtUdOQ__s_MMxYMLAiiqd7FTdzGXWo3keYeCTNHgDQ8Ni2vLvH6m_-Gdk4Q3w/s1600/image.png",
+   "alt": "Pollo crudo en el empaque de Pollazo Galapagueño",
+   "caption": "PRESENTACIÓN DEL PRODUCTO"
+  }
  },
  {
-  "tag": "08 / AGRADECIMIENTO",
-  "visual": "closing",
-  "title": "Gracias por conocer Pollazo Galapagueño.",
-  "sub": "Preguntas y conversación",
-  "copy": "Gracias por acompañarnos. ¿Tienen alguna pregunta sobre nuestros productos o nuestro trabajo? Con gusto la responderemos.",
-  "labels": [
-   "Gracias",
-   "Preguntas",
-   "Conversemos"
-  ],
-  "foot": "SANTA CRUZ · GALÁPAGOS",
-  "detail": "Este es el espacio para conversar con quienes nos visitan y resolver sus dudas sobre los productos de Pollazo Galapagueño.",
-  "note": "Terminar con agradecimiento e invitar al público a hacer preguntas. No se requiere agregar un número de contacto que aún no se haya confirmado."
+  "tag": "08 / TRANSPORTE",
+  "sub": "Transporte y distribución",
+  "title": "Preparados para continuar el recorrido.",
+  "copy": "Después del empaque y la conservación refrigerada, los productos se preparan para salir hacia los diferentes puntos de entrega.",
+  "caption": "TRANSPORTE Y DISTRIBUCIÓN",
+  "alt": "Vehículo de distribución de Pollazo Galapagueño",
+  "foot": "CONSERVACIÓN · TRANSPORTE",
+  "detail": "El recorrido incluye la preparación del transporte y el traslado del producto hacia los puntos de entrega.",
+  "note": "Describir el camión y las condiciones de transporte con base en lo que la empresa haya confirmado.",
+  "media": {
+   "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjht_vnDY6pUC6c38gIImF1FSQzImw2bqhnWNLo3BE253CoZq3VM15ybeZQzB8akHuVDDJ_33dbLGoO1Xwqm-09dbTQ9jidrtcDaTz5pQRLbMt8i_A__JpGC7VjOC-POFfqd39H8C-Vj5HWmHeFIPZK63BB501OeUQzxbEd1yDADQwPmy7sYpFRDCFJmyg/s1600/image.png",
+   "alt": "Vehículo de distribución de Pollazo Galapagueño",
+   "caption": "TRANSPORTE Y DISTRIBUCIÓN"
+  }
+ },
+ {
+  "tag": "09 / ENTREGA",
+  "sub": "Puntos de venta",
+  "title": "Más cerca de nuestros clientes.",
+  "copy": "El recorrido llega a tiendas y puntos de venta de Santa Cruz, acercando los productos del Pollazo Galapagueño a sus clientes.",
+  "caption": "LLEGADA A LOS PUNTOS DE VENTA",
+  "alt": "Punto de venta y comercialización de productos",
+  "foot": "ENTREGA · COMERCIO LOCAL",
+  "detail": "Esta etapa muestra el destino del recorrido: los puntos de venta y la conexión con quienes adquieren el producto.",
+  "note": "No identificar negocios específicos ni sugerir acuerdos comerciales si no fueron confirmados. Las imágenes de apoyo pueden ser recreaciones.",
+  "media": {
+   "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEinCrQQbTEuXChskVZWjnxUJlpbeCQsGv8qm_OOz0NGOJqdhjBJhQu1cbS_2R9YgnIqNQ48KsJsvEpUm3QFkSZkNhwPg-L1XJb81S5SDXwXrt9fwHNIGosVGnwQvyI3tUh7ZDaP7bIlYwWzD5r3DabYYuBANi81YGOt2tLSzN-3mFmk42Bj-UzUtTQig6Q/s1600/image.png",
+   "alt": "Punto de venta y comercialización de productos",
+   "caption": "LLEGADA A LOS PUNTOS DE VENTA"
+  }
+ },
+ {
+  "tag": "10 / GRACIAS",
+  "sub": "Cierre y marca",
+  "title": "Gracias por conocer al Pollazo Galapagueño.",
+  "copy": "Del cuidado en cada etapa a la confianza en cada entrega. Gracias por acompañarnos. ¿Tienes alguna pregunta? Estamos aquí para conversar.",
+  "caption": "EL POLLAZO GALAPAGUEÑO",
+  "alt": "Imagen de cierre e identidad de marca de Pollazo Galapagueño",
+  "foot": "EL NÚMERO UNO EN EL MERCADO · SANTA CRUZ",
+  "detail": "Con esto termina la presentación. Invitamos a los visitantes a preguntar sobre los productos, el trabajo de la empresa y su disponibilidad.",
+  "note": "Agradecer a quienes asistieron e invitar a hacer preguntas. Comprobar que el logotipo y el eslogan de la imagen coinciden con los originales.",
+  "media": {
+   "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjZteixGJnzoj1Dsc-hW252osa1CaAEsKcqOVFNmDYYeVxewkoLp4UcWPEwNa_EhcGT9rxNLiYLF_w0HGHFouREsvoxOVgQDgLiQi6Ce6hSDvsALvffn51YuNK64MxO4Nksmnk2IveSvfAjpNeFhUt2nm8ZqUcqL9xlqD-5hM3DX4daB5Ku5ua872YJGP0/s1600/image.png",
+   "alt": "Imagen de cierre e identidad de marca de Pollazo Galapagueño",
+   "caption": "EL POLLAZO GALAPAGUEÑO"
+  }
  }
 ];
 const q=s=>document.querySelector(s), slide=q("#slide"), wrap=q("#presentacion"), speaker=q("#speaker");let i=0;
@@ -147,7 +177,7 @@ return '<div class="processPanel"><small class="diagramType">ASÍ CONTAMOS EL PR
 }
 function mediaVisual(s){
 if(!s.media)return processVisual(s);
-return '<figure class="chapterPhoto"><img src="'+s.media.src+'" alt="'+s.media.alt+'" loading="eager" decoding="async"><figcaption><span>POLLAZO GALAPAGUEÑO</span><strong>'+s.media.caption+'</strong></figcaption></figure>';
+return '<figure class="chapterPhoto"><img src="'+s.media.src+'" alt="'+s.media.alt+'" loading="eager" decoding="async" referrerpolicy="no-referrer"><figcaption><span>EL POLLAZO GALAPAGUEÑO</span><strong>'+s.media.caption+'</strong></figcaption><a class="photoView" href="'+s.media.src+'" target="_blank" rel="noopener noreferrer" aria-label="Abrir imagen de '+s.sub+' en tamaño completo">Ver imagen completa ↗</a></figure>';
 }
 function render(){
 const s=slides[i];
@@ -158,6 +188,21 @@ rail.innerHTML=slides.map((item,j)=>'<button type="button" data-chapter="'+j+'" 
 slide.classList.toggle("isOpening",s.visual==="opening");
 slide.classList.toggle("isClosing",s.visual==="closing");
 slide.innerHTML='<div class="slideWords"><span class="sectionTag">'+s.tag+'</span><span class="miniLine"></span><p class="slideSub">'+s.sub+'</p><h3>'+s.title+'</h3><p class="slideCopy">'+s.copy+'</p><button type="button" class="slideMore" aria-expanded="false" aria-controls="slideDetails">Ver más información <span aria-hidden="true">+</span></button><div class="slideDetails" id="slideDetails" hidden><p>'+s.detail+'</p></div><div class="slideCaption">'+s.foot+'</div></div><div class="slidePicture'+(s.media?' withMedia':'')+'"><span class="overprint">SANTA CRUZ · GALÁPAGOS</span>'+mediaVisual(s)+'<span class="pictureCount">'+String(i+1).padStart(2,"0")+' / '+String(slides.length).padStart(2,"0")+'</span></div>';
+const currentImage=slide.querySelector(".chapterPhoto img");
+if(currentImage){
+ currentImage.addEventListener("error",()=>{
+  if(s.media.fallback && !currentImage.dataset.fallbackTried){
+   currentImage.dataset.fallbackTried="1";
+   currentImage.src=s.media.fallback;
+   return;
+  }
+  currentImage.style.display="none";
+  const notice=document.createElement("div");
+  notice.className="photoFallback";
+  notice.textContent="Imagen temporalmente no disponible";
+  currentImage.parentNode.insertBefore(notice,currentImage);
+ });
+}
 q("#slideIndex").textContent=String(i+1).padStart(2,"0")+" / "+String(slides.length).padStart(2,"0");
 q("#speakerText").textContent=s.note;
 q("#prev").disabled=i===0;
@@ -204,6 +249,13 @@ let touchStartX=0,touchStartY=0;
 slide.addEventListener("touchstart",e=>{if(e.touches.length===1){touchStartX=e.touches[0].clientX;touchStartY=e.touches[0].clientY}},{passive:true});
 slide.addEventListener("touchend",e=>{if(!e.changedTouches.length)return;const dx=e.changedTouches[0].clientX-touchStartX;const dy=e.changedTouches[0].clientY-touchStartY;if(Math.abs(dx)>75&&Math.abs(dy)<60)go(i+(dx<0?1:-1))},{passive:true});
 const video=q("#storyVideo"),empty=q("#videoEmpty");
+const showVideo=()=>{
+ empty.hidden=true;video.classList.add("hasMedia");
+ q("#startVideo").innerHTML='<span class="playcircle">▶</span> Reproducir video explicativo';
+ q("#videoStatus").textContent="VIDEO NARRADO · LISTO PARA REPRODUCIR";
+};
+video.addEventListener("loadedmetadata",showVideo);
+video.addEventListener("playing",showVideo);
 video.addEventListener("loadeddata",()=>{
 empty.hidden=true;video.classList.add("hasMedia");
 q("#startVideo").innerHTML='<span class="playcircle">▶</span> Reproducir video explicativo';
@@ -214,7 +266,7 @@ empty.hidden=false;video.classList.remove("hasMedia");
 q("#startVideo").textContent="Iniciar presentación guiada →";
 q("#videoStatus").textContent="VIDEO NARRADO · POR INCORPORAR";
 });
-q("#startVideo").addEventListener("click",async()=>{if(video.readyState<2){openSlides();return}q("#videoCard").scrollIntoView({behavior:"smooth",block:"center"});try{await video.play()}catch(e){openSlides()}});
+q("#startVideo").addEventListener("click",async()=>{q("#videoCard").scrollIntoView({behavior:"smooth",block:"center"});try{await video.play()}catch(e){q("#videoStatus").textContent="ACTIVA PLAY EN EL REPRODUCTOR O CONTINÚA CON LA PRESENTACIÓN";video.controls=true}});
 video.addEventListener("play",()=>{q("#videoCard").querySelector(".afterVideo")?.remove()});
 video.addEventListener("ended",()=>{
 q("#videoCard").querySelector(".afterVideo")?.remove();

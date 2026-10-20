@@ -111,3 +111,24 @@ body{background:#fff}
 .slideCopy{line-height:1.5}
 .presentation:fullscreen .slide{min-height:650px;height:auto;grid-template-rows:minmax(365px,auto) minmax(275px,auto)}
 }
+
+/* Galería de diez escenas. Imágenes completas con fondo suave para no recortar productos ni rótulos. */
+#storyVideo{display:block!important;width:100%;height:100%;object-fit:contain;background:#1c1611}
+#storyVideo:not(.hasMedia){display:block}
+.chapterPhoto{isolation:isolate;background:#281b13;display:flex;align-items:center;justify-content:center}
+.chapterPhoto img{width:100%;height:100%;object-fit:contain;position:relative;z-index:0;display:block}
+.chapterPhoto figcaption{z-index:2;bottom:8%;left:6%;right:17%;pointer-events:none}
+.chapterPhoto figcaption span{font-size:9px}
+.chapterPhoto figcaption strong{font-size:clamp(17px,2vw,30px)}
+.chapterPhoto::after{z-index:1;background:linear-gradient(180deg,rgba(25,17,8,.28),transparent 29%,transparent 57%,rgba(25,17,8,.8) 100%)}
+.chapterPhoto .photoView{position:absolute;z-index:3;top:17px;right:18px;border-radius:30px;background:#18100cc2;color:white;font-size:10px;font-weight:850;letter-spacing:.4px;padding:9px 12px;border:1px solid #ffffff70;backdrop-filter:blur(5px);box-shadow:0 4px 15px #0002;text-decoration:none}
+.chapterPhoto .photoView:hover{background:#f56812}
+.chapterPhoto .photoView:focus-visible{outline:3px solid #ffb55d;outline-offset:3px}
+.photoFallback{color:white;font-size:17px;text-align:center;font-weight:800;padding:30px}
+.slideWords{min-width:0}
+.chapterRail{scrollbar-width:thin}
+@media(max-width:600px){
+.chapterPhoto .photoView{top:9px;right:9px;padding:7px 9px;font-size:9px}
+.chapterPhoto figcaption strong{font-size:18px}
+.chapterPhoto figcaption{bottom:11%;left:6%;right:24%}
+}
