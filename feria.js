@@ -65,7 +65,7 @@ const slides=[
    "Galpones"
   ],
   "foot": "AGUA · INSTALACIONES Y BEBEDEROS",
-  "detail": "Este esquema es ilustrativo. Las imágenes reales del sistema de agua y del personal con el pollito se incorporarán al contar con los archivos.",
+  "detail": "Esta sección permite explicar el recorrido del agua hasta los galpones y el uso de los bebederos. El diagrama es ilustrativo.",
   "note": "El tío pidió usar su imagen CON UN POLLITO y UNIFORME dentro del galpón, y el recorrido del agua (tanques, filtro, tuberías y bebederos). No hay esos archivos en assets; el diagrama actual se mantiene identificado como ilustrativo."
  },
  {
@@ -103,7 +103,7 @@ const slides=[
    "Presentación"
   ],
   "foot": "PREPARACIÓN · PRODUCTO ENFUNDADO",
-  "detail": "Esta imagen muestra el área de preparación. Se añadirá una toma de una persona enfundando el pollo, con la marca visible, cuando esté disponible.",
+  "detail": "Conoce la etapa de preparación y el empaque del pollo crudo con su presentación de marca.",
   "note": "La prioridad solicitada es una imagen REAL o recreación fiel de alguien enfundando o empacando, en que se vea la funda de la marca y su logo original. No mostrar desplume en el video."
  },
  {
@@ -117,7 +117,7 @@ const slides=[
    "Transporte"
   ],
   "foot": "PESAJE · CÁMARA FRÍA · CAMIÓN",
-  "detail": "El siguiente material visual será el pesaje, la cámara fría y el camión frigorífico, por fuera y por dentro. Después pueden mostrarse tomas de puntos de venta confirmados.",
+  "detail": "Una vez empacado, el producto continúa por etapas de pesaje, conservación en frío y transporte hacia los clientes.",
   "note": "REEMPLAZAR esquema provisional por tomas reales del pesaje, cámara fría, camión Hino exterior/interior y una tienda autorizada. No inventar clientes o acuerdos comerciales. La voz del video puede continuar: «Día a día, realizamos nuestro recorrido para entregar los productos a nuestros clientes», tras confirmar la rutina."
  },
  {
@@ -142,8 +142,8 @@ if(s.visual==="opening")return '<div class="brandPanel"><span class="brandKicker
 if(s.visual==="closing")return '<div class="brandPanel closingPanel"><span class="brandKicker">POLLAZO GALAPAGUEÑO</span><strong>¡GRACIAS!</strong><div class="brandDivider"></div><p>¿PREGUNTAS? ESTAMOS AQUÍ PARA CONVERSAR.</p></div>';
 const symbols=["◎","≋","✓"];
 const nodes=s.labels.map((label,j)=>'<div class="processNode"><small>'+String(j+1).padStart(2,"0")+'</small><span class="processSymbol">'+symbols[j]+'</span><b>'+label+'</b></div>').join('<span class="processArrow" aria-hidden="true">→</span>');
-if(s.tag.includes("AGUA Y BEBEDEROS"))return '<div class="processPanel waterDiagram"><img src="./assets/esquema-agua.svg" alt="Esquema ilustrativo del circuito de agua" loading="lazy"/><small class="diagramDisclaimer">ESQUEMA ILUSTRATIVO · LAS FOTOS DEL SISTEMA SE AGREGARÁN DESPUÉS</small></div>';
-return '<div class="processPanel"><small class="diagramType">ASÍ CONTAMOS EL PROCESO</small><div class="processRow">'+nodes+'</div><small class="diagramDisclaimer">RECORRIDO ILUSTRATIVO · PENDIENTE DE FOTOGRAFÍAS DE ESTA ETAPA</small></div>';
+if(s.tag.includes("AGUA Y BEBEDEROS"))return '<div class="processPanel waterDiagram"><img src="./assets/esquema-agua.svg" alt="Esquema ilustrativo del circuito de agua" loading="lazy"/><small class="diagramDisclaimer">ESQUEMA EXPLICATIVO · INSTALACIONES POR CONFIRMAR</small></div>';
+return '<div class="processPanel"><small class="diagramType">ASÍ CONTAMOS EL PROCESO</small><div class="processRow">'+nodes+'</div><small class="diagramDisclaimer">RECORRIDO ILUSTRATIVO DEL PROCESO</small></div>';
 }
 function mediaVisual(s){
 if(!s.media)return processVisual(s);

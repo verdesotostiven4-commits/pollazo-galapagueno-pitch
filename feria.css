@@ -101,3 +101,13 @@ body{background:#fff}
 .slide.isOpening .overprint,.slide.isClosing .overprint,.slide.isOpening .pictureCount,.slide.isClosing .pictureCount{color:white;z-index:3;text-shadow:0 1px 6px #0003}
 @media(max-width:940px){.brandPanel{min-height:260px;max-height:none;gap:13px;padding:22px}.brandPanel strong{font-size:clamp(32px,5vw,53px)}}
 @media(max-width:600px){.slide.isOpening .slideWords h3,.slide.isClosing .slideWords h3{font-size:clamp(28px,7vw,38px)}.slideDetails{max-height:90px}.slideMore{padding:8px 10px;font-size:11px;margin-top:5px}.slide.isOpening .slidePicture,.slide.isClosing .slidePicture{padding:15px}.brandPanel{min-height:190px;padding:17px;gap:9px;border-radius:12px}.brandPanel strong{font-size:clamp(30px,8.2vw,44px)}.brandPills span{font-size:7px;padding:5px 7px}.brandKicker{font-size:8px}.brandPanel p{font-size:8px}.brandDivider{height:3px;width:33px}}
+
+/* Ajuste para pantallas móviles: asegurar que las frases largas no se recorten. */
+@media(max-width:600px){
+.slide{min-height:680px;height:auto;grid-template-rows:minmax(365px,auto) minmax(300px,auto)}
+.slideWords{padding:20px}
+.slideWords h3{font-size:clamp(29px,7.1vw,39px);line-height:1.09}
+.slide.isOpening .slideWords h3,.slide.isClosing .slideWords h3{font-size:clamp(28px,6.6vw,37px)}
+.slideCopy{line-height:1.5}
+.presentation:fullscreen .slide{min-height:650px;height:auto;grid-template-rows:minmax(365px,auto) minmax(275px,auto)}
+}
