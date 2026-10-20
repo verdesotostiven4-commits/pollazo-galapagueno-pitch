@@ -603,3 +603,109 @@ body {background:#faf6f1;}
  .photoGallery.galleryReady .photoLayerPrimary,.photoGallery.galleryReady .galleryLabelFirst{opacity:1!important}
  .photoGallery.galleryReady .photoLayerSecondary,.photoGallery.galleryReady .galleryLabelSecond{opacity:0!important}
 }
+
+/* Galería modal temática · Sin pestañas nuevas */
+.photoGalleryLinks button{
+ appearance:none;border:0;background:none;color:inherit;cursor:pointer;
+ font:inherit;font-size:inherit;font-weight:inherit;padding:0;
+}
+.photoGalleryLinks button:hover{color:#b65717}
+.photoLightboxOpen{overflow:hidden}
+.photoLightbox{
+ box-sizing:border-box;position:fixed;inset:0;
+ border:1px solid rgba(255,255,255,.22);padding:0;
+ width:min(1120px,calc(100vw - 42px));max-width:none;
+ max-height:calc(100dvh - 42px);height:min(760px,calc(100dvh - 42px));
+ overflow:hidden;border-radius:24px;color:#fffaf5;
+ background:linear-gradient(150deg,#25180f 0%,#16110d 100%);
+ box-shadow:0 28px 100px #0009;
+}
+.photoLightbox::backdrop{
+ background:rgba(17,12,8,.76);backdrop-filter:blur(9px);
+}
+.photoLightbox[open]{animation:lightboxEnter .26s cubic-bezier(.2,.7,.3,1) both}
+@keyframes lightboxEnter{
+ from{opacity:0;transform:translateY(10px) scale(.985)}
+ to{opacity:1;transform:translateY(0) scale(1)}
+}
+.photoLightboxInner{
+ height:100%;min-height:0;display:grid;
+ grid-template-rows:auto minmax(0,1fr) auto;
+}
+.photoLightboxHeader{
+ display:flex;align-items:center;justify-content:space-between;
+ gap:20px;padding:22px clamp(18px,3vw,34px) 17px;
+ border-bottom:1px solid #ffffff1b;
+ background:linear-gradient(125deg,#48281772,transparent 60%);
+}
+.photoLightboxKicker{
+ display:inline-flex;align-items:center;gap:10px;
+ color:#ffc388;letter-spacing:1.8px;font-weight:900;font-size:9px;
+}
+.photoLightboxDot{display:inline-block;width:7px;height:7px;background:#fb8631;border-radius:50%}
+.photoLightboxHeader h2{
+ margin:9px 0 5px;letter-spacing:-.035em;
+ font-size:clamp(20px,3vw,34px);font-weight:850;
+}
+.photoLightboxHeader p{margin:0;font-size:12px;color:#d8bca5;line-height:1.5}
+.photoLightboxClose{
+ flex:0 0 43px;width:43px;height:43px;border-radius:50%;
+ background:#ffffff17;color:#fff;border:1px solid #ffffff47;
+ font-size:18px;display:grid;place-items:center;
+ transition:background .2s,transform .2s;
+}
+.photoLightboxClose:hover{background:#f26e20;transform:rotate(90deg)}
+.photoLightboxStage{
+ position:relative;min-height:0;min-width:0;
+ display:flex;align-items:center;justify-content:center;
+ overflow:hidden;padding:14px 65px;
+ background:radial-gradient(ellipse at center,#51311c77 0%,transparent 70%),#150e09;
+}
+.photoLightboxStage img{
+ display:block;max-width:100%;max-height:100%;
+ width:auto;height:auto;object-fit:contain;
+ border-radius:9px;box-shadow:0 10px 30px #0004;
+}
+.photoLightboxArrow{
+ position:absolute;top:50%;transform:translateY(-50%);
+ display:grid;place-items:center;width:46px;height:46px;
+ border:1px solid #ffffff51;border-radius:50%;
+ background:#ffffff1a;color:white;font-size:35px;line-height:1;
+ backdrop-filter:blur(8px);z-index:2;transition:background .2s;
+}
+.photoLightboxArrow:hover{background:#e8752d}
+.photoLightboxArrow.photoLightboxPrevious{left:17px}
+.photoLightboxArrow.photoLightboxFollowing{right:17px}
+.photoLightboxFoot{
+ display:flex;align-items:center;justify-content:space-between;
+ gap:20px;padding:18px clamp(18px,3vw,34px);
+ border-top:1px solid #ffffff16;
+ font-size:10px;letter-spacing:1.3px;color:#f4c49c;font-weight:850;
+}
+.photoLightboxFoot span:last-child{color:#d8bca5;font-size:12px}
+.photoLightboxError{
+ text-align:center;font-weight:700;color:#f4c49c;
+ max-width:300px;font-size:14px;line-height:1.6;
+}
+.photoLightbox button:focus-visible{outline:3px solid #ffac66;outline-offset:3px}
+@media(max-width:600px){
+ .photoLightbox{
+  width:calc(100vw - 16px);height:min(690px,calc(100dvh - 20px));
+  max-height:calc(100dvh - 20px);border-radius:17px;
+ }
+ .photoLightboxHeader{padding:15px 15px 13px;gap:11px}
+ .photoLightboxKicker{font-size:8px;letter-spacing:1px}
+ .photoLightboxHeader h2{font-size:23px;margin:7px 0 4px}
+ .photoLightboxHeader p{font-size:11px}
+ .photoLightboxClose{flex-basis:37px;width:37px;height:37px;font-size:16px}
+ .photoLightboxStage{padding:10px 43px}
+ .photoLightboxArrow{width:32px;height:38px;font-size:27px}
+ .photoLightboxArrow.photoLightboxPrevious{left:5px}
+ .photoLightboxArrow.photoLightboxFollowing{right:5px}
+ .photoLightboxFoot{padding:14px 17px;font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){
+ .photoLightbox[open]{animation:none}
+ .photoLightboxClose,.photoLightboxArrow{transition:none}
+ .photoLightboxClose:hover{transform:none}
+}

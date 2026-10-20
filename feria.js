@@ -194,8 +194,8 @@ const label=gallery?"DOS VISTAS · CAMBIO AUTOMÁTICO":"EL POLLAZO GALAPAGUEÑO"
 const primary='<img class="photoLayer photoLayerPrimary" src="'+m.src+'" alt="'+m.alt+'" loading="eager" decoding="async" referrerpolicy="no-referrer">';
 const secondary=gallery?'<img class="photoLayer photoLayerSecondary" src="'+m.gallery[1].src+'" alt="'+m.gallery[1].alt+'" loading="eager" decoding="async" referrerpolicy="no-referrer">':'';
 const links=gallery?
- '<div class="photoGalleryLinks"><a href="'+m.src+'" target="_blank" rel="noopener noreferrer" aria-label="Ampliar fotografía de bebederos">Bebederos ↗</a><a href="'+m.gallery[1].src+'" target="_blank" rel="noopener noreferrer" aria-label="Ampliar fotografía de filtros">Filtros ↗</a></div>':
- '<a class="photoView" href="'+m.src+'" target="_blank" rel="noopener noreferrer" aria-label="Ampliar imagen de '+s.sub+'">Ampliar ↗</a>';
+ '<div class="photoGalleryLinks" role="group" aria-label="Ampliar fotografías del suministro de agua"><button type="button" data-photo-index="0" aria-label="Ampliar fotografía de bebederos">Bebederos ↗</button><button type="button" data-photo-index="1" aria-label="Ampliar fotografía de filtros">Filtros ↗</button></div>':
+ '<button type="button" class="photoView" data-photo-index="0" aria-label="Ampliar imagen de '+s.sub+'">Ampliar ↗</button>';
 const indicators=gallery?'<div class="galleryIndicators" aria-hidden="true"><span class="galleryLabelFirst">01 · BEBEDEROS</span><span class="galleryLabelSecond">02 · FILTROS DE AGUA</span></div>':'';
 return '<figure class="chapterPhoto'+(gallery?' photoGallery':'')+'" style="--media-image:url(&quot;'+m.src+'&quot;)">'+primary+secondary+'<figcaption><span>'+label+'</span><strong>'+m.caption+'</strong></figcaption>'+indicators+links+'</figure>';
 }
@@ -259,12 +259,90 @@ const panel=slide.querySelector("#slideDetails");if(!panel)return;
 const willOpen=panel.hidden;panel.hidden=!willOpen;button.setAttribute("aria-expanded",String(willOpen));
 button.innerHTML=willOpen?'Mostrar menos <span aria-hidden="true">↑</span>':'Descubrir más <span aria-hidden="true">↗</span>';
 });
+/* Galería a pantalla superpuesta: mantiene al visitante en la presentación. */
+const photoDialog=q("#photoLightbox");
+const lightboxImage=q("#photoLightboxImage");
+const lightboxTitle=q("#photoLightboxTitle");
+const lightboxDescription=q("#photoLightboxDescription");
+const lightboxCounter=q("#photoLightboxCounter");
+const lightboxLabel=q("#photoLightboxLabel");
+const lightboxError=q("#photoLightboxError");
+const lightboxPrev=q("#photoLightboxPrev");
+const lightboxNext=q("#photoLightboxNext");
+let lightboxItems=[],lightboxIndex=0,lightboxFocus=null;
+function fillPhotoLightbox(){
+ if(!lightboxItems.length)return;
+ const item=lightboxItems[lightboxIndex];
+ lightboxError.hidden=true;
+ lightboxImage.hidden=false;
+ lightboxImage.alt=item.alt||"Fotografía del proceso de Pollazo Galapagueño";
+ lightboxImage.src=item.src;
+ lightboxLabel.textContent=item.label||"FOTOGRAFÍA DEL RECORRIDO";
+ lightboxCounter.textContent=String(lightboxIndex+1).padStart(2,"0")+" / "+String(lightboxItems.length).padStart(2,"0");
+ const moreThanOne=lightboxItems.length>1;
+ lightboxPrev.hidden=!moreThanOne;
+ lightboxNext.hidden=!moreThanOne;
+}
+function showPhotoLightbox(photoIndex,origin){
+ const slideData=slides[i];
+ if(!slideData.media||!photoDialog)return;
+ lightboxItems=slideData.media.gallery?.length
+ ?slideData.media.gallery
+ :[{src:slideData.media.src,alt:slideData.media.alt,label:slideData.media.caption}];
+ lightboxIndex=Math.max(0,Math.min(lightboxItems.length-1,Number(photoIndex)||0));
+ lightboxTitle.textContent=slideData.sub;
+ lightboxDescription.textContent=slideData.title;
+ lightboxFocus=origin||document.activeElement;
+ fillPhotoLightbox();
+ if(!photoDialog.open)photoDialog.showModal();
+ document.body.classList.add("photoLightboxOpen");
+ q("#photoLightboxClose").focus({preventScroll:true});
+}
+function movePhotoLightbox(delta){
+ if(lightboxItems.length<2)return;
+ lightboxIndex=(lightboxIndex+delta+lightboxItems.length)%lightboxItems.length;
+ fillPhotoLightbox();
+}
+slide.addEventListener("click",e=>{
+ const control=e.target.closest("[data-photo-index]");
+ if(!control)return;
+ e.preventDefault();
+ showPhotoLightbox(control.dataset.photoIndex,control);
+});
+q("#photoLightboxClose").addEventListener("click",()=>photoDialog.close());
+lightboxPrev.addEventListener("click",()=>movePhotoLightbox(-1));
+lightboxNext.addEventListener("click",()=>movePhotoLightbox(1));
+lightboxImage.addEventListener("error",()=>{
+ lightboxImage.hidden=true;
+ lightboxError.hidden=false;
+});
+lightboxImage.addEventListener("load",()=>{
+ lightboxImage.hidden=false;
+ lightboxError.hidden=true;
+});
+photoDialog.addEventListener("close",()=>{
+ document.body.classList.remove("photoLightboxOpen");
+ if(lightboxFocus?.isConnected)lightboxFocus.focus({preventScroll:true});
+ lightboxItems=[];
+});
+photoDialog.addEventListener("keydown",e=>{
+ if(e.key==="ArrowLeft"||e.key==="ArrowRight"){
+  e.preventDefault();e.stopPropagation();
+  movePhotoLightbox(e.key==="ArrowRight"?1:-1);
+ }
+});
+photoDialog.addEventListener("click",e=>{
+ if(e.target!==photoDialog)return;
+ const bounds=photoDialog.getBoundingClientRect();
+ if(e.clientX<bounds.left||e.clientX>bounds.right||e.clientY<bounds.top||e.clientY>bounds.bottom)photoDialog.close();
+});
+
 q("#startSlides").addEventListener("click",openSlides);
 q("#prev").addEventListener("click",()=>go(i-1));
 q("#next").addEventListener("click",()=>go(i+1));
 q("#ticks").addEventListener("click",e=>{const t=e.target.closest("[data-slide]");if(t)go(Number(t.dataset.slide))});
 q("#chapterRail").addEventListener("click",e=>{const t=e.target.closest("[data-chapter]");if(t)go(Number(t.dataset.chapter))});
-document.addEventListener("keydown",e=>{if(wrap.hidden||["INPUT","TEXTAREA","SELECT"].includes(document.activeElement.tagName))return;if(e.key==="ArrowRight"||e.key==="PageDown"){e.preventDefault();go(i+1)}else if(e.key==="ArrowLeft"||e.key==="PageUp"){e.preventDefault();go(i-1)}});
+document.addEventListener("keydown",e=>{if(photoDialog?.open||wrap.hidden||["INPUT","TEXTAREA","SELECT"].includes(document.activeElement.tagName))return;if(e.key==="ArrowRight"||e.key==="PageDown"){e.preventDefault();go(i+1)}else if(e.key==="ArrowLeft"||e.key==="PageUp"){e.preventDefault();go(i-1)}});
 let touchStartX=0,touchStartY=0;
 slide.addEventListener("touchstart",e=>{if(e.touches.length===1){touchStartX=e.touches[0].clientX;touchStartY=e.touches[0].clientY}},{passive:true});
 slide.addEventListener("touchend",e=>{if(!e.changedTouches.length)return;const dx=e.changedTouches[0].clientX-touchStartX;const dy=e.changedTouches[0].clientY-touchStartY;if(Math.abs(dx)>75&&Math.abs(dy)<60)go(i+(dx<0?1:-1))},{passive:true});
