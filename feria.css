@@ -79,3 +79,25 @@ body{background:#fff}
 .chapterPhoto figcaption strong{font-size:clamp(19px,2.2vw,34px);letter-spacing:-.03em;line-height:1.08}
 .slidePicture.withMedia .overprint,.slidePicture.withMedia .pictureCount{z-index:2;color:white;text-shadow:0 1px 5px #0008}
 @media(max-width:600px){.chapterPhoto figcaption{bottom:13%;left:6%;right:20%}.chapterPhoto figcaption strong{font-size:20px}}
+
+/* Orden aprobado en revisión: introducción, granja, alimentación, agua, equipo, empaque, distribución y cierre. */
+.slide.isOpening .slideWords h3{font-size:clamp(30px,3.4vw,57px)}
+.slide.isClosing .slideWords h3{font-size:clamp(30px,3.4vw,58px)}
+.slideMore{align-self:flex-start;margin-top:12px;background:#fff3e6;border:1px solid #efc8a5;border-radius:9px;color:#a34c0c;padding:11px 14px;font-size:12px;font-weight:850;cursor:pointer}
+.slideMore:hover{background:#ffe8d0}
+.slideMore:focus-visible{outline:3px solid #ee7420;outline-offset:3px}
+.slideMore span{margin-left:7px;font-size:16px}
+.slideDetails{margin-top:11px;max-width:470px;border-left:3px solid #f5660d;background:#fff7ed;border-radius:0 8px 8px 0;padding:9px 14px;max-height:155px;overflow:auto}
+.slideDetails p{font-size:12px;line-height:1.5;color:#644c38;margin:0}
+.slide.isOpening .slidePicture,.slide.isClosing .slidePicture{padding:clamp(25px,3.5vw,60px);background:radial-gradient(circle at 68% 28%,#ffce64 0,transparent 40%),linear-gradient(145deg,#ff9b23,#f4650d 75%)}
+.brandPanel{height:100%;min-height:310px;max-height:550px;width:100%;border:1px solid #ffffff50;border-radius:20px;padding:clamp(22px,3vw,50px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:22px;background:linear-gradient(115deg,#ffffff1e,#ffffff08);box-shadow:0 22px 38px #99441430;color:#fff;position:relative;z-index:1}
+.brandKicker{font-size:11px;font-weight:850;letter-spacing:2px;color:#fff4df}
+.brandPanel strong{font-size:clamp(32px,4.5vw,76px);letter-spacing:-.06em;line-height:1.03;font-weight:950;text-wrap:balance}
+.brandDivider{width:54px;height:4px;border-radius:4px;background:#fff5bc}
+.brandPanel p{font-weight:850;letter-spacing:1.4px;font-size:clamp(9px,1vw,13px);line-height:1.6;margin:0}
+.brandPills{display:flex;gap:8px;flex-wrap:wrap}
+.brandPills span{border-radius:20px;padding:8px 11px;font-size:9px;letter-spacing:1px;font-weight:850;border:1px solid #fff7}
+.closingPanel strong{font-size:clamp(43px,6vw,100px)}
+.slide.isOpening .overprint,.slide.isClosing .overprint,.slide.isOpening .pictureCount,.slide.isClosing .pictureCount{color:white;z-index:3;text-shadow:0 1px 6px #0003}
+@media(max-width:940px){.brandPanel{min-height:260px;max-height:none;gap:13px;padding:22px}.brandPanel strong{font-size:clamp(32px,5vw,53px)}}
+@media(max-width:600px){.slide.isOpening .slideWords h3,.slide.isClosing .slideWords h3{font-size:clamp(28px,7vw,38px)}.slideDetails{max-height:90px}.slideMore{padding:8px 10px;font-size:11px;margin-top:5px}.slide.isOpening .slidePicture,.slide.isClosing .slidePicture{padding:15px}.brandPanel{min-height:190px;padding:17px;gap:9px;border-radius:12px}.brandPanel strong{font-size:clamp(30px,8.2vw,44px)}.brandPills span{font-size:7px;padding:5px 7px}.brandKicker{font-size:8px}.brandPanel p{font-size:8px}.brandDivider{height:3px;width:33px}}
