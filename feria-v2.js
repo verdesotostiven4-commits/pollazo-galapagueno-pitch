@@ -36,14 +36,14 @@ function enterPresentation(autoRequested){
  $("#autoToggle").setAttribute("aria-pressed",String(auto));
  $("#autoText").textContent=auto?"Automático":"Manual";
  render();
- window.scrollTo({top:0,behavior:"instant"});
+ window.scrollTo({top:0,behavior:"auto"});
  soundFx("start");
 }
 function standby(){
  clearTimers();if(liveVideo){liveVideo.pause();liveVideo=null}
  if(photoDialog.open)photoDialog.close();
  app.hidden=true;hold.hidden=false;step=-1;
- window.scrollTo({top:0,behavior:"instant"});
+ window.scrollTo({top:0,behavior:"auto"});
 }
 function scheduleAuto(){
  if(autoTimer){clearTimeout(autoTimer);autoTimer=null}
@@ -71,9 +71,21 @@ function transitionTo(next,playVideo){
 }
 function attemptVideo(){
  if(!liveVideo)return;
- const promise=liveVideo.play();
- if(promise&&promise.catch)promise.catch(()=>{
-   const hint=$("#videoHint");if(hint)hint.textContent="Presiona ▶ en el video para reproducirlo.";
+ const player=liveVideo;
+ const promise=player.play();
+ if(promise&&promise.catch)promise.catch(async()=>{
+   if(auto){
+    try{
+     player.muted=true;
+     await player.play();
+     if(player===liveVideo){
+      $("#videoHint").textContent="Modo automático: video silenciado por el navegador. Puedes activar la narración.";
+      $("#unmuteVideo").hidden=false;
+     }
+     return;
+    }catch(_){}
+   }
+   if(player===liveVideo)$("#videoHint").textContent="Presiona ▶ en el video para reproducirlo.";
  });
 }
 function progressBar(){
@@ -91,7 +103,7 @@ function opening(){
  return '<section class="scene sceneOpening" aria-label="Apertura"><div class="sceneBg"><img src="'+src+'" alt=""></div><span class="sceneStamp">PRESENTACIÓN DE MARCA · 2026</span><div class="openingCopy"><div class="smallTag">BIENVENIDOS · SANTA CRUZ, GALÁPAGOS</div><h2>Una historia de <em>cuidado, trabajo y confianza.</em></h2><p>Te invitamos a descubrir cómo comienza el recorrido del Pollazo Galapagueño y cómo sus productos llegan hasta los puntos de venta de Santa Cruz.</p></div></section>';
 }
 function videoScreen(){
- return '<section class="scene videoScene" aria-label="Video narrado"><div class="videoSceneTop"><div><span>CAPÍTULO ESPECIAL / EL RECORRIDO</span><h2>Conoce nuestra historia en imágenes.</h2></div><small>VIDEO NARRADO · 1 MIN 38 S</small></div><div class="filmFrame"><video id="embeddedVideo" playsinline controls preload="metadata" aria-label="Video narrado de El Pollazo Galapagueño" src="'+narratedVideo+'"></video><div id="videoError" class="videoIssue" hidden><strong>El video no se pudo reproducir.</strong><p>Puedes continuar con la presentación; las fotografías y el contenido siguen disponibles.</p><button id="skipVideo" type="button">Continuar recorrido →</button></div></div><div class="videoSceneFoot"><span id="videoHint">Reproduce el video para comenzar el recorrido.</span><strong>DE LA GRANJA A CADA ENTREGA</strong></div></section>';
+ return '<section class="scene videoScene" aria-label="Video narrado"><div class="videoSceneTop"><div><span>CAPÍTULO ESPECIAL / EL RECORRIDO</span><h2>Conoce nuestra historia en imágenes.</h2></div><small>VIDEO NARRADO · 1 MIN 38 S</small></div><div class="filmFrame"><video id="embeddedVideo" playsinline controls preload="metadata" aria-label="Video narrado de El Pollazo Galapagueño" src="'+narratedVideo+'"></video><button id="unmuteVideo" type="button" class="videoUnmute" hidden>🔊 Activar narración</button><div id="videoError" class="videoIssue" hidden><strong>El video no se pudo reproducir.</strong><p>Puedes continuar con la presentación; las fotografías y el contenido siguen disponibles.</p><button id="skipVideo" type="button">Continuar recorrido →</button></div></div><div class="videoSceneFoot"><span id="videoHint">Reproduce el video para comenzar el recorrido.</span><strong>DE LA GRANJA A CADA ENTREGA</strong></div></section>';
 }
 function galleryMarkup(chapter){
  const imgs=chapter.gallery&&chapter.gallery.length?chapter.gallery:[{src:chapter.src,alt:chapter.alt,label:chapter.caption}];
@@ -132,6 +144,13 @@ function render(){
   liveVideo.addEventListener("play",()=>{$("#videoHint").textContent="Reproduciendo el recorrido audiovisual…";});
   liveVideo.addEventListener("pause",()=>{if(liveVideo&&!liveVideo.ended)$("#videoHint").textContent="Video en pausa. Presiona ▶ para continuar.";});
   $("#skipVideo").addEventListener("click",()=>transitionTo(2,false));
+  $("#unmuteVideo").addEventListener("click",()=>{
+   if(!liveVideo)return;
+   liveVideo.muted=false;
+   $("#unmuteVideo").hidden=true;
+   $("#videoHint").textContent="Narración activada.";
+   liveVideo.play().catch(()=>{$("#videoHint").textContent="Utiliza los controles del video para reproducir el audio."});
+  });
  }
  else if(chapterIndex>=0&&chapterIndex<chapters.length-1){
   const details=$("#moreDetails");
@@ -218,9 +237,6 @@ document.addEventListener("keydown",e=>{
  if(step<0||["INPUT","TEXTAREA","SELECT"].includes(document.activeElement?.tagName))return;
  if(["ArrowRight","PageDown"].includes(e.key)){e.preventDefault();advance()}
  else if(["ArrowLeft","PageUp"].includes(e.key)){e.preventDefault();retreat()}
- else if(e.key===" "&&step!==videoId){e.preventDefault();advance()}
+ else if((e.key===" "||e.key==="Enter")&&step!==videoId){e.preventDefault();advance()}
 });
-if(location.hash==="#presentacion"||location.hash==="#recorrido"){
- enterPresentation(false);
-}
 })();

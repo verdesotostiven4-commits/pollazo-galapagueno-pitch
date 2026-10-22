@@ -268,3 +268,12 @@ button:focus-visible,a:focus-visible{outline:3px solid #ffc17b;outline-offset:4p
  .holdImageOne{opacity:.65}
  .holdImageTwo,.holdImageThree{display:none}
 }
+/* Browser autoplay policy: if needed, let the visitor activate video narration. */
+.videoUnmute{
+ position:absolute;right:18px;top:18px;z-index:4;
+ border:1px solid #ffcb9b;background:#ed7626;color:white;
+ border-radius:12px;padding:12px 16px;font-weight:850;font-size:12px;
+ box-shadow:0 8px 22px #21110d70;transition:transform .2s,background .2s;
+}
+.videoUnmute:hover{background:#d85b13;transform:translateY(-2px)}
+@media(max-width:600px){.videoUnmute{right:9px;top:9px;padding:8px 10px;font-size:10px}}
