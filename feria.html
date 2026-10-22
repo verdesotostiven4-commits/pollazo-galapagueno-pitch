@@ -1,83 +1,80 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#fffaf4"><meta name="description" content="Experiencia interactiva para la feria de Pollazo Galapagueño.">
-<title>Pollazo Galapagueño — Experiencia para la Feria</title><link rel="stylesheet" href="./feria.css?v=20261020-lightbox4"><script src="./feria.js?v=20261020-lightbox4" defer></script>
-</head><body>
-<header class="masthead">
-<a class="logo" href="#inicio" title="Volver al inicio de Pollazo Galapagueño" aria-label="El Pollazo Galapagueño, volver al inicio"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPiFlnDAIqYkcjYOq7GqeHClxkSC9yrmNm0UypICcP-HfjzV2zxtWUrPqqYrYgU-acx7q4lHjYuN4qIqrxozuphAsy0Ezq5dhZy0u5ZG5rKH2xC7OKyI-n4HwlhLQ2WZKj6ydM1UOLEKw_LDh04yQEqYU_QuA1OqAB90XfhmZ9fw-Rzkvm4TNRvV180YQ/s1600/image.png" alt="Pollazo Galapagueño"></a>
-<span class="eventid"><span class="liveDot"></span> FERIA 20 OCTUBRE <span class="event-year">/ 2026</span></span>
-<nav class="headnav"><span>GRANJA · PROCESO · DISTRIBUCIÓN</span></nav>
-</header>
-<main>
-<section class="welcome" id="inicio">
-<div class="welcomeCopy">
-<div class="eyebrow"><span></span> EXPERIENCIA DE MARCA · EXHIBICIÓN</div>
-<h1>Todo comienza <em>desde el cuidado.</em></h1>
-<p>Conoce al Pollazo Galapagueño: desde sus primeras etapas de crianza hasta el empaque, la distribución y la llegada de sus productos al mercado.</p>
-<div class="welcomeButtons">
-<button class="btn orange" id="startVideo"><span class="playcircle">▶</span> Iniciar experiencia</button>
-<button class="btn outline" id="startSlides">Ver presentación <span aria-hidden="true">→</span></button>
-</div>
-<div class="subline"><span><b>01</b> Video narrado</span><i></i><span><b>02</b> Presentación guiada</span><i></i><span><b>03</b> Conversación comercial</span></div>
-</div>
-<div class="heroMedia">
-<div class="heroMediaTop"><span>UNA HISTORIA QUE MERECE CONTARSE</span><span>EL POLLAZO GALAPAGUEÑO · 2026</span></div>
-<div class="videoCard" id="videoCard">
-<video id="storyVideo" playsinline preload="auto" controls aria-label="Video explicativo de Pollazo Galapagueño">
-<source src="https://m4lcas1da6glkve7.public.blob.vercel-storage.com/lv_0_20261020075359.mp4" type="video/mp4">
-</video>
-<div class="videoEmpty" id="videoEmpty" hidden>
-<div class="videoArt"><span class="largeNumber">01</span><div class="artRing"></div><div class="artMini">P / G</div></div>
-<div class="emptyMessage"><span class="minor">VIDEO NARRADO</span><strong>El cuidado comienza en la granja.</strong><small>Conoce el proceso de Pollazo Galapagueño en este recorrido audiovisual.</small></div>
-</div>
-</div>
-<div class="mediaFoot"><span>DESDE LA GRANJA HASTA CADA ENTREGA</span><span id="videoStatus">VIDEO NARRADO · DISPONIBLE</span></div>
-</div>
-</section>
-<section class="experienceIntro" aria-label="Los temas de la exposición">
-<div><span class="sectionTag">UNA HISTORIA PARA CONOCER</span><h2>Más que mostrar un producto,<br><em>queremos contar su proceso.</em></h2></div>
-<p>Explora las 10 etapas de nuestro recorrido, desde el ingreso y los primeros pollitos hasta la entrega del producto y nuestra identidad de marca.</p>
-<div class="proofGrid">
-<article><span>01 / ORIGEN</span><strong>Conoce el recorrido desde la granja</strong><small>Desde los pollitos hasta su crecimiento.</small></article>
-<article><span>02 / CRIANZA Y CUIDADO</span><strong>Crianza, alimentación y agua</strong><small>El cuidado y el trabajo que forman parte del recorrido.</small></article>
-<article><span>03 / PRODUCTO Y ENTREGA</span><strong>Empaque y distribución</strong><small>Pollo crudo, con la identidad original de Pollazo.</small></article>
-</div>
-</section>
-<section class="presentation" id="presentacion" hidden tabindex="-1" aria-label="Presentación guiada de Pollazo">
-<div class="presentationHead">
-<div><span class="sectionTag">PRESENTACIÓN INTERACTIVA</span><h2>Conozcamos <em>al Pollazo Galapagueño.</em></h2></div>
-
-</div>
-<nav class="chapterRail" id="chapterRail" aria-label="Capítulos de la exposición"></nav>
-<div class="presenterNotice"><span><span class="guideDot" aria-hidden="true"></span> DIEZ MOMENTOS · UNA MISMA HISTORIA</span><span>Selecciona una etapa o utiliza las flechas para avanzar</span></div>
-<div id="slide" class="slide" aria-live="polite"></div>
-<div class="slideToolbar"><span class="slideIndex" id="slideIndex">01 / 10</span><div class="ticks" id="ticks"></div><div class="slideNav"><button id="prev" aria-label="Anterior">← Anterior</button><button id="next" class="orange" aria-label="Siguiente">Siguiente →</button></div></div>
-
-</section>
-<footer class="footer"><span>POLLAZO GALAPAGUEÑO</span><span>20 OCTUBRE 2026 · SANTA CRUZ, GALÁPAGOS</span><a href="#inicio">Volver al inicio ↑</a></footer>
-</main>
-
-<!-- Galería de fotografías integrada: no abre pestañas externas. -->
-<dialog class="photoLightbox" id="photoLightbox" aria-labelledby="photoLightboxTitle" aria-describedby="photoLightboxDescription">
- <div class="photoLightboxInner">
-  <header class="photoLightboxHeader">
-   <div class="photoLightboxHeading">
-    <span class="photoLightboxKicker"><span class="photoLightboxDot" aria-hidden="true"></span> EL POLLAZO GALAPAGUEÑO · GALERÍA</span>
-    <h2 id="photoLightboxTitle">Galería</h2>
-    <p id="photoLightboxDescription">Fotografía del recorrido</p>
-   </div>
-   <button type="button" id="photoLightboxClose" class="photoLightboxClose" aria-label="Cerrar ventana de fotografía"><span aria-hidden="true">✕</span></button>
-  </header>
-  <div class="photoLightboxStage">
-   <button type="button" id="photoLightboxPrev" class="photoLightboxArrow photoLightboxPrevious" aria-label="Ver fotografía anterior" hidden>‹</button>
-   <img id="photoLightboxImage" alt="" referrerpolicy="no-referrer">
-   <p id="photoLightboxError" class="photoLightboxError" hidden>La fotografía no está disponible en este momento.</p>
-   <button type="button" id="photoLightboxNext" class="photoLightboxArrow photoLightboxFollowing" aria-label="Ver fotografía siguiente" hidden>›</button>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#22170f">
+<meta name="description" content="El Pollazo Galapagueño: una experiencia de marca desde la crianza hasta la entrega en Santa Cruz, Galápagos.">
+<title>El Pollazo Galapagueño | Una historia del cuidado a la entrega</title>
+<link rel="preconnect" href="https://blogger.googleusercontent.com" crossorigin>
+<link rel="preconnect" href="https://m4lcas1da6glkve7.public.blob.vercel-storage.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./feria-v2.css?v=20261022-showcase">
+<script src="./feria-v2.js?v=20261022-showcase" defer></script>
+</head>
+<body>
+<div id="holdScreen" class="holdScreen" aria-labelledby="holdTitle">
+  <div class="holdBackdrop" aria-hidden="true">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhm8Zh-Pd546b63tQekbcmBoZBTu49z4OnOfpQz3BY96mlTHnk4Uk3P0QybVSyPIYHfOm-Zb9i4Kc0JWSDNw_QM_mzxU2HTTNzLtPsJJEuffMsQZUdMuUFpHivpCg4SzZ2JfRvIMZH6FOAYgb27gPx4Dstdn-wR3so2fz_2OhXAfAXQucYwXoy91o7e60A/s1600/image.png" alt="" class="holdImage holdImageOne" fetchpriority="high">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjmbsdztBPDEQkXxFFtSevUKQXHvci3x3vdsdm-yFEFLbmPHDUQg_b3BhtO3_c2ycz9lfSlNeSZDKbHgJPhAa_5WjA3T6essjTnIfK9r2nOdF8YiGdLIJkx3JBlP26qKo8euQCc0Wlks1lhlQBZwpk2AquHJMSY5ya8ba1OGjiulpMUzbUB8IcxLeagNI8/s1600/image.png" alt="" class="holdImage holdImageTwo">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEinCrQQbTEuXChskVZWjnxUJlpbeCQsGv8qm_OOz0NGOJqdhjBJhQu1cbS_2R9YgnIqNQ48KsJsvEpUm3QFkSZkNhwPg-L1XJb81S5SDXwXrt9fwHNIGosVGnwQvyI3tUh7ZDaP7bIlYwWzD5r3DabYYuBANi81YGOt2tLSzN-3mFmk42Bj-UzUtTQig6Q/s1600/image.png" alt="" class="holdImage holdImageThree">
+    <div class="holdShade"></div><div class="holdOrbit holdOrbitOne"></div><div class="holdOrbit holdOrbitTwo"></div>
   </div>
-  <footer class="photoLightboxFoot">
-   <span id="photoLightboxLabel">FOTOGRAFÍA DEL RECORRIDO</span>
-   <span id="photoLightboxCounter">01 / 01</span>
+  <header class="holdTop">
+    <span class="holdBrand"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPiFlnDAIqYkcjYOq7GqeHClxkSC9yrmNm0UypICcP-HfjzV2zxtWUrPqqYrYgU-acx7q4lHjYuN4qIqrxozuphAsy0Ezq5dhZy0u5ZG5rKH2xC7OKyI-n4HwlhLQ2WZKj6ydM1UOLEKw_LDh04yQEqYU_QuA1OqAB90XfhmZ9fw-Rzkvm4TNRvV180YQ/s1600/image.png" alt="El Pollazo Galapagueño" class="holdLogo"></span>
+    <div class="holdEvent"><span class="statusDot"></span> EXPERIENCIA DE MARCA <span class="eventDivider"></span> SANTA CRUZ, GALÁPAGOS</div>
+  </header>
+  <main class="holdMain">
+    <div class="holdContent">
+      <div class="holdKicker"><span class="kickerLine"></span> PRESENTACIÓN ESPECIAL · EL POLLAZO GALAPAGUEÑO</div>
+      <h1 id="holdTitle">Todo comienza <span>con el cuidado.</span></h1>
+      <p>Una historia que recorre nuestras instalaciones, el trabajo de nuestro equipo y el camino de cada entrega.</p>
+      <div class="holdButtons">
+        <button class="primaryCTA" id="startGuided" type="button"><span class="ctaIcon">▶</span> Comenzar presentación <span class="ctaArrow">↗</span></button>
+        <button class="secondaryCTA" id="startAuto" type="button"><span class="autoCircle">↻</span> Recorrido automático</button>
+      </div>
+      <div class="holdHint"><span class="keyboardIcon">↵</span> Presiona <strong>Enter</strong> para comenzar</div>
+    </div>
+    <div class="holdSideMark" aria-hidden="true"><strong>01</strong><span>DEL ORIGEN<br>A LA CONFIANZA</span></div>
+  </main>
+  <footer class="holdBottom"><span>UNA HISTORIA EN MOVIMIENTO</span><div class="holdLiveBars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><span>EL NÚMERO UNO EN EL MERCADO</span></footer>
+</div>
+
+<div id="experience" class="experience" hidden>
+  <header class="showHeader">
+    <button type="button" class="showLogo" id="backToHold" aria-label="Volver a la pantalla de espera"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPiFlnDAIqYkcjYOq7GqeHClxkSC9yrmNm0UypICcP-HfjzV2zxtWUrPqqYrYgU-acx7q4lHjYuN4qIqrxozuphAsy0Ezq5dhZy0u5ZG5rKH2xC7OKyI-n4HwlhLQ2WZKj6ydM1UOLEKw_LDh04yQEqYU_QuA1OqAB90XfhmZ9fw-Rzkvm4TNRvV180YQ/s1600/image.png" alt="El Pollazo Galapagueño"></button>
+    <div class="showIdentity"><span class="showEyebrow">EXPERIENCIA DIGITAL</span><strong>De la granja a cada entrega.</strong></div>
+    <div class="headerControls">
+      <button type="button" id="soundToggle" class="headerControl" aria-pressed="false" title="Activar o desactivar efectos suaves"><span aria-hidden="true">♪</span><span id="soundText">Efectos: no</span></button>
+      <button type="button" id="autoToggle" class="headerControl" aria-pressed="false" title="Activar o desactivar avance automático"><span aria-hidden="true">↻</span><span id="autoText">Manual</span></button>
+      <button type="button" id="holdButton" class="headerControl quietControl">Inicio <span aria-hidden="true">↗</span></button>
+    </div>
+  </header>
+  <main id="screenStage" class="screenStage" aria-live="polite"></main>
+  <footer id="controlBar" class="controlBar">
+    <div class="controlLead"><span id="sceneLabel">INTRODUCCIÓN</span><small id="sceneNumber">01 / 12</small></div>
+    <div id="progressNav" class="progressNav" aria-label="Navegación de escenas"></div>
+    <div class="controlActions">
+      <button id="previousScene" type="button" aria-label="Escena anterior" class="arrowAction">←</button>
+      <button id="nextScene" type="button" class="nextAction">Siguiente <span aria-hidden="true">→</span></button>
+    </div>
   </footer>
- </div>
+  <div class="creditLine"><span>EL POLLAZO GALAPAGUEÑO · SANTA CRUZ, GALÁPAGOS</span><span>Experiencia digital · Stiven Verdesoto</span></div>
+</div>
+
+<dialog id="imageDialog" class="imageDialog" aria-labelledby="imageDialogTitle">
+  <div class="dialogSurface">
+    <div class="dialogHead">
+      <div><span>GALERÍA · EL POLLAZO GALAPAGUEÑO</span><h2 id="imageDialogTitle">Fotografía</h2></div>
+      <button type="button" id="closeDialog" aria-label="Cerrar fotografía">✕</button>
+    </div>
+    <div class="dialogPhoto">
+      <button id="dialogPrev" class="dialogArrow" type="button" aria-label="Fotografía anterior" hidden>‹</button>
+      <img id="dialogImage" alt="" referrerpolicy="no-referrer">
+      <div id="dialogError" class="dialogError" hidden>No se pudo mostrar esta fotografía.</div>
+      <button id="dialogNext" class="dialogArrow" type="button" aria-label="Fotografía siguiente" hidden>›</button>
+    </div>
+    <div class="dialogBottom"><span id="dialogDescription">EL RECORRIDO</span><span id="dialogCount">01 / 01</span></div>
+  </div>
 </dialog>
 </body></html>
