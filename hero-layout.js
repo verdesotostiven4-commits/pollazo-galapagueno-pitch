@@ -41,12 +41,12 @@ function apply(input,animate){
     const el=elements[key],v=working.layers[key];if(!el)continue;
     el.style.animation='none';
     el.style.transform=baseTransform(v);
-    el.style.opacity=String(v.opacity);
+    el.style.setProperty('opacity',String(v.opacity),'important');
     el.style.visibility=v.visible?'visible':'hidden';
     el.style.filter='none';
     el.style.clipPath='inset('+v.clipTop+'% '+v.clipRight+'% '+v.clipBottom+'% '+v.clipLeft+'%)';
-    el.style.webkitMaskImage=maskFor(v);
-    el.style.maskImage=maskFor(v);
+    el.style.setProperty('-webkit-mask-image',maskFor(v),'important');
+    el.style.setProperty('mask-image',maskFor(v),'important');
     if(key==='background'){
       if(el.parentElement)el.parentElement.style.zIndex=String(v.z);
     }else if(key==='subject'){
