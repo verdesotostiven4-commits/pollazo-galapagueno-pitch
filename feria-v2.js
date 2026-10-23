@@ -194,7 +194,7 @@ function keywords(chapter){
 function chapterScreen(chapter,index){
  if(index===chapters.length-1)return finalScreen(chapter);
  const isWater=!!(chapter.gallery&&chapter.gallery.length>1);
- return '<section class="scene chapterScene '+(chapter.reversed?"reversed":"")+'" aria-label="'+escapeText(chapter.eyebrow)+'"><div class="chapterCopy"><div class="chapterPosition">ETAPA '+String(index+1).padStart(2,"0")+' <span>'+escapeText(chapter.section)+'</span></div><h2>'+escapeText(chapter.title)+'</h2><p>'+escapeText(chapter.body)+'</p><div class="chapterKeywords">'+keywords(chapter)+'</div><button class="chapterExplore" type="button" id="moreDetails" aria-expanded="false">Conoce más <span aria-hidden="true">↗</span></button><p class="chapterDetail" id="chapterDetail" hidden>'+escapeText(chapter.note)+'</p></div><div class="chapterVisual" style="--photo:url(&quot;'+chapter.src+'&quot;)"><div class="chapterVisualTop">'+escapeText(chapter.eyebrow.toUpperCase())+'</div>'+galleryMarkup(chapter)+(isWater?'<div class="waterControls"><button data-water="0" class="active" type="button">Bebederos</button><button data-water="1" type="button">Filtros de agua</button></div>':'')+'<div class="chapterVisualBottom"><span>'+escapeText(chapter.caption)+'</span><button class="zoomBtn" type="button" id="openImage">Ampliar imagen ↗</button></div><div class="loadingNotice" id="imageProblem" hidden>La fotografía está temporalmente no disponible.</div></div></section>';
+ return '<section class="scene chapterScene '+(chapter.reversed?"reversed":"")+'" aria-label="'+escapeText(chapter.eyebrow)+'"><div class="chapterCopy"><div class="chapterPosition">ETAPA '+String(index+1).padStart(2,"0")+' <span>'+escapeText(chapter.section)+'</span></div><h2>'+escapeText(chapter.title)+'</h2><p>'+escapeText(chapter.body)+'</p><div class="chapterKeywords">'+keywords(chapter)+'</div><p class="chapterDetail" id="chapterDetail">'+escapeText(chapter.note)+'</p></div><div class="chapterVisual" style="--photo:url(&quot;'+chapter.src+'&quot;)"><div class="chapterVisualTop">'+escapeText(chapter.eyebrow.toUpperCase())+'</div>'+galleryMarkup(chapter)+(isWater?'<div class="waterControls"><button data-water="0" class="active" type="button">Bebederos</button><button data-water="1" type="button">Filtros de agua</button></div>':'')+'<div class="chapterVisualBottom"><span>'+escapeText(chapter.caption)+'</span><button class="zoomBtn" type="button" id="openImage">Ampliar imagen ↗</button></div><div class="loadingNotice" id="imageProblem" hidden>La fotografía está temporalmente no disponible.</div></div></section>';
 }
 function finalScreen(chapter){
  return '<section class="scene finalScene" aria-label="Cierre de marca"><div class="finalCopy"><span class="smallTag">GRACIAS POR ACOMPAÑARNOS</span><h2>Del cuidado en cada etapa, <em>a la confianza en cada entrega.</em></h2><p>Gracias por conocer el trabajo que hay detrás del Pollazo Galapagueño. ¿Tienen alguna pregunta? Será un gusto conversar.</p><div class="finalBrand"><img src="'+brandLogo+'" alt="Pollazo Galapagueño"></div><span class="finalThankyou">EL NÚMERO UNO EN EL MERCADO</span></div><div class="finalVisual"><img src="'+chapter.src+'" alt="'+escapeText(chapter.alt)+'"></div></section>';
@@ -253,15 +253,6 @@ function render(){
   });
  }
  else if(chapterIndex>=0&&chapterIndex<chapters.length-1){
-  const details=$("#moreDetails");
-  details.addEventListener("click",()=>{
-   const panel=$("#chapterDetail");panel.hidden=!panel.hidden;
-   details.setAttribute("aria-expanded",String(!panel.hidden));
-   details.innerHTML=panel.hidden?'Conoce más <span aria-hidden="true">↗</span>':'Mostrar menos <span aria-hidden="true">↑</span>';
-   if(!panel.hidden&&!autoTimer)return;
-   if(!panel.hidden&&autoTimer){clearTimeout(autoTimer);autoTimer=null}
-   else if(auto)scheduleAuto();
-  });
   const chapter=chapters[chapterIndex],gallery=chapter.gallery&&chapter.gallery.length>1?chapter.gallery:[{src:chapter.src,alt:chapter.alt,label:chapter.caption}];
   let visibleIndex=0;
   const imgs=stage.querySelectorAll("[data-gallery-item]");
