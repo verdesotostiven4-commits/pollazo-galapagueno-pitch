@@ -20,8 +20,9 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./feria-v2.css?v=20261023-stable3">
 <link rel="stylesheet" href="./hero-23.css?v=20261023-newlayers10">
+<link rel="stylesheet" href="./hero-reference.css?v=20261023-reference2">
 <script src="./feria-v2.js?v=20261023-stable3" defer></script>
-<script src="./hero-23.js?v=20261023-newlayers10" defer></script>
+<script src="./hero-23.js?v=20261023-newlayers11" defer></script>
 </head>
 <body>
 
@@ -106,33 +107,49 @@
     <div class="hero23DepthTint"></div>
   </div>
   <svg class="hero23Curve" viewBox="0 0 300 1080" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0 0 H258 C237 195 193 314 183 509 C174 724 127 914 63 1080 H0Z" fill="#fff9f1"/>
-    <path d="M258 0 C237 195 193 314 183 509 C174 724 127 914 63 1080" fill="none" stroke="#ffe4bf" stroke-width="1.5" opacity=".55"/>
+    <path d="M0 0 H76 C182 115 194 255 142 388 C96 520 103 595 156 715 C197 813 140 908 166 1080 H0 Z" fill="#fff9f1"/>
   </svg>
+  <!-- Esta capa fotográfica conserva las coordenadas del lienzo y cruza la curva
+       solo en la esquina inferior, como en la referencia original. -->
+  <div class="hero23ForegroundBridge" aria-hidden="true">
+    <img id="hero23BridgeLeavesAsset" alt="" hidden>
+  </div>
   <section class="hero23Left">
-    <header class="hero23Header">
-      <div class="hero23Microbrand"><span class="hero23Dot"></span> PRESENTACIÓN ESPECIAL <span class="hero23Divider"></span> 23 OCTUBRE 2026</div>
-    </header>
     <main class="hero23Inner">
       <div class="hero23LogoReveal">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgtjV6_nCORanBwp4d6mhGdm9gQdlerj1uJsQYQa2p7Vj94WnjdiMCbEcVk9owxzE4_MNS-f1LqiSJ42d4NRFXMAztRfMW1VCoqCobSW76LpUFaYJoWNsrFfqxfFyufzk-ZEg6VC1_N2ihbLET4CcUkUvOfn8OW7HU_wPL__haSrTovuxOwXlJeH-S7At4/s1600/image.png" alt="Logotipo oficial de Pollazo Galapagueño" class="hero23Logo" fetchpriority="high">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgtjV6_nCORanBwp4d6mhGdm9gQdlerj1uJsQYQa2p7Vj94WnjdiMCbEcVk9owxzE4_MNS-f1LqiSJ42d4NRFXMAztRfMW1VCoqCobSW76LpUFaYJoWNsrFfqxfFyufzk-ZEg6VC1_N2ihbLET4CcUkUvOfn8OW7HU_wPL__haSrTovuxOwXlJeH-S7At4/s1600/image.png" alt="Pollazo Galapagueño, el número uno en el mercado" class="hero23Logo" fetchpriority="high">
       </div>
-      <div class="hero23Overline"><span></span> SANTA CRUZ · GALÁPAGOS</div>
-      <h1 id="holdTitle">De nuestra granja <em>a cada entrega.</em></h1>
-      <p class="hero23Intro">Conoce el cuidado, las personas y el recorrido que hay detrás de Pollazo Galapagueño.</p>
-      <div class="hero23Buttons">
-        <button class="hero23Start" id="startGuided" type="button"><span class="hero23Play" aria-hidden="true">▶</span><span>Comenzar presentación</span><span class="hero23StartArrow" aria-hidden="true">↗</span></button>
-        <button class="hero23Auto" id="startAuto" type="button"><span aria-hidden="true">↻</span> Recorrido automático</button>
+
+      <div class="hero23Copy">
+        <div class="hero23AccentLine" aria-hidden="true"></div>
+        <h1 id="holdTitle">Bienvenidos a <em>Pollazo Galapagueño</em></h1>
+        <p class="hero23Intro">Pollo fresco y de calidad, con el sabor de nuestras islas.</p>
+
+        <div class="hero23Benefits" aria-label="Lo que nos distingue">
+          <div class="hero23Benefit">
+            <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M5 22c1-10 8-16 22-17-1 14-8 21-18 21-3-5-2-10 2-14" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/><path d="m5 27 14-14" stroke="#df8b17" stroke-width="2.3" stroke-linecap="round"/></svg>
+            <span>Frescura<br>Garantizada</span>
+          </div>
+          <div class="hero23Benefit">
+            <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 3 28 8v8c0 8-5 12-12 14C9 28 4 24 4 16V8L16 3Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="m10 16 4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Calidad<br>en tu mesa</span>
+          </div>
+          <div class="hero23Benefit">
+            <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="m2 27 9-13 7 9 3-4 9 8H2Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M25 16V5m0 3c-2-4-5-4-7-3m7 3c3-4 5-4 6-3m-6 3c-3 1-5 3-6 6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+            <span>De nuestras<br>islas</span>
+          </div>
+        </div>
+
+        <div class="hero23Buttons">
+          <button class="hero23Start" id="startGuided" type="button" aria-label="Comenzar presentación de Pollazo Galapagueño">
+            <span>Comenzar</span>
+            <span class="hero23StartArrow" aria-hidden="true">›</span>
+          </button>
+          <button class="hero23Auto" id="startAuto" type="button" hidden>Recorrido automático</button>
+        </div>
       </div>
-      <div class="hero23SmallInfo"><span class="hero23Key" aria-hidden="true">↵</span> Presiona <strong>Enter</strong> cuando quieras comenzar</div>
     </main>
-    <footer class="hero23Footer">
-      <div class="hero23Pill"><span>01</span> Crianza</div>
-      <div class="hero23Pill"><span>02</span> Preparación</div>
-      <div class="hero23Pill"><span>03</span> Distribución</div>
-    </footer>
   </section>
-  <div class="hero23SceneMark" aria-hidden="true"><span class="hero23MarkLine"></span> POLLAZO GALAPAGUEÑO <strong>DEL ORIGEN A LA CONFIANZA</strong></div>
 </div>
 
 <div id="experience" class="experience" hidden>
