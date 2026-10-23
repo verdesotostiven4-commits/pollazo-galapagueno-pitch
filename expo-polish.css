@@ -296,3 +296,28 @@ body:has(.experience:not([hidden])) {
   .holdScreen.hero23 .hero23Scene .hero23LeavesBackAsset,
   .holdScreen.hero23 .hero23Scene .hero23LeavesFrontAsset { animation:none!important; }
 }
+
+/* La entrada temporal no debe apagar la opacidad final de las hojas. */
+@media(min-width:761px){
+  .holdScreen.hero23 .hero23Scene .hero23LeavesBackAsset {
+    animation:expoUpperReveal 1.2s ease-out .18s both,
+              heroFinalLeavesTop 6.6s ease-in-out .18s infinite alternate;
+  }
+  .holdScreen.hero23 .hero23Scene .hero23LeavesFrontAsset {
+    animation:expoLowerReveal 1.3s ease-out .5s both,
+              heroFinalLeavesFront 8s ease-in-out .5s infinite alternate;
+  }
+  .holdScreen.hero23 .hero23Scene .hero23LeavesBlurAsset {
+    animation:expoBlurReveal 1.6s ease-out .7s both,
+              heroFinalLeavesBlur 9.3s ease-in-out .7s infinite alternate-reverse;
+  }
+}
+@keyframes expoUpperReveal { from {opacity:0;filter:blur(5px)} to {opacity:.96;filter:blur(0)} }
+@keyframes expoLowerReveal { from {opacity:0;filter:blur(4px)} to {opacity:.94;filter:blur(0)} }
+@keyframes expoBlurReveal { from {opacity:0;filter:blur(7px)} to {opacity:.47;filter:blur(.8px)} }
+.experience .videoErrorActions { display:flex;flex-wrap:wrap;gap:10px;justify-content:center; }
+.experience .videoIssue button { min-width:135px; }
+@media (prefers-reduced-motion:reduce) {
+  .holdScreen.hero23 .hero23Scene .hero23LeavesBackAsset {opacity:.96!important;filter:none!important}
+  .holdScreen.hero23 .hero23Scene .hero23LeavesFrontAsset {opacity:.94!important;filter:none!important}
+}
