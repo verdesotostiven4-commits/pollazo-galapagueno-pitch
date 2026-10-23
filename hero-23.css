@@ -191,7 +191,7 @@
 .hero23BirdFlight{z-index:3;width:170px;height:90px;left:0;opacity:0}
 .hero23BirdRaster .hero23BirdFrame{
  position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
- opacity:0;filter:grayscale(1) brightness(.56) sepia(.13) blur(.2px);
+ opacity:0;filter:drop-shadow(0 2px 3px #13281b38);
  animation-duration:.51s;animation-timing-function:steps(1,end);
  animation-iteration-count:infinite;animation-play-state:paused;
 }
@@ -270,7 +270,7 @@
     opacity:.79;
   }
   .hero23Scene .hero23LeavesBlurAsset {
-    left:-18%; right:auto; top:-6%; bottom:auto;
+    left:-18%; right:auto; top:auto; bottom:-5%;
     width:136%; height:auto; max-width:none;
     object-fit:fill; object-position:center top;
     opacity:.18; filter:blur(3px);
@@ -307,7 +307,7 @@
     width:118%;height:auto;object-fit:fill;opacity:.70;
   }
   .hero23Scene .hero23LeavesBlurAsset{
-    left:-9%;right:auto;top:-4%;bottom:auto;
+    left:-9%;right:auto;top:auto;bottom:-6%;
     width:118%;height:auto;object-fit:fill;opacity:.12;
   }
 }
