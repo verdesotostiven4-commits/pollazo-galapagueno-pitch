@@ -42,61 +42,117 @@
  }
  const bird=document.getElementById("hero23BirdFlight");
  const noMotion=window.matchMedia("(prefers-reduced-motion:reduce)");
- let timer=null,animation=null,disposed=false;
- // Use the three real flying frames only after every frame loads.
+ const random=(min,max)=>min+Math.random()*(max-min);
+ // Tres pájaros independientes reutilizan exactamente las mismas imágenes
+ // de alas que ya estaban en la presentación. No cargamos recursos nuevos.
+ const birds=[bird];
+ for(let index=1;index<3;index++){
+   const clone=bird.cloneNode(true);
+   clone.removeAttribute("id");
+   clone.classList.add("hero23BirdExtra");
+   clone.setAttribute("aria-hidden","true");
+   bird.parentElement.appendChild(clone);
+   birds.push(clone);
+ }
+ const clocks=new Array(birds.length).fill(null);
+ const animations=new Array(birds.length).fill(null);
+ let disposed=false;
+
+ function setRasterFrames(target,urls){
+   const fragment=document.createDocumentFragment();
+   urls.forEach((url,index)=>{
+     const frame=document.createElement("img");
+     frame.src=url;frame.alt="";frame.decoding="async";
+     frame.className="hero23BirdFrame hero23BirdFrame"+index;
+     fragment.appendChild(frame);
+   });
+   target.replaceChildren(fragment);
+   target.classList.add("hero23BirdRaster");
+ }
+ // La silueta SVG sigue funcionando si alguna foto de alas no carga.
  if(ASSETS.birdFrames.length===3){
    Promise.all(ASSETS.birdFrames.map(url=>new Promise((resolve,reject)=>{
      const probe=new Image();
-     probe.onload=()=>probe.naturalWidth?resolve(url):reject(Error("Empty bird image"));
-     probe.onerror=()=>reject(Error("Bird image unavailable"));
+     probe.onload=()=>probe.naturalWidth?resolve(url):reject(Error("Bird frame unavailable"));
+     probe.onerror=()=>reject(Error("Bird frame unavailable"));
      probe.src=url;
    }))).then(urls=>{
      if(disposed)return;
-     const fragment=document.createDocumentFragment();
-     urls.forEach((url,index)=>{
-       const frame=document.createElement("img");
-       frame.src=url;frame.alt="";frame.decoding="async";
-       frame.className="hero23BirdFrame hero23BirdFrame"+index;
-       fragment.appendChild(frame);
-     });
-     bird.replaceChildren(fragment);
-     bird.classList.add("hero23BirdRaster");
-   }).catch(()=>{/* Keep the original vector bird as a fallback */});
+     birds.forEach(target=>setRasterFrames(target,urls));
+   }).catch(()=>{/* Conservar siluetas SVG como alternativa */});
  }
- const random=(min,max)=>min+Math.random()*(max-min);
- function queue(first=false){
-   clearTimeout(timer);
-   if(disposed||noMotion.matches)return;
-   // Primer vuelo pronto para que el usuario descubra el detalle.
-   // Después, pausas variables sin un bucle mecánico aparente.
-   timer=window.setTimeout(fly,first?random(1900,3300):random(4800,11500));
+ function stopAll(){
+   clocks.forEach((timer,index)=>{
+     if(timer!==null)clearTimeout(timer);
+     clocks[index]=null;
+   });
+   animations.forEach((motion,index)=>{
+     motion?.cancel();
+     animations[index]=null;
+     birds[index].classList.remove("hero23BirdFlying");
+     birds[index].style.opacity="0";
+   });
  }
- function fly(){
-   if(disposed||noMotion.matches||host.hidden||document.hidden){queue();return}
+ function schedule(index,first=false){
+   if(disposed||noMotion.matches||document.hidden||host.hidden)return;
+   if(clocks[index]!==null)clearTimeout(clocks[index]);
+   // El primer grupo entra pronto y escalonado. Los siguientes se cruzan
+   // con intervalos variables, sin desplazamientos idénticos ni bucle fijo.
+   const delay=first?(700+index*1700+random(0,850)):random(1700,4100);
+   clocks[index]=window.setTimeout(()=>fly(index),delay);
+ }
+ function fly(index){
+   clocks[index]=null;
+   if(disposed||noMotion.matches||host.hidden||document.hidden)return;
+   const target=birds[index];
    const reverse=Math.random()<.5;
-   const travel=random(7800,11500);
-   // El ave cruza el cielo visible (no empieza a 36vw fuera de la pantalla).
-   const h=random(12,33),scale=random(.66,1.04);
-   bird.style.top=h+"%";
-   bird.style.opacity="1";
-   bird.classList.add("hero23BirdFlying");
-   const start=reverse?"103vw":"36vw";
-   const end=reverse?"33vw":"104vw";
+   const seconds=random(6500,9900);
+   const altitude=random(9,26);
+   const size=random(.76,1.2)*(index===2?.79:1);
+   const visibility=random(.83,.97);
    const flip=reverse?-1:1;
-   animation=bird.animate([
-     {transform:"translate3d("+start+",2px,0) scaleX("+flip+") scale("+scale+")",opacity:0,offset:0},
-     {transform:"translate3d(calc("+start+" + "+(reverse?"-7vw":"7vw")+"),-5px,0) scaleX("+flip+") scale("+scale+")",opacity:.74,offset:.14},
-     {transform:"translate3d(calc("+end+" + "+(reverse?"4vw":"-4vw")+"),-17px,0) scaleX("+flip+") scale("+scale+")",opacity:.77,offset:.85},
-     {transform:"translate3d("+end+",-23px,0) scaleX("+flip+") scale("+scale+")",opacity:0,offset:1}
-   ],{duration:travel,easing:"linear",fill:"none"});
-   animation.onfinish=()=>{bird.classList.remove("hero23BirdFlying");bird.style.opacity="0";queue()};
-   animation.oncancel=()=>{bird.classList.remove("hero23BirdFlying");bird.style.opacity="0"};
+   const start=reverse?"106vw":"36vw";
+   const end=reverse?"34vw":"108vw";
+   const drift=random(-23,-7);
+   target.style.top=altitude+"%";
+   target.style.opacity="0";
+   target.classList.add("hero23BirdFlying");
+   const motion=target.animate([
+     {transform:"translate3d("+start+",0,0) scaleX("+flip+") scale("+size+")",opacity:0,offset:0},
+     {transform:"translate3d(calc("+start+" + "+(reverse?"-9vw":"9vw")+"),"+drift*.18+"px,0) scaleX("+flip+") scale("+size+")",opacity:visibility,offset:.14},
+     {transform:"translate3d(calc("+end+" + "+(reverse?"7vw":"-7vw")+"),"+drift*.86+"px,0) scaleX("+flip+") scale("+size+")",opacity:visibility,offset:.87},
+     {transform:"translate3d("+end+","+drift+"px,0) scaleX("+flip+") scale("+size+")",opacity:0,offset:1}
+   ],{duration:seconds,easing:"linear",fill:"none"});
+   animations[index]=motion;
+   motion.onfinish=()=>{
+     animations[index]=null;
+     target.classList.remove("hero23BirdFlying");
+     target.style.opacity="0";
+     schedule(index);
+   };
+   motion.oncancel=()=>{
+     target.classList.remove("hero23BirdFlying");
+     target.style.opacity="0";
+   };
  }
- document.addEventListener("visibilitychange",()=>{if(document.hidden){animation?.cancel();clearTimeout(timer)}else queue(true)});
- document.getElementById("startGuided")?.addEventListener("click",()=>{animation?.cancel();clearTimeout(timer)});
- document.getElementById("startAuto")?.addEventListener("click",()=>{animation?.cancel();clearTimeout(timer)});
- document.getElementById("holdButton")?.addEventListener("click",queue);
- document.getElementById("backToHold")?.addEventListener("click",()=>setTimeout(queue,550));
- window.addEventListener("pagehide",()=>{disposed=true;animation?.cancel();clearTimeout(timer)});
- if(!noMotion.matches)queue(true);
+ function startFlights(){
+   stopAll();
+   if(disposed||noMotion.matches||document.hidden||host.hidden)return;
+   birds.forEach((_,index)=>schedule(index,true));
+ }
+ document.addEventListener("visibilitychange",()=>{
+   if(document.hidden)stopAll();
+   else startFlights();
+ });
+ noMotion.addEventListener?.("change",()=>{
+   if(noMotion.matches)stopAll();
+   else startFlights();
+ });
+ document.getElementById("startGuided")?.addEventListener("click",stopAll);
+ document.getElementById("startAuto")?.addEventListener("click",stopAll);
+ document.getElementById("holdButton")?.addEventListener("click",()=>window.setTimeout(startFlights,450));
+ document.getElementById("backToHold")?.addEventListener("click",()=>window.setTimeout(startFlights,600));
+ window.addEventListener("pagehide",()=>{disposed=true;stopAll()});
+ startFlights();
+
 })();

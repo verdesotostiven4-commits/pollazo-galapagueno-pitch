@@ -1,0 +1,47 @@
+/* Ajustes puntuales de la portada: SOLO hojas de la esquina inferior
+   derecha y aves. Sin crear ni sustituir imágenes. */
+.holdScreen.hero23 .hero23Scene .hero23LeavesBlurAsset {
+  /* Segunda capa fotografica desenfocada encima de las hojas nítidas.
+     Era la responsable del efecto de "niebla" en la esquina. */
+  display: none !important;
+}
+.holdScreen.hero23 .hero23Scene .hero23LeavesFrontAsset {
+  opacity: 1 !important;
+  filter: none !important;
+  /* Preservar los colores y la nitidez del archivo original.
+     Desvanecer solo los bordes exteriores, no toda la hoja. */
+  mask-image: radial-gradient(ellipse 35% 34% at 90% 96%,
+    #000 0%, #000 75%, rgba(0,0,0,.98) 84%, transparent 100%) !important;
+  -webkit-mask-image: radial-gradient(ellipse 35% 34% at 90% 96%,
+    #000 0%, #000 75%, rgba(0,0,0,.98) 84%, transparent 100%) !important;
+}
+/* Aves más reconocibles sobre el cielo: 3 elementos comparten fotogramas.
+   Siguen detrás del producto y fuera del área de texto. */
+.holdScreen.hero23 .hero23BirdFlight {
+  z-index: 3;
+  width: clamp(110px, 9.7vw, 165px);
+  height: clamp(67px, 6.7vw, 91px);
+  filter: drop-shadow(0 1px 1.5px rgba(12,25,26,.25)) !important;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+.holdScreen.hero23 .hero23BirdRaster .hero23BirdFrame {
+  filter: drop-shadow(0 1px 2px rgba(13,25,25,.3));
+}
+@media(max-width:760px) {
+  .holdScreen.hero23 .hero23Scene .hero23LeavesFrontAsset {
+    opacity: 1 !important;
+    filter: none !important;
+    mask-image: radial-gradient(ellipse 45% 42% at 90% 96%,
+      #000 0%, #000 72%, rgba(0,0,0,.98) 85%, transparent 100%) !important;
+    -webkit-mask-image: radial-gradient(ellipse 45% 42% at 90% 96%,
+      #000 0%, #000 72%, rgba(0,0,0,.98) 85%, transparent 100%) !important;
+  }
+  .holdScreen.hero23 .hero23BirdFlight {
+    width: 92px;
+    height: 53px;
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  .holdScreen.hero23 .hero23BirdFlight {display:none!important;}
+}
