@@ -233,3 +233,89 @@
  .hero23BirdFrame{animation:none!important;transform:none!important}
  .hero23BirdFlight{display:none!important}
 }
+
+
+/* AJUSTE 23/10: alineación de capas 16:9 dentro del panel vertical.
+   La composición anterior usaba object-fit: cover en las cinco fotos,
+   lo cual recortaba un 40% del lienzo horizontal y hacía enorme el producto.
+   Con estas reglas el empaque queda completo y el follaje se alinea en los bordes. */
+@media (min-width: 761px) {
+  .hero23Scene { width:55%; }
+  .hero23Left { width:50%; }
+  .hero23Curve { left:40.1%; width:21.5%; filter:drop-shadow(6px 0 16px #48311b13); }
+  .hero23ProductStage.hero23HasProduct {
+    inset: 0;
+    z-index: 4;
+  }
+  .hero23ProductStage.hero23HasProduct .hero23SubjectAsset {
+    left:-17%;
+    top:0;
+    width:134%;
+    height:100%;
+    max-width:none;
+    object-fit:contain;
+    object-position:center center;
+    filter:drop-shadow(0 12px 18px #17201632);
+  }
+  .hero23Scene .hero23LeavesBackAsset {
+    left:-18%; right:auto; top:-3%; bottom:auto;
+    width:136%; height:auto; max-width:none;
+    object-fit:fill; object-position:center top;
+    opacity:.90;
+  }
+  .hero23Scene .hero23LeavesFrontAsset {
+    left:-18%; right:auto; top:auto; bottom:-4%;
+    width:136%; height:auto; max-width:none;
+    object-fit:fill; object-position:center bottom;
+    opacity:.79;
+  }
+  .hero23Scene .hero23LeavesBlurAsset {
+    left:-18%; right:auto; top:-6%; bottom:auto;
+    width:136%; height:auto; max-width:none;
+    object-fit:fill; object-position:center top;
+    opacity:.18; filter:blur(3px);
+  }
+  .hero23Scene .hero23DepthTint {
+    background:linear-gradient(90deg,#243a2b12,transparent 34%),linear-gradient(0deg,#16352618,transparent 25%);
+  }
+}
+@media (min-width: 761px) and (max-width: 1100px) {
+  .hero23Scene { width:52%; }
+  .hero23Left { width:55%; }
+  .hero23Curve {left:46.1%; width:19%; }
+  .hero23ProductStage.hero23HasProduct .hero23SubjectAsset{
+    left:-21%;width:142%;
+  }
+  .hero23Scene .hero23LeavesBackAsset,
+  .hero23Scene .hero23LeavesFrontAsset,
+  .hero23Scene .hero23LeavesBlurAsset{
+    left:-23%;width:146%;
+  }
+}
+@media (max-width: 760px) {
+  .hero23SceneSky .hero23SkyAsset { object-fit:cover; }
+  .hero23ProductStage.hero23HasProduct .hero23SubjectAsset {
+    left:-6%; top:0; width:112%;height:100%;
+    object-fit:contain;object-position:center center;
+  }
+  .hero23Scene .hero23LeavesBackAsset{
+    left:-9%;right:auto;top:-2%;bottom:auto;
+    width:118%;height:auto;object-fit:fill;opacity:.82;
+  }
+  .hero23Scene .hero23LeavesFrontAsset{
+    left:-9%;right:auto;top:auto;bottom:-7%;
+    width:118%;height:auto;object-fit:fill;opacity:.70;
+  }
+  .hero23Scene .hero23LeavesBlurAsset{
+    left:-9%;right:auto;top:-4%;bottom:auto;
+    width:118%;height:auto;object-fit:fill;opacity:.12;
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+ .hero23Scene .hero23LeavesBackAsset,
+ .hero23Scene .hero23LeavesFrontAsset,
+ .hero23Scene .hero23LeavesBlurAsset,
+ .hero23ProductStage.hero23HasProduct .hero23SubjectAsset {
+   transform:none!important;animation:none!important;
+ }
+}
