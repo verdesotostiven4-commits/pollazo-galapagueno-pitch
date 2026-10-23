@@ -9,6 +9,80 @@ const videoId=1,totalSteps=chapters.length+2;
 let step=-1,auto=false,sound=false,autoTimer=null,waterTimer=null,liveVideo=null,photoDialog=$("#imageDialog");
 let audioContext=null,modalItems=[],modalIndex=0,originFocus=null;
 const prefersReduced=()=>window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* Un único elemento de video conserva su buffer al cambiar de escena.
+   Se crea sin autoplay. El navegador decide si acepta preload="auto". */
+const mediaDepot=document.createElement("div");
+mediaDepot.id="expoMediaDepot";
+mediaDepot.hidden=true;
+mediaDepot.setAttribute("aria-hidden","true");
+document.body.appendChild(mediaDepot);
+const preparedVideo=document.createElement("video");
+preparedVideo.id="embeddedVideo";
+preparedVideo.controls=true;
+preparedVideo.playsInline=true;
+preparedVideo.preload="metadata";
+preparedVideo.setAttribute("aria-label","Video narrado de Pollazo Galapagueño");
+preparedVideo.src=narratedVideo;
+mediaDepot.appendChild(preparedVideo);
+
+/* Precarga gradual de fotos: primero la apertura, luego las siguientes
+   en segundo plano. Dos solicitudes simultáneas como máximo. */
+const network=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
+const dataSaver=!!network?.saveData;
+const slowNetwork=/^(slow-2g|2g)$/.test(network?.effectiveType||"");
+const warmAssets=[...new Set(chapters.flatMap(ch=>ch.gallery?.length?ch.gallery.map(p=>p.src):[ch.src]).concat(brandLogo))];
+const warmCache=new Map();
+let warmCursor=0,warmActive=0;
+function warmNextImage(){
+ // Dar prioridad de red a la narración cuando ya se está reproduciendo.
+ if(document.hidden||!preparedVideo.paused)return;
+ const limit=(dataSaver||slowNetwork)?2:warmAssets.length;
+ while(warmActive<2&&warmCursor<limit){
+   const url=warmAssets[warmCursor++];
+   if(warmCache.has(url))continue;
+   const img=new Image();
+   warmCache.set(url,img);
+   img.decoding="async";
+   img.referrerPolicy="no-referrer";
+   warmActive++;
+   img.onload=img.onerror=()=>{
+     warmActive=Math.max(0,warmActive-1);
+     window.setTimeout(warmNextImage,350);
+   };
+   img.src=url;
+ }
+}
+function warmNextScene(){
+ if(warmCursor<warmAssets.length&&!dataSaver&&!slowNetwork)warmNextImage();
+}
+function warmVideo(){
+ if(dataSaver||slowNetwork)return;
+ // Prepárate para reproducir, pero nunca llames play() aquí.
+ preparedVideo.preload="auto";
+ if(preparedVideo.readyState===0)preparedVideo.load();
+}
+window.addEventListener("load",()=>{
+ const run=()=>{warmNextImage();warmVideo();};
+ if("requestIdleCallback" in window)window.requestIdleCallback(run,{timeout:1800});
+ else window.setTimeout(run,900);
+},{once:true});
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)warmNextScene()});
+
+/* Primer clic: pedir pantalla completa UNA sola vez. F11 utiliza el modo
+   del navegador, distinto a la Fullscreen API. No invocamos exitFullscreen. */
+document.addEventListener("click",()=>{
+ warmVideo();
+ if(document.fullscreenElement||!document.fullscreenEnabled)return;
+ const available=window.screen?.availHeight||window.innerHeight;
+ const alreadyBrowserFullscreen=window.innerHeight>=available-12;
+ if(alreadyBrowserFullscreen)return;
+ try{
+   const promise=document.documentElement.requestFullscreen?.();
+   promise?.catch?.(()=>{});
+ }catch(_){}
+},{once:true,capture:true});
+
 function escapeText(value){return String(value||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function soundFx(type){
  if(!sound||prefersReduced())return;
@@ -27,20 +101,17 @@ function soundFx(type){
  }catch(_){}
 }
 function clearTimers(){if(autoTimer){clearTimeout(autoTimer);autoTimer=null}if(waterTimer){clearInterval(waterTimer);waterTimer=null}}
-function setMode(on){auto=!!on;$("#autoToggle").setAttribute("aria-pressed",String(auto));$("#autoText").textContent=auto?"Automático":"Manual";if(step>=0)scheduleAuto()}
 function enterPresentation(autoRequested){
  auto=!!autoRequested;
  hold.hidden=true;app.hidden=false;
  document.body.style.background="#f8f4ee";
  step=0;
- $("#autoToggle").setAttribute("aria-pressed",String(auto));
- $("#autoText").textContent=auto?"Automático":"Manual";
  render();
  window.scrollTo({top:0,behavior:"auto"});
  soundFx("start");
 }
 function standby(){
- clearTimers();if(liveVideo){liveVideo.pause();liveVideo=null}
+ clearTimers();if(liveVideo){liveVideo.pause();mediaDepot.appendChild(liveVideo);liveVideo=null}
  if(photoDialog.open)photoDialog.close();
  app.hidden=true;hold.hidden=false;step=-1;
  window.scrollTo({top:0,behavior:"auto"});
@@ -63,7 +134,7 @@ function retreat(){if(step>0)transitionTo(step-1,true)}
 function transitionTo(next,playVideo){
  if(photoDialog.open)photoDialog.close();
  clearTimers();
- if(liveVideo){liveVideo.pause();liveVideo=null}
+ if(liveVideo){liveVideo.pause();mediaDepot.appendChild(liveVideo);liveVideo=null}
  step=Math.max(0,Math.min(totalSteps-1,next));
  render();
  soundFx(step===videoId?"start":"move");
@@ -100,10 +171,10 @@ function progressBar(){
 }
 function opening(){
  const src=chapters[0].src;
- return '<section class="scene sceneOpening" aria-label="Apertura"><div class="sceneBg"><img src="'+src+'" alt=""></div><span class="sceneStamp">PRESENTACIÓN DE MARCA · 2026</span><div class="openingCopy"><div class="smallTag">BIENVENIDOS · SANTA CRUZ, GALÁPAGOS</div><h2>Una historia de <em>cuidado, trabajo y confianza.</em></h2><p>Te invitamos a descubrir cómo comienza el recorrido del Pollazo Galapagueño y cómo sus productos llegan hasta los puntos de venta de Santa Cruz.</p></div></section>';
+ return '<section class="scene sceneOpening" aria-label="Apertura"><div class="sceneBg"><img src="'+src+'" alt="" fetchpriority="high" decoding="async"></div><span class="sceneStamp">PRESENTACIÓN DE MARCA · 2026</span><div class="openingCopy"><div class="smallTag">BIENVENIDOS · SANTA CRUZ, GALÁPAGOS</div><h2>Una historia de <em>cuidado, trabajo y confianza.</em></h2><p>Te invitamos a descubrir cómo comienza el recorrido del Pollazo Galapagueño y cómo sus productos llegan hasta los puntos de venta de Santa Cruz.</p></div></section>';
 }
 function videoScreen(){
- return '<section class="scene videoScene" aria-label="Video narrado"><div class="videoSceneTop"><div><span>CAPÍTULO ESPECIAL / EL RECORRIDO</span><h2>Conoce nuestra historia en imágenes.</h2></div><small>VIDEO NARRADO · 1 MIN 38 S</small></div><div class="filmFrame"><video id="embeddedVideo" playsinline controls preload="metadata" aria-label="Video narrado de Pollazo Galapagueño" src="'+narratedVideo+'"></video><button id="unmuteVideo" type="button" class="videoUnmute" hidden>🔊 Activar narración</button><div id="videoError" class="videoIssue" hidden><strong>El video no se pudo reproducir.</strong><p>Puedes continuar con la presentación; las fotografías y el contenido siguen disponibles.</p><button id="skipVideo" type="button">Continuar recorrido →</button></div></div><div class="videoSceneFoot"><span id="videoHint">Reproduce el video para comenzar el recorrido.</span><strong>DE LA GRANJA A CADA ENTREGA</strong></div></section>';
+ return '<section class="scene videoScene" aria-label="Video narrado"><div class="videoSceneTop"><div><span>CAPÍTULO ESPECIAL / EL RECORRIDO</span><h2>Conoce nuestra historia en imágenes.</h2></div><small>VIDEO NARRADO · 1 MIN 38 S</small></div><div class="filmFrame" id="filmFrame"><button id="unmuteVideo" type="button" class="videoUnmute" hidden>🔊 Activar narración</button><div id="videoError" class="videoIssue" hidden><strong>El video no se pudo reproducir.</strong><p>Puedes continuar con la presentación; las fotografías y el contenido siguen disponibles.</p><div class="videoErrorActions"><button id="retryVideo" type="button">Reintentar video ↻</button><button id="skipVideo" type="button">Continuar recorrido →</button></div></div></div><div class="videoSceneFoot"><span id="videoHint">Reproduce el video para comenzar el recorrido.</span><strong>DE LA GRANJA A CADA ENTREGA</strong></div></section>';
 }
 function galleryMarkup(chapter){
  const imgs=chapter.gallery&&chapter.gallery.length?chapter.gallery:[{src:chapter.src,alt:chapter.alt,label:chapter.caption}];
@@ -130,19 +201,48 @@ function finalScreen(chapter){
 }
 function render(){
  const chapterIndex=step-2;
+ warmNextScene();
  if(step===0)stage.innerHTML=opening();
  else if(step===videoId)stage.innerHTML=videoScreen();
  else stage.innerHTML=chapterScreen(chapters[chapterIndex],chapterIndex);
  progressBar();
  if(step===videoId){
-  liveVideo=$("#embeddedVideo");
-  liveVideo.addEventListener("ended",()=>{
+  // Reutilizamos exactamente el mismo elemento y su descarga ya iniciada.
+  $("#filmFrame").prepend(preparedVideo);
+  liveVideo=preparedVideo;
+  liveVideo.preload="auto";
+  liveVideo.onended=()=>{
+   if(step!==videoId)return;
    $("#videoHint").textContent="Video finalizado. Continuamos con el recorrido…";
    autoTimer=setTimeout(()=>transitionTo(2,false),1600);
+  };
+  liveVideo.onerror=()=>{
+   if(step!==videoId)return;
+   $("#videoError").hidden=false;
+   $("#videoHint").textContent="El video necesita reconexión.";
+  };
+  liveVideo.onplaying=()=>{
+   if(step!==videoId)return;
+   $("#videoError").hidden=true;
+   $("#videoHint").textContent="Reproduciendo el recorrido audiovisual…";
+  };
+  liveVideo.onwaiting=()=>{
+   if(step===videoId)$("#videoHint").textContent="Cargando un poco más de video…";
+  };
+  liveVideo.onstalled=()=>{
+   if(step===videoId)$("#videoHint").textContent="Conexión lenta: esperando video…";
+  };
+  liveVideo.onpause=()=>{
+   warmNextImage();
+   if(step===videoId&&!liveVideo.ended)$("#videoHint").textContent="Video en pausa. Presiona ▶ para continuar.";
+  };
+  $("#retryVideo").addEventListener("click",()=>{
+   if(step!==videoId)return;
+   $("#videoError").hidden=true;
+   $("#videoHint").textContent="Reintentando cargar el video…";
+   preparedVideo.load();
+   attemptVideo();
   });
-  liveVideo.addEventListener("error",()=>{$("#videoError").hidden=false;$("#videoHint").textContent="Video no disponible";});
-  liveVideo.addEventListener("play",()=>{$("#videoHint").textContent="Reproduciendo el recorrido audiovisual…";});
-  liveVideo.addEventListener("pause",()=>{if(liveVideo&&!liveVideo.ended)$("#videoHint").textContent="Video en pausa. Presiona ▶ para continuar.";});
   $("#skipVideo").addEventListener("click",()=>transitionTo(2,false));
   $("#unmuteVideo").addEventListener("click",()=>{
    if(!liveVideo)return;
@@ -211,12 +311,6 @@ $("#backToHold").addEventListener("click",e=>{
 $("#holdButton").addEventListener("click",standby);
 $("#previousScene").addEventListener("click",retreat);
 $("#nextScene").addEventListener("click",advance);
-$("#autoToggle").addEventListener("click",()=>setMode(!auto));
-$("#soundToggle").addEventListener("click",()=>{
- sound=!sound;$("#soundToggle").setAttribute("aria-pressed",String(sound));
- $("#soundText").textContent=sound?"Efectos: sí":"Efectos: no";
- if(sound)soundFx("start");
-});
 progress.addEventListener("click",e=>{
  const button=e.target.closest("[data-step]");if(button)transitionTo(Number(button.dataset.step),false);
 });
