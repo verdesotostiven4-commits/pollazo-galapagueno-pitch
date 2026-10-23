@@ -92,7 +92,7 @@ button:focus-visible,a:focus-visible{outline:3px solid #ffc17b;outline-offset:4p
 .videoSceneTop span{color:#eca769;font-size:10px;letter-spacing:1.8px;font-weight:900}
 .videoSceneTop small{font-size:11px;color:#d6b9a1}
 .filmFrame{position:relative;flex:1;min-height:230px;border:1px solid #ffffff1f;overflow:hidden;border-radius:15px;background:#18120c;aspect-ratio:16/9;max-height:64vh;align-self:center;width:min(100%,1120px)}
-.filmFrame video{display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.035);background:transparent}
+.filmFrame video{display:block;width:100%;height:100%;object-fit:contain;transform:none;background:#17120e}
 .videoSceneFoot{display:flex;justify-content:space-between;gap:12px;align-items:center;color:#d2bba5;font-size:11px}
 .videoSceneFoot strong{color:#ffc08c;font-weight:800}
 .videoIssue{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:#1c120ded;color:white;text-align:center;padding:30px}
