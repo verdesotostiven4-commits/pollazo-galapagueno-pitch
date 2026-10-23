@@ -340,3 +340,162 @@
     transform:translate3d(7%,7%,0) scale(.8)!important;
   }
 }
+
+/* V5: Responsive sin deformación + composición segura.
+   La imagen transparente conserva su proporción nativa 16:9.
+   Una grilla de espacio real reserva el tamaño del logo, no lo superpone. */
+@media (min-width:761px) {
+  .holdScreen.hero23 .hero23ProductStage .hero23SubjectAsset,
+  .holdScreen.hero23 .hero23Scene .hero23LeavesBackAsset,
+  .holdScreen.hero23 .hero23Scene .hero23LeavesFrontAsset,
+  .holdScreen.hero23 .hero23Scene .hero23LeavesBlurAsset {
+    object-fit: contain;
+    object-position: center center;
+  }
+
+  .holdScreen.hero23 .hero23ProductStage,
+  .holdScreen.hero23 .hero23ProductStage.hero23HasProduct {
+    animation: heroFinalSubjectEnter 1.25s cubic-bezier(.18,.83,.27,1) both;
+  }
+
+  .holdScreen.hero23 .hero23ProductStage .hero23SubjectAsset {
+    transform: translate3d(6%,3%,0) scale(.82);
+    animation: heroFinalChickenLife 8.8s ease-in-out 1.25s infinite alternate;
+  }
+
+  .holdScreen.hero23 .hero23Scene .hero23LeavesBackAsset {
+    animation: heroFinalTopReveal 1.3s ease-out .2s both,
+               heroFinalLeavesTop 6.6s ease-in-out .2s infinite alternate;
+  }
+
+  .holdScreen.hero23 .hero23Scene .hero23LeavesFrontAsset {
+    animation: heroFinalFrontReveal 1.5s ease-out .55s both,
+               heroFinalLeavesFront 8s ease-in-out .55s infinite alternate;
+  }
+
+  .holdScreen.hero23 .hero23Scene .hero23LeavesBlurAsset {
+    animation: heroFinalBlurReveal 1.8s ease-out .8s both,
+               heroFinalLeavesBlur 9.3s ease-in-out .8s infinite alternate-reverse;
+  }
+
+  .holdScreen.hero23 .hero23Inner {
+    justify-content:center;
+    gap:clamp(10px,1.5svh,20px);
+  }
+
+  .holdScreen.hero23 .hero23LogoReveal {
+    box-sizing:border-box;
+    width:100%;
+    height:clamp(220px,37svh,360px);
+    margin:0 0 clamp(16px,2.3svh,28px);
+    flex:0 0 auto;
+    position:relative;
+  }
+
+  .holdScreen.hero23 .hero23Logo {
+    transform:scale(1.28);
+    transform-origin:center;
+  }
+
+  .holdScreen.hero23 .hero23Copy {
+    margin:0;
+    padding:0;
+    flex:0 0 auto;
+  }
+
+  .holdScreen.hero23 .hero23BirdFlight {
+    z-index:3;
+    width:clamp(110px,9vw,155px);
+    height:85px;
+    filter:blur(1.2px);
+    opacity:0;
+  }
+  .holdScreen.hero23 .hero23BirdRaster .hero23BirdFrame {
+    width:100%;height:100%;object-fit:contain;
+  }
+}
+@media (min-width:761px) and (max-width:1300px) {
+  .holdScreen.hero23 .hero23LogoReveal { height:clamp(190px,33svh,310px); }
+  .holdScreen.hero23 .hero23Logo { transform:scale(1.26); }
+  .holdScreen.hero23 .hero23Inner { gap:9px; }
+}
+@media (min-width:761px) and (max-height:820px) {
+  .holdScreen.hero23 .hero23LogoReveal {
+    height:clamp(185px,33svh,285px);
+    margin-bottom:clamp(12px,1.6svh,20px);
+  }
+  .holdScreen.hero23 .hero23Logo { transform:scale(1.26); }
+  .holdScreen.hero23 .hero23Benefits { margin-block:13px 17px; }
+}
+@media (min-width:761px) and (max-height:650px) {
+  .holdScreen.hero23 .hero23LogoReveal { height:25svh;margin-bottom:7px; }
+  .holdScreen.hero23 .hero23Logo { transform:scale(1.1); }
+  .holdScreen.hero23 .hero23Inner h1 {font-size:clamp(31px,3vw,50px)}
+  .holdScreen.hero23 .hero23Left {padding-block:7px}
+}
+@media (max-width:760px) {
+  .holdScreen.hero23 .hero23LogoReveal {
+    margin-bottom:14px;
+    overflow:visible;
+  }
+  .holdScreen.hero23 .hero23Logo { transform:scale(1.04); }
+  .holdScreen.hero23 .hero23ProductStage .hero23SubjectAsset {
+    animation: heroFinalChickenLifeMobile 8s ease-in-out 1.3s infinite alternate;
+  }
+  .holdScreen.hero23 .hero23Scene .hero23LeavesBackAsset {
+    animation: heroFinalTopReveal 1.25s ease-out .2s both,
+               heroFinalLeavesTop 7s ease-in-out .2s infinite alternate;
+  }
+  .holdScreen.hero23 .hero23Scene .hero23LeavesFrontAsset {
+    animation: heroFinalFrontReveal 1.3s ease-out .6s both,
+               heroFinalLeavesFront 8.2s ease-in-out .6s infinite alternate;
+  }
+}
+@keyframes heroFinalChickenLife {
+  0% {transform:translate3d(6%,3%,0) scale(.82) rotate(-.2deg)}
+  50% {transform:translate3d(6.18%,2.25%,0) scale(.826) rotate(.12deg)}
+  100% {transform:translate3d(6.35%,3.1%,0) scale(.82) rotate(.25deg)}
+}
+@keyframes heroFinalChickenLifeMobile {
+  0% { transform:translate3d(7%,3%,0) scale(.9); }
+  100% { transform:translate3d(7.4%,1.4%,0) scale(.905) rotate(.15deg); }
+}
+@keyframes heroFinalTopReveal {
+  from {opacity:0;filter:blur(6px)}
+  to {opacity:.82;filter:blur(0)}
+}
+@keyframes heroFinalFrontReveal {
+  from {opacity:0;filter:blur(5px)}
+  to {opacity:.77;filter:blur(0)}
+}
+@keyframes heroFinalBlurReveal {
+  from {opacity:0;filter:blur(9px)}
+  to {opacity:.22;filter:blur(2px)}
+}
+/* Respeta el ajuste de accesibilidad también en animaciones añadidas. */
+@media (prefers-reduced-motion:reduce) {
+  .holdScreen.hero23 .hero23ProductStage .hero23SubjectAsset,
+  .holdScreen.hero23 .hero23Scene .hero23LeavesBackAsset,
+  .holdScreen.hero23 .hero23Scene .hero23LeavesFrontAsset,
+  .holdScreen.hero23 .hero23Scene .hero23LeavesBlurAsset {animation:none!important}
+  .holdScreen.hero23 .hero23ProductStage .hero23SubjectAsset {
+    transform:translate3d(6%,3%,0) scale(.82)!important;
+  }
+}
+
+/* Brisa visible, pero orgánica: cada grupo tiene frecuencia y dirección propia. */
+@keyframes heroFinalLeavesTop {
+  0% {transform:translate3d(6%,-8%,0) scale(.84) rotate(-1deg)}
+  47% {transform:translate3d(6.45%,-8.35%,0) scale(.845) rotate(.65deg)}
+  100% {transform:translate3d(6.95%,-8.85%,0) scale(.84) rotate(1.25deg)}
+}
+@keyframes heroFinalLeavesFront {
+  0% {transform:translate3d(7%,7%,0) scale(.8) rotate(-1.05deg)}
+  54% {transform:translate3d(7.55%,6.35%,0) scale(.807) rotate(.5deg)}
+  100% {transform:translate3d(8.1%,5.8%,0) scale(.8) rotate(1.2deg)}
+}
+@keyframes heroFinalLeavesBlur {
+  0% {transform:translate3d(7%,8%,0) scale(.76) rotate(-1.4deg)}
+  55% {transform:translate3d(7.4%,6.9%,0) scale(.765) rotate(.7deg)}
+  100% {transform:translate3d(8%,6.1%,0) scale(.76) rotate(1.6deg)}
+}

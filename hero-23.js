@@ -64,33 +64,39 @@
    }).catch(()=>{/* Keep the original vector bird as a fallback */});
  }
  const random=(min,max)=>min+Math.random()*(max-min);
- function queue(){
+ function queue(first=false){
    clearTimeout(timer);
    if(disposed||noMotion.matches)return;
-   timer=window.setTimeout(fly,random(5500,14000));
+   // Primer vuelo pronto para que el usuario descubra el detalle.
+   // Después, pausas variables sin un bucle mecánico aparente.
+   timer=window.setTimeout(fly,first?random(1900,3300):random(4800,11500));
  }
  function fly(){
    if(disposed||noMotion.matches||host.hidden||document.hidden){queue();return}
    const reverse=Math.random()<.5;
-   const travel=random(6500,10700),h=random(22,53),scale=random(.38,.75);
+   const travel=random(7800,11500);
+   // El ave cruza el cielo visible (no empieza a 36vw fuera de la pantalla).
+   const h=random(12,33),scale=random(.66,1.04);
    bird.style.top=h+"%";
    bird.style.opacity="1";
    bird.classList.add("hero23BirdFlying");
-   const horizontal=reverse?["105vw","-36vw"]:["-36vw","105vw"];
+   const start=reverse?"103vw":"36vw";
+   const end=reverse?"33vw":"104vw";
+   const flip=reverse?-1:1;
    animation=bird.animate([
-     {transform:"translate3d("+horizontal[0]+",0,0) scaleX("+(reverse?-1:1)+") scale("+scale+")",opacity:0,offset:0},
-     {transform:"translate3d(calc("+horizontal[0]+" + "+(reverse?"-9vw":"9vw")+"),-6px,0) scaleX("+(reverse?-1:1)+") scale("+scale+")",opacity:.58,offset:.12},
-     {transform:"translate3d("+horizontal[1]+",-24px,0) scaleX("+(reverse?-1:1)+") scale("+scale+")",opacity:.62,offset:.88},
-     {transform:"translate3d("+horizontal[1]+",-30px,0) scaleX("+(reverse?-1:1)+") scale("+scale+")",opacity:0,offset:1}
+     {transform:"translate3d("+start+",2px,0) scaleX("+flip+") scale("+scale+")",opacity:0,offset:0},
+     {transform:"translate3d(calc("+start+" + "+(reverse?"-7vw":"7vw")+"),-5px,0) scaleX("+flip+") scale("+scale+")",opacity:.74,offset:.14},
+     {transform:"translate3d(calc("+end+" + "+(reverse?"4vw":"-4vw")+"),-17px,0) scaleX("+flip+") scale("+scale+")",opacity:.77,offset:.85},
+     {transform:"translate3d("+end+",-23px,0) scaleX("+flip+") scale("+scale+")",opacity:0,offset:1}
    ],{duration:travel,easing:"linear",fill:"none"});
    animation.onfinish=()=>{bird.classList.remove("hero23BirdFlying");bird.style.opacity="0";queue()};
    animation.oncancel=()=>{bird.classList.remove("hero23BirdFlying");bird.style.opacity="0"};
  }
- document.addEventListener("visibilitychange",()=>{if(document.hidden){animation?.cancel();clearTimeout(timer)}else queue()});
+ document.addEventListener("visibilitychange",()=>{if(document.hidden){animation?.cancel();clearTimeout(timer)}else queue(true)});
  document.getElementById("startGuided")?.addEventListener("click",()=>{animation?.cancel();clearTimeout(timer)});
  document.getElementById("startAuto")?.addEventListener("click",()=>{animation?.cancel();clearTimeout(timer)});
  document.getElementById("holdButton")?.addEventListener("click",queue);
  document.getElementById("backToHold")?.addEventListener("click",()=>setTimeout(queue,550));
  window.addEventListener("pagehide",()=>{disposed=true;animation?.cancel();clearTimeout(timer)});
- if(!noMotion.matches)queue();
+ if(!noMotion.matches)queue(true);
 })();
