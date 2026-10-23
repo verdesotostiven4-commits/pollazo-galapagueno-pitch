@@ -5,15 +5,16 @@
  const host=document.getElementById("holdScreen");
  if(!host||!host.classList.contains("hero23"))return;
  const ASSETS={
-  "background": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiXujS4f-a8Jx0yXrqcdbx5pKsq8hbk6auACwkmGxDuIFbwFQTQEEc32hqe-MuErJhbe_xrBjeisFvXt2v-2YntC7q3W_oqdMR89I-eEItzrKjRmVIe_NOgFpSO5T2guz-i4-5kqD7z16VZOSoXgTQ5tb0kb19XUz8rluGCjs8VVo4_1y7Ah7VdwDE4tXU/s1600/image.png",
-  "subject": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgLPNA98RDx1uM2h-pfBy40ANF_T_7DpbBabPedU_y7hu6tnF8v4S47Dc82y_3yv-yhG1MSLxKT2Y9Ci2LnpXJMdl1pFpMBb5TkgFbh2qYqyZxpjk1vbZ9jvupCvfcrISyjFcmdJxGO7mXNDrPMU-uduRlz-6RbRTz3B8MTAOBC3Fn9Dlj0hZmHHB9-0c8/s1600/image.png",
-  "leavesBack": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjQfxUdzEH39XPBRCaNpNFiFZIB7OivY5kGwS4gHybs-3LGW6e1Ruog-PsYqhZwhrVHuwVbexLqXpLBtIRM6hjy9fgxMgmIHPGBtfbAYmqiVNeCPkkDm71kq7QA4_Ma-65jcu0b33KTejia97DKTHWZfGj3rGppXuQl3S0A4QigD4YEsZb52ghZz9KGhiw/s1600/image.png",
-  "leavesFront": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwkI7Uou8_V_C_CcM1oyu7xPRd_btiTrYm9uz7_-wBfX2jnfNpGpdR3Ba9RF7xuVcNcyxuMA5MoTAJaxP34i64bsvH7T_3MpBsp3ll1WvXt440bJJmrKfgohOScndmxleED4L2P_pPbLhN95rlp5Yc6EXp7HuBJLVnkXq2yTwMH4gGLu4tKlTfKhnAduI/s1600/image.png",
-  "leavesBlur": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjq8rH7BSN47jbvzW2MYutnrh_Yjxn-n46SonIUHMa6JuqlxjJNmjhO0dyk0ejUU-bja9nav7b-vFvwoJQ6egfljODXut6oQwUJLdHPKXjo913AVkhKM3g5dF-ytUWKg350yYtbJmQdajRKnXtoep4MVUk0alddi1Dqt_cxsjszRykIj_TqJ7F-lCvmcE0/s1600/image.png",
+  // Capas definitivas enviadas por el usuario, en su orden original.
+  "background": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhoKW_FL8STYgzbTsrCexbZxtdSrUbJ2aGtWJ1PqgJ3qM14yh3KvC2YpP9Qlsvl5nxfGsCVJDvSR2rEEttM1mBdR8aiOoyrK8-ilQIL7Q0R2unYcaKB00LW_oGwzLi35ktoQbI2fSwL4fwB42G8oGVoQPA-vEtLWVibgvLVOE0LfZRJUkfyo3dGPtskjsY/s1600/image.png",
+  "subject": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg2YKNKDHF2yB9S_-Q8eBl1B01NpaJV5VEaOx-IFivAaKBt0ShJ8yfeMgEbeFfp7QceGUB92Gt-mSxK6KdZsaocyz0BQMHVhUsGRTDtdQsSsw-TjbFNgAzORL6puuLruwcgNqnBov90Bt-hM5h0_F9af73Ujvp3-inpW4R62sftG-sdyvADj0rM3iTGUQs/s1600/image.png",
+  "leavesBack": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi8tQGBB8o4AhYAPQeW45KMqQO5jTUnTQ2SFRHFUsvMNgq2JOupuj26WgXnhgZe3M17PVkzyVSdn9Ck_xT2uUtQ53UcGJ9kU0VkBWv5zHKmIlVeQHRhlhtL2bvMdyf0ti9OLXRoezTe3KX6EruWrvzUehS9e9VQLM5aNNMSjnzsPcpWuOwe5LSyRceFcxg/s1600/image.png",
+  "leavesFront": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiIkjWpEILsBopmkj7wf4PrNkNddyo7U431_8lqrCqXl-s_CbCYc2lMdPqYiUzU0oqGoKCg8rXd4l89FhpBOWSkfX8ZHKOlFK2OJJu_BvY7cAPs-TrzdgS1VyM28YovKmDROsOelDiDDeh0J547FlmbZVb6Lkq_l6AKyemREySy2x7ql8LmXRw6pkoBYew/s1600/image.png",
+  "leavesBlur": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhyD9tMznzPMmy2n3nSoPJ9S6BmYsCQy3xnMlMo9cYH53ZfOXNVn4ojv1kCNGersY0L5FDdO80WV66Vw_Av4jot-rLdLgDzlus2NxIi5wARRd88vWOvUE-ZMwm3h0Iua-zG3GMtu3RvXFNTD9LRuWMYG4V3KjTm_cyEXQpMYF1RHj2B9QwsRqpDeDAAGCY/s1600/image.png",
   "birdFrames": [
-    "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjHTyeZKcEKsOoPxAn46oMUI-IyoWRxyeylRDnhl0GqsxLXFBjUxwkPYumSuH0oGvov1rxLgr7cZ8-4NTG0cy-YuQLTaPI6o3W1wJQVGFsIpbLozP7hU_er2eyJmV9OjadeJ6LnjIfmS6P4AZovrYm3zYAnXEpsgviLx-JDMS-qGbeJjTb71o6HnHgiOLw/s1600/image.png",
-    "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEis3M-gYikZjMyX6r-3AuPUnJJv7mrYv87IaOV2N-xOK6QrkcPxbfxI0y1GPxIsjyQ6KwjKFPE77zKAlLtAvb-tY-nYApXS08m60qmZHqq8INwL1fRSj1sB7ZzpZf_GlCn6rUu2pwHhwp0XVtQ597co-Kw3VjcY3N0MdFXcGiJrNUdq6fFYYvaib7TxZaI/s1600/image.png",
-    "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhD9WYQWCNVKF68X_pVLfshUyoeSPqqJmO1KpZkCkoPAx9JQ1fpwx1QIdF8xN99tqYXmUaGvHK79MoyxMi3LjC3BzxAruIWcUa0aj7PF6zggfmgfOUyCPFQoydeqZgRfItSGpY3NtbH4RlDyuYKTOUqEqCI61FxwKtWg2jJo19E-4wAhvAVI0ck4fS_k2I/s1600/image.png"
+    "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJ41VXu6LnCNLoK_arhOIJU3c2shdcdmrfnU3cl1wbGPI7GtjIb8JabbuANNPsnv4ot9ULfW-md3gMkb3DUZ8lMUnwYQsQYRF2x1oBOxIOxlmP7v4Y9o_5aBRM4s8Ch0IEfcH9_YAK5uS8AfOBQcI_Jxbmc_MWM53lWpiyYTvANEoG_7h4CTAbt1u4DvA/s1600/image.png", // alas arriba
+    "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWR1v4PKwAf1jFBS-2oxEBdjZs_u6RGSKDu_bBsU_X9UA2e6rxVwNtezCiOb4hXzm9Mv4GFyDpol1zOZWv5j2y-RF_7NLLvnCZdvny_JDzoikow1UeVFETG1m4OLzI28wBRcrIxmPAbfDYPwaFcHUgopANAvvjN_FTzOXJ5t0jQFTQ5BHmbA_q9n7MgDQ/s1600/image.png", // posicion intermedia
+    "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgcx13Jzco5yqY4J7TxoIDvCsUe_FQ1pK9iHhrk64lcpjpRA2yuuwlXh9ib39-N7VfJgzCyCRilzpsJEqEnpk3rFO_3mpsOuF_IQ_z2KGDthg17FVnOs8xxJJJMVzhgqAoJ-E-Lw4yy4wXR0D3PchuJqttZv-2dLQA08Rl8aOYA89B_5dSMfVTi7beQQ9c/s1600/image.png"  // alas abajo
   ]
 };
  const map=[
