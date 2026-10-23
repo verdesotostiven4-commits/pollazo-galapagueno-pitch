@@ -13,7 +13,7 @@ const names={background:'Mar, paisaje y rocas (una fotografía)',subject:'Pollo 
  leavesBack:'Hojas superiores',leavesFront:'Hojas inferiores',logo:'Logo'};
 const deep=x=>JSON.parse(JSON.stringify(x));
 const initial=()=>({version:1,layers:deep(defaults)});
-let layout=initial(),selected='subject',ready=false,history=[],future=[],saving=false,lastSnapshot='';
+let layout=initial(),selected='subject',ready=false,history=[],future=[],saving=false,lastSnapshot='',lastDragAt=0;
 const specs=[
  ['x','Horizontal','positionControls',-100,100,0.5,'%'],
  ['y','Vertical','positionControls',-100,100,0.5,'%'],
@@ -49,7 +49,12 @@ function message(txt,error=false){const el=$('#saveMessage');el.textContent=txt;
 function markDirty(){setStatus('Cambios sin guardar · vista previa');message('');}
 function record(){
  const serialized=JSON.stringify(layout);
- if(serialized!==lastSnapshot){history.push(serialized);if(history.length>60)history.shift();lastSnapshot=serialized;future=[];}
+ if(history.at(-1)!==serialized){
+  history.push(serialized);
+  if(history.length>60)history.shift();
+ }
+ lastSnapshot=serialized;
+ future=[];
 }
 function updateFrame(){frame.contentWindow?.postMessage({type:'pollazo-preview',layout},location.origin);}
 function renderControls(){
@@ -117,6 +122,8 @@ window.addEventListener('message',event=>{
   setStatus('Listo · mueve las capas y guarda cuando quieras');
  }
  if(msg?.type==='pollazo-drag'&&ready&&layout.layers[msg.key]){
+  if(Date.now()-lastDragAt>300)record();
+  lastDragAt=Date.now();
   layout.layers[msg.key]={...layout.layers[msg.key],...msg.entry};
   if(selected===msg.key)renderControls();
   markDirty();
