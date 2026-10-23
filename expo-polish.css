@@ -321,3 +321,167 @@ body:has(.experience:not([hidden])) {
   .holdScreen.hero23 .hero23Scene .hero23LeavesBackAsset {opacity:.96!important;filter:none!important}
   .holdScreen.hero23 .hero23Scene .hero23LeavesFrontAsset {opacity:.94!important;filter:none!important}
 }
+
+/* ENTREGA FINAL · 23 octubre: audiovisual inmersivo y cierre claro. */
+.experience:has(.videoScene) {
+  grid-template-rows: 0 minmax(0, 1fr) clamp(56px,8dvh,68px);
+}
+.experience:has(.videoScene) .showHeader {
+  display: none;
+}
+.experience .screenStage:has(.videoScene) {
+  padding: 0;
+  background: #090807;
+}
+.experience .scene.videoScene {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  min-height: 0;
+  padding: 0;
+  gap: 0;
+  border: 0;
+  border-radius: 0;
+  background: #090807;
+  box-shadow: none;
+}
+.experience .videoScene .videoSceneTop,
+.experience .videoScene .videoSceneFoot { display: none; }
+.experience .videoScene .filmFrame {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 0;
+  aspect-ratio: auto;
+  background: #090807;
+  overflow: hidden;
+}
+.experience .videoScene .filmFrame video {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  background: #090807;
+}
+/* La barra de progreso permanece abajo; al estar el video activo
+   no ocupa espacio la cabecera y se gana toda su altura. */
+.experience:has(.videoScene) .controlBar {
+  box-shadow: 0 -2px 20px rgba(0,0,0,.05);
+  border-top: 1px solid #eee1d4;
+}
+
+/* CIERRE LUMINOSO — sin panel oscuro ni el recuadro blanco del logo. */
+.experience .scene.finalScene {
+  color: #342319;
+  background: #fff9f1;
+  border-color: #eddfcf;
+  grid-template-columns: minmax(0, 51%) minmax(0, 49%);
+}
+.experience .finalCopy {
+  background: radial-gradient(ellipse at 0 100%,rgba(252,194,120,.14),transparent 58%),#fff9f1;
+  color: #332116;
+  padding: clamp(22px,3.6vw,68px);
+  gap: clamp(12px,2dvh,22px);
+}
+.experience .finalCopy .smallTag {color: #be6324;}
+.experience .finalCopy h2 {
+  font-size: clamp(32px,min(3.6vw,6.8dvh),72px);
+  line-height: 1.04;
+  letter-spacing: -.06em;
+  max-width: 680px;
+  color:#291a13;
+  text-wrap: balance;
+}
+.experience .finalCopy h2 em { color:#eb6f1a; }
+.experience .finalCopy > p {
+  color:#675246;
+  max-width: 570px;
+  margin: 0;
+  font-size: clamp(14px,min(1.28vw,2.5dvh),19px);
+  line-height: 1.49;
+}
+.experience .finalCopy .finalBrand {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  box-shadow:none;
+  width: min(420px, 100%);
+  height: clamp(75px,16dvh,155px);
+  min-height: 0;
+  margin-top: 4px;
+  justify-content: flex-start;
+}
+.experience .finalCopy .finalBrand img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
+  mix-blend-mode: multiply;
+  filter: saturate(1.06);
+}
+.experience .finalThankyou {color:#bc6f37;letter-spacing:1.6px;}
+.experience .finalVisual {background:#fff1df;}
+.experience .finalVisual img {
+  object-fit: cover;
+  object-position: 54% center;
+  background: #fff1df;
+}
+.experience .finalVisual::after {content:none;display:none;}
+
+/* Los detalles ahora se leen de inmediato, sin el botón «Conoce más». */
+.experience .chapterKeywords {display:none;}
+.experience .chapterCopy .chapterDetail {
+  display:block;
+  color:#795744!important;
+  border:0;
+  border-left: 3px solid #e58a3b;
+  background: rgba(246,224,202,.46);
+  font-size: clamp(11px,min(.93vw,1.75dvh),14px)!important;
+  line-height:1.43!important;
+  border-radius:0 8px 8px 0;
+  padding: clamp(8px,1.2dvh,12px) clamp(10px,1vw,16px);
+  margin: clamp(8px,1.6dvh,16px) 0 0 !important;
+}
+.experience .chapterCopy > p:not(.chapterDetail) {
+  line-height: 1.43;
+}
+@media (min-width:821px) and (max-height:740px) {
+  .experience .chapterCopy { padding:clamp(13px,2.1vw,31px); }
+  .experience .chapterCopy h2 {font-size:clamp(27px,2.8vw,43px);}
+  .experience .chapterCopy .chapterDetail {font-size:11px!important;line-height:1.3!important;padding:7px 10px;}
+  .experience .scene.finalScene .finalCopy { padding:clamp(14px,3vw,38px);gap:9px; }
+  .experience .finalCopy .finalBrand { height:100px; }
+}
+@media (max-width:820px) {
+  .experience .scene.finalScene {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(0,60%) minmax(0,40%);
+  }
+  .experience .finalCopy {grid-row:1;padding:clamp(10px,3vw,24px);gap:7px;}
+  .experience .finalVisual {grid-row:2;}
+  .experience .finalCopy h2 {font-size:clamp(24px,4.7vw,39px);}
+  .experience .finalCopy > p {font-size:clamp(11px,2vw,14px);line-height:1.3;}
+  .experience .finalCopy .finalBrand {height:clamp(50px,10dvh,80px);}
+  .experience .finalThankyou {font-size:9px;}
+}
+@media (max-width:600px) {
+  .experience .videoScene .filmFrame {border-radius:0;}
+  .experience .chapterCopy .chapterDetail {font-size:10px!important;padding:5px 7px;margin-top:6px!important;line-height:1.24!important;}
+  .experience .chapterCopy h2 {margin:4px 0;font-size:clamp(21px,4.3vw,28px);}
+  .experience .chapterCopy > p:not(.chapterDetail) {font-size:10px;line-height:1.24;}
+}
