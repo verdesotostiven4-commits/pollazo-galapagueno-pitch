@@ -7,7 +7,7 @@
  */
 @media (min-width: 761px) {
   .holdScreen.hero23 {
-    --hero-photo-left: 36%;
+    --hero-photo-left: 36vw;
     min-height: 100svh;
     background: #fff9f1;
     isolation: isolate;
@@ -381,7 +381,7 @@
 
 /* Laptop y tablet horizontal: el encabezado nunca desborda la curva. */
 @media (min-width: 761px) and (max-width: 1350px) {
-  .holdScreen.hero23 { --hero-photo-left: 39%; }
+  .holdScreen.hero23 { --hero-photo-left: 39vw; }
   .hero23Curve { width: 17%; }
   .hero23Left { width: 49%; padding-left: 4vw; padding-right: 1vw; }
   .hero23LogoReveal { height: clamp(180px, 33vh, 320px); }
