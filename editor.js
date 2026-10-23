@@ -126,7 +126,7 @@ window.addEventListener('message',event=>{
 window.addEventListener('keydown',event=>{
  if(!ready||event.target.closest('input,textarea,select')||!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key))return;
  event.preventDefault();record();
- const step=event.shiftKey?.2:1;
+ const step=event.shiftKey ? 0.2 : 1;
  const e=layout.layers[selected];
  if(event.key==='ArrowLeft')e.x-=step;
  if(event.key==='ArrowRight')e.x+=step;
