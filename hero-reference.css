@@ -1,0 +1,327 @@
+/*
+ * PORTADA DE REFERENCIA — fase visual aislada.
+ * Se carga después de hero-23.css para no modificar los estilos del recorrido.
+ * Mantiene las 5 capas y el vuelo configurados en hero-23.js.
+ */
+@media (min-width: 761px) {
+  .holdScreen.hero23 {
+    background: #fff9f1;
+    min-height: 100svh;
+  }
+
+  .hero23Scene {
+    width: 60%;
+    right: 0;
+    left: auto;
+  }
+
+  .hero23Left {
+    z-index: 3;
+    width: 47%;
+    min-height: 100svh;
+    padding: 16px 0 22px clamp(40px, 4.9vw, 90px);
+    background: transparent;
+  }
+
+  .hero23Curve {
+    z-index: 2;
+    left: 37.1%;
+    width: 16.3%;
+    height: 100%;
+    filter: none;
+  }
+
+  .hero23Inner {
+    width: 100%;
+    max-width: 730px;
+    justify-content: center;
+    align-items: stretch;
+    padding: 12px 0 22px;
+    gap: clamp(8px, 1.35vh, 20px);
+  }
+
+  .hero23LogoReveal {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 540px;
+    height: clamp(220px, 35vh, 345px);
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero23Logo {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-position: center;
+    object-fit: contain;
+    mix-blend-mode: normal;
+    filter: none;
+  }
+
+  .hero23Copy {
+    width: 100%;
+    max-width: 700px;
+  }
+
+  .hero23Inner h1 {
+    font-family: "Outfit", system-ui, sans-serif;
+    font-size: clamp(39px, 3.65vw, 65px);
+    line-height: 1.02;
+    letter-spacing: -.058em;
+    font-weight: 850;
+    margin: clamp(17px, 2.5vh, 30px) 0 12px;
+    max-width: none;
+    text-wrap: initial;
+    color: #23130f;
+  }
+
+  .hero23Inner h1 em {
+    display: block;
+    white-space: nowrap;
+    color: #f15c17;
+    font-weight: 850;
+  }
+
+  .hero23Intro {
+    max-width: 555px;
+    margin: 0;
+    font-size: clamp(17px, 1.47vw, 24px);
+    line-height: 1.3;
+    color: #6c6864;
+    font-weight: 450;
+  }
+
+  .hero23Benefits {
+    display: flex;
+    align-items: center;
+    width: min(100%, 630px);
+    margin: clamp(20px, 3.2vh, 34px) 0 clamp(18px, 2.6vh, 30px);
+    gap: clamp(8px, 1.05vw, 17px);
+    animation: hero23TextEntrance .9s .52s both;
+  }
+
+  .hero23Benefit {
+    min-width: 0;
+    flex: 1 1 0;
+    display: flex;
+    align-items: center;
+    gap: clamp(7px, .8vw, 12px);
+    color: #291a14;
+    line-height: 1.16;
+    font-size: clamp(10px, .97vw, 16px);
+    font-weight: 550;
+  }
+
+  .hero23Benefit:not(:first-child) {
+    border-left: 1px solid #d8ae8b;
+    padding-left: clamp(8px, 1.3vw, 24px);
+  }
+
+  .hero23Benefit svg {
+    display: block;
+    width: clamp(23px, 2.45vw, 40px);
+    height: clamp(23px, 2.45vw, 40px);
+    flex: 0 0 auto;
+  }
+
+  .hero23Buttons {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    animation: hero23TextEntrance .95s .69s both;
+  }
+
+  .hero23Start {
+    width: min(100%, 445px);
+    min-height: clamp(64px, 8.5vh, 82px);
+    border-radius: 999px;
+    border: 2px solid #ffcb60;
+    background: linear-gradient(180deg, #ffa429 0%, #f77616 51%, #cd4208 100%);
+    box-shadow: 0 12px 23px #bd661f3d, 0 3px 4px #d4791840;
+    color: white;
+    font-size: clamp(23px, 2.05vw, 35px);
+    font-style: italic;
+    font-weight: 850;
+    gap: clamp(16px, 2vw, 36px);
+    padding: 8px 28px;
+    transition: filter .23s, transform .23s, box-shadow .23s;
+  }
+
+  .hero23Start:hover {
+    filter: brightness(1.05);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 26px #bd661f50;
+  }
+
+  .hero23Start:active { transform: translateY(1px); }
+
+  .hero23StartArrow {
+    display: grid;
+    place-items: center;
+    font-style: normal;
+    font-size: 38px;
+    font-weight: 650;
+    line-height: 1;
+    width: clamp(40px, 3.5vw, 53px);
+    height: clamp(40px, 3.5vw, 53px);
+    flex: 0 0 auto;
+    margin: 0;
+    border-radius: 50%;
+    background: #fff8ef;
+    color: #ea6714;
+  }
+
+  .hero23Auto,
+  .hero23Header,
+  .hero23Footer,
+  .hero23SceneMark,
+  .hero23SmallInfo {
+    display: none !important;
+  }
+
+  /* Mantener intacta la geometría de las capas recortadas sobre el mismo lienzo. */
+  .hero23ProductStage.hero23HasProduct { inset: 0; }
+  .hero23ProductStage.hero23HasProduct .hero23SubjectAsset {
+    left: -33%;
+    right: auto;
+    top: 0;
+    width: 136%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    filter: drop-shadow(0 14px 19px #1720163b);
+  }
+
+  .hero23Scene .hero23LeavesBackAsset {
+    left: -33%;
+    right: auto;
+    top: -3%;
+    bottom: auto;
+    width: 136%;
+    height: auto;
+    object-fit: fill;
+  }
+
+  .hero23Scene .hero23LeavesFrontAsset {
+    left: -33%;
+    right: auto;
+    bottom: -4%;
+    top: auto;
+    width: 136%;
+    height: auto;
+    object-fit: fill;
+  }
+
+  .hero23Scene .hero23LeavesBlurAsset {
+    left: -33%;
+    right: auto;
+    bottom: -5%;
+    top: auto;
+    width: 136%;
+    height: auto;
+    object-fit: fill;
+  }
+
+  .hero23Scene .hero23DepthTint {
+    background:
+      linear-gradient(90deg, #122a2019 0%, transparent 23%),
+      linear-gradient(0deg, #152d1d1e 0%, transparent 24%);
+  }
+}
+
+.hero23AccentLine {
+  width: 74px;
+  height: 2px;
+  background: #efa71b;
+}
+
+@media (min-width: 761px) and (max-width: 1220px) {
+  .hero23Left { width: 48%; padding-left: 4vw; padding-right: 0; }
+  .hero23Scene { width: 58%; }
+  .hero23Curve { left: 39.6%; width: 16%; }
+  .hero23LogoReveal { height: clamp(155px, 28vh, 285px); }
+  .hero23Inner h1 { font-size: clamp(36px, 3.8vw, 53px); }
+  .hero23Inner h1 em { white-space: normal; }
+  .hero23Intro { font-size: clamp(16px, 1.55vw, 21px); }
+  .hero23Benefits { gap: 5px; }
+  .hero23Benefit { font-size: clamp(9px, .85vw, 13px); }
+  .hero23Benefit:not(:first-child) { padding-left: 9px; }
+  .hero23Benefit svg { width: clamp(21px, 2vw, 28px); height: auto; }
+}
+
+@media (min-width: 761px) and (max-height: 780px) {
+  .hero23Left { padding-top: 8px; padding-bottom: 8px; }
+  .hero23Inner { gap: 5px; padding-block: 8px; }
+  .hero23LogoReveal { height: clamp(150px, 30vh, 270px); }
+  .hero23Inner h1 { font-size: clamp(36px, 3.35vw, 58px); margin: 10px 0; }
+  .hero23Intro { font-size: clamp(15px, 1.28vw, 20px); }
+  .hero23Benefits { margin-block: 14px; }
+  .hero23Start { min-height: 57px; }
+  .hero23StartArrow { height: 40px; width: 40px; }
+}
+
+@media (max-width: 760px) {
+  .holdScreen.hero23 {
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+    overflow: auto;
+    background: #fff9f1;
+  }
+  .hero23Scene {
+    inset: auto 0 0;
+    position: relative;
+    width: 100%;
+    height: clamp(270px, 38svh, 390px);
+    flex-shrink: 0;
+    order: 0;
+  }
+  .hero23Left {
+    order: 1;
+    width: 100%;
+    flex: 1 0 auto;
+    z-index: 4;
+    padding: 10px clamp(18px, 5vw, 36px) 36px;
+    background: #fff9f1;
+    border-radius: 32px 32px 0 0;
+    margin-top: -25px;
+  }
+  .hero23Curve { display: none; }
+  .hero23Inner { max-width: 490px; margin-inline: auto; gap: 8px; padding: 2px 0; text-align: center; align-items: center; }
+  .hero23LogoReveal { width: min(74vw, 240px); height: clamp(132px, 19svh, 190px); margin: 0 auto; }
+  .hero23Logo { object-position: center; mix-blend-mode: normal; filter: none; }
+  .hero23Copy { width: 100%; }
+  .hero23AccentLine { margin-inline: auto; width: 52px; }
+  .hero23Inner h1 { font-size: clamp(31px, 7.1vw, 46px); line-height: 1.05; letter-spacing: -.05em; margin: 14px 0 10px; }
+  .hero23Inner h1 em { display: block; color: #f15c17; white-space: normal; }
+  .hero23Intro { font-size: clamp(14px, 3.5vw, 17px); line-height: 1.4; margin-inline: auto; max-width: 380px; }
+  .hero23Benefits { display: flex; gap: 7px; justify-content: center; margin: 20px 0 24px; }
+  .hero23Benefit { flex: 1 1 0; display: flex; align-items: center; justify-content: center; text-align: left; min-width: 0; gap: 5px; font-size: clamp(9px, 2.2vw, 12px); line-height: 1.15; font-weight: 550; }
+  .hero23Benefit:not(:first-child) { padding-left: 7px; border-left: 1px solid #d8ae8b; }
+  .hero23Benefit svg { width: clamp(21px, 5vw, 29px); height: auto; flex: 0 0 auto; }
+  .hero23Buttons { display: flex; justify-content: center; width: 100%; margin: 0; }
+  .hero23Start {
+    width: min(100%, 400px);
+    min-height: 58px;
+    border: 2px solid #ffc656;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #ffa429, #ee6a14 64%, #cf440c);
+    box-shadow: 0 9px 18px #bd661f2e;
+    color: #fff;
+    font-size: 23px;
+    font-style: italic;
+    gap: 22px;
+  }
+  .hero23StartArrow { width: 36px; height: 36px; border-radius: 50%; background: #fff8ef; color: #ea6714; display: grid; place-items: center; font-size: 28px; line-height: 1; font-style: normal; }
+  .hero23Header, .hero23Footer, .hero23SceneMark, .hero23Auto, .hero23SmallInfo { display: none !important; }
+  .hero23Scene .hero23DepthTint { background: linear-gradient(0deg, #16352622, transparent 25%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero23LogoReveal, .hero23Inner h1, .hero23Intro, .hero23Benefits, .hero23Buttons {
+    animation: none !important;
+  }
+}
