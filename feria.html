@@ -20,7 +20,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./feria-v2.css?v=20261023-stable3">
 <link rel="stylesheet" href="./hero-23.css?v=20261023-newlayers10">
-<link rel="stylesheet" href="./hero-reference.css?v=20261023-reference1">
+<link rel="stylesheet" href="./hero-reference.css?v=20261023-reference2">
 <script src="./feria-v2.js?v=20261023-stable3" defer></script>
 <script src="./hero-23.js?v=20261023-newlayers10" defer></script>
 </head>
@@ -107,8 +107,13 @@
     <div class="hero23DepthTint"></div>
   </div>
   <svg class="hero23Curve" viewBox="0 0 300 1080" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0 0 H108 C205 104 243 238 169 426 C105 593 225 734 243 866 C255 968 268 1019 281 1080 H0 Z" fill="#fff9f1"/>
+    <path d="M0 0 H76 C182 115 194 255 142 388 C96 520 103 595 156 715 C197 813 140 908 166 1080 H0 Z" fill="#fff9f1"/>
   </svg>
+  <!-- Esta capa fotográfica conserva las coordenadas del lienzo y cruza la curva
+       solo en la esquina inferior, como en la referencia original. -->
+  <div class="hero23ForegroundBridge" aria-hidden="true">
+    <img id="hero23BridgeLeavesAsset" alt="" hidden>
+  </div>
   <section class="hero23Left">
     <main class="hero23Inner">
       <div class="hero23LogoReveal">
