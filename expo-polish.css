@@ -324,7 +324,9 @@ body:has(.experience:not([hidden])) {
 
 /* ENTREGA FINAL · 23 octubre: audiovisual inmersivo y cierre claro. */
 .experience:has(.videoScene) {
-  grid-template-rows: 0 minmax(0, 1fr) clamp(56px,8dvh,68px);
+  /* La cabecera es display:none: quedan exactamente DOS hijos de grid
+     (screenStage y controlBar). Una fila vacía dejaba el video a altura 0. */
+  grid-template-rows: minmax(0, 1fr) clamp(56px,8dvh,68px);
 }
 .experience:has(.videoScene) .showHeader {
   display: none;
