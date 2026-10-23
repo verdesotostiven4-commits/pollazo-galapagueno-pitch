@@ -35,7 +35,8 @@ const warmAssets=[...new Set(chapters.flatMap(ch=>ch.gallery?.length?ch.gallery.
 const warmCache=new Map();
 let warmCursor=0,warmActive=0;
 function warmNextImage(){
- if(document.hidden)return;
+ // Dar prioridad de red a la narración cuando ya se está reproduciendo.
+ if(document.hidden||!preparedVideo.paused)return;
  const limit=(dataSaver||slowNetwork)?2:warmAssets.length;
  while(warmActive<2&&warmCursor<limit){
    const url=warmAssets[warmCursor++];
@@ -71,6 +72,7 @@ document.addEventListener("visibilitychange",()=>{if(!document.hidden)warmNextSc
 /* Primer clic: pedir pantalla completa UNA sola vez. F11 utiliza el modo
    del navegador, distinto a la Fullscreen API. No invocamos exitFullscreen. */
 document.addEventListener("click",()=>{
+ warmVideo();
  if(document.fullscreenElement||!document.fullscreenEnabled)return;
  const available=window.screen?.availHeight||window.innerHeight;
  const alreadyBrowserFullscreen=window.innerHeight>=available-12;
@@ -231,6 +233,7 @@ function render(){
    if(step===videoId)$("#videoHint").textContent="Conexión lenta: esperando video…";
   };
   liveVideo.onpause=()=>{
+   warmNextImage();
    if(step===videoId&&!liveVideo.ended)$("#videoHint").textContent="Video en pausa. Presiona ▶ para continuar.";
   };
   $("#retryVideo").addEventListener("click",()=>{
