@@ -1,0 +1,388 @@
+<!doctype html><html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#12120f">
+<title>Pollazo Galapagueño | Diseño de prueba para la presentación del 23 de octubre</title>
+<meta name="description" content="Vista previa protegida de la presentación de Pollazo Galapagueño, 23 de octubre 2026">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<link rel="preconnect" href="https://blogger.googleusercontent.com" crossorigin>
+<link rel="preconnect" href="https://m4lcas1da6glkve7.public.blob.vercel-storage.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#14130f;--ink:#f7f4ee;--orange:#ff8a21;--soft:#ded1bf;--clay:#8c6d50;--cream:#fff6e7;--line:#ffffff22;--sans:"DM Sans",system-ui,sans-serif;--heading:"Outfit",var(--sans)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#0d0e0d;color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid #ffb562;outline-offset:4px}[hidden]{display:none!important}
+#app{min-height:100dvh;overflow:hidden}
+.wait{width:100%;min-height:100svh;min-height:100dvh;display:flex;flex-direction:column;position:relative;isolation:isolate;background:#15120f}
+.waitBackdrop{position:absolute;z-index:-2;inset:0;overflow:hidden;pointer-events:none;background:radial-gradient(ellipse at 52% 44%,#62340f55,transparent 33%),linear-gradient(140deg,#101313,#1d160f 64%,#11120e)}
+.waitPhoto{position:absolute;top:0;right:0;width:58%;height:100%;overflow:hidden;opacity:.55;-webkit-mask-image:linear-gradient(90deg,transparent,#000 38%);mask-image:linear-gradient(90deg,transparent,#000 38%)}
+.waitPhoto img{width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.8) brightness(.58);animation:slowfloat 16s ease-in-out infinite alternate}
+.waitBackdrop:before{content:"";z-index:2;position:absolute;inset:0;background:linear-gradient(90deg,#0f100ef4 0%,#12110ed7 45%,#10100b58 100%),radial-gradient(ellipse at 62% 53%,#d463112b,transparent 33%)}
+.waitGrain{position:absolute;z-index:3;inset:0;opacity:.27;mix-blend-mode:soft-light;background-image:radial-gradient(#fff8 0.5px,transparent .5px);background-size:4px 4px}
+@keyframes slowfloat{from{transform:scale(1.02) translateX(-1%)}to{transform:scale(1.12) translateX(2%)}}
+.waitTop{padding:clamp(18px,3vw,42px) clamp(23px,4.9vw,90px);display:flex;align-items:center;justify-content:space-between;gap:15px;position:relative;z-index:5}
+.miniBrand{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:900;letter-spacing:.12em}
+.miniBrand i{display:block;width:12px;height:12px;transform:rotate(45deg);background:var(--orange);border-radius:2px}
+.waitTopRight{display:flex;align-items:center;gap:11px;color:#c7aa89;font-size:10px;font-weight:750;letter-spacing:.17em;text-align:right}.glowDot{width:7px;height:7px;background:#ffa852;border-radius:50%;box-shadow:0 0 0 5px #f88c2444,0 0 17px #ff6d20;animation:pulseDot 3s ease-in-out infinite}
+@keyframes pulseDot{50%{box-shadow:0 0 0 10px #f88c2408,0 0 26px #ff6d20}}
+.waitCore{padding:0 clamp(23px,5vw,92px);flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);align-items:center;gap:clamp(20px,5vw,100px);max-width:1800px;margin:0 auto;width:100%;position:relative}
+.waitContent{max-width:880px;position:relative;z-index:4;padding:20px 0 30px;animation:rise 1.1s cubic-bezier(.17,.72,.19,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.topline{font-size:10px;font-weight:900;letter-spacing:.28em;color:#ffad64;display:flex;align-items:center;gap:13px}.topline:before{content:"";height:1px;width:41px;background:#ff8c31}
+.heroBrandBox{width:min(100%,610px);height:clamp(170px,21vw,300px);position:relative;margin:clamp(15px,3vw,38px) 0 10px;display:flex;align-items:center;justify-content:center;isolation:isolate}
+.heroBrandBox:before{content:"";position:absolute;width:min(470px,85%);height:140px;filter:blur(66px);background:#f07a2555;border-radius:50%;z-index:-1;animation:halo 7s ease-in-out infinite alternate}
+.heroBrandBox:after{content:"";position:absolute;width:min(700px,105%);aspect-ratio:1;border:1px solid #ffac3821;border-radius:50%;z-index:-2;animation:spin 70s linear infinite;box-shadow:0 0 0 40px #ff9a2007,0 0 0 98px #ff9a2004}
+@keyframes halo{to{transform:scale(1.3);opacity:.45}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.heroLogo{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 20px 22px #0007);animation:logoLevitate 7s ease-in-out infinite}
+@keyframes logoLevitate{50%{transform:translateY(-9px) rotate(.4deg)}}
+.waitContent h1{font-family:var(--heading);font-size:clamp(38px,4.6vw,69px);line-height:1.03;letter-spacing:-.065em;font-weight:800;margin:15px 0 18px;max-width:780px}
+.waitContent h1 em{font-style:normal;color:var(--orange)}.waitIntro{max-width:570px;color:#d2c0ad;font-size:clamp(15px,1.3vw,18px);line-height:1.7;margin:0}
+.waitBtns{display:flex;flex-wrap:wrap;gap:12px;margin-top:31px}
+.mainStart,.altStart{display:inline-flex;align-items:center;gap:14px;justify-content:center;border-radius:100px;border:1px solid #ffa24e;min-height:57px;padding:0 25px;font-size:12px;font-weight:900;letter-spacing:.04em;transition:transform .25s,background .25s}
+.mainStart{background:linear-gradient(115deg,#ffb04d,#f37219);color:#26180b;box-shadow:0 12px 43px #fc71292f}
+.mainStart:hover,.altStart:hover{transform:translateY(-3px)}.mainStart span{background:#2b180e2b;border-radius:50%;width:26px;height:26px;display:grid;place-items:center}
+.altStart{background:#ffffff0d;color:#f9e1ca;border-color:#ffffff50;backdrop-filter:blur(12px)}
+.waitKeyboard{display:flex;align-items:center;gap:10px;margin-top:23px;font-size:11px;color:#9f9488}
+.keycap{display:inline-flex;align-items:center;gap:8px;padding:5px 8px;border:1px solid #c8ae9344;border-radius:7px;color:#e2bd95}
+.waitProduct{position:relative;align-self:center;justify-self:center;width:100%;max-width:600px;aspect-ratio:4/5;max-height:68vh;border-radius:30px;padding:12px;transform:rotate(2deg);background:linear-gradient(155deg,#f2c79348,#f1a15212 42%,#ffffff0b);border:1px solid #ffcb9d4d;box-shadow:0 34px 110px #0009;animation:productFloat 11s ease-in-out infinite alternate}
+@keyframes productFloat{to{transform:translateY(-13px) rotate(-1deg)}}
+.productPhoto{height:100%;width:100%;border-radius:22px;overflow:hidden;background:#343126;position:relative}
+.productPhoto img{height:100%;width:100%;object-fit:cover;object-position:center;filter:brightness(.9) saturate(.9)}
+.productPhoto:after{position:absolute;content:"";inset:0;background:linear-gradient(180deg,#0005 0%,transparent 30%,#160e09bb 100%)}
+.productTag{position:absolute;z-index:3;top:24px;left:24px;padding:9px 12px;border:1px solid #ffffff8e;background:#15130fb3;backdrop-filter:blur(10px);border-radius:100px;color:#fff8ee;font-size:10px;letter-spacing:.12em;font-weight:850}
+.productCaption{position:absolute;z-index:3;bottom:27px;left:27px;right:27px;display:flex;align-items:end;justify-content:space-between;gap:10px}
+.productCaption strong{font-size:clamp(22px,2.4vw,33px);font-family:var(--heading);line-height:1.13;letter-spacing:-.05em}.productCaption small{font-size:10px;letter-spacing:.1em;color:#e8cba9;white-space:nowrap}
+.waitFooter{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 clamp(23px,4.9vw,90px);padding:22px 0 27px;border-top:1px solid #fff3;position:relative;z-index:4;font-size:10px;letter-spacing:.16em;color:#ac9983;font-weight:850}
+.waitFooter b{color:#ffad65}
+.waitFooter .ticker{display:flex;align-items:center;gap:5px}
+.ticker i{display:block;width:3px;height:12px;background:#f78d40;border-radius:4px;animation:bars 1.4s ease-in-out infinite alternate}
+.ticker i:nth-child(2){animation-delay:-.5s}.ticker i:nth-child(3){animation-delay:-.95s}.ticker i:nth-child(4){animation-delay:-.2s}.ticker i:nth-child(5){animation-delay:-.7s}
+@keyframes bars{to{height:24px;opacity:.32}}
+.experience{min-height:100svh;min-height:100dvh;display:flex;flex-direction:column;background:#13130f}
+.expTop{height:86px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:8px clamp(18px,3vw,52px);gap:20px;background:#15130f;border-bottom:1px solid #ffffff19}
+.expTop .brandBtn{display:flex;align-items:center;justify-content:center;padding:3px;border:0;background:#fff8ed;border-radius:12px;height:67px;width:158px;overflow:hidden}
+.expTop .brandBtn img{width:100%;height:100%;object-fit:contain}
+.expTopTitle{margin-right:auto;display:flex;flex-direction:column;gap:4px}
+.expTopTitle small{color:#ff9f56;font-size:9px;letter-spacing:.2em;font-weight:900}
+.expTopTitle strong{font-size:12px;letter-spacing:.01em}
+.expTools{display:flex;align-items:center;gap:8px}
+.expTools button{min-height:39px;color:#e0c7ac;font-weight:750;font-size:11px;border-radius:100px;border:1px solid #ffffff37;padding:8px 13px;background:transparent;white-space:nowrap}
+.expTools button[aria-pressed=true]{border-color:#f99448;color:#ffb56f;background:#ff87251b}
+.expTools button:hover{background:#ffffff12}
+.stageHost{flex:1;min-height:0;padding:clamp(10px,1.5vw,25px);display:grid;place-items:center}
+.scene{width:100%;max-width:1680px;min-height:clamp(510px,calc(100dvh - 183px),930px);position:relative;overflow:hidden;border:1px solid #ffffff1d;border-radius:18px;background:#211a15;isolation:isolate;animation:sceneReveal .52s cubic-bezier(.16,.7,.2,1) both;box-shadow:0 20px 70px #0006}
+@keyframes sceneReveal{from{opacity:.4;transform:translateY(12px) scale(.992)}to{opacity:1;transform:none}}
+.scene.photoScene{display:grid;grid-template-columns:minmax(0,43%) minmax(0,57%);background:#eee6da;color:#251c14}
+.scene.photoScene.reverse{grid-template-columns:minmax(0,57%) minmax(0,43%)}
+.photoScene.reverse .photoHalf{grid-column:1;grid-row:1}
+.photoScene.reverse .textHalf{grid-column:2;grid-row:1}
+.textHalf{z-index:3;position:relative;padding:clamp(33px,5vw,84px);display:flex;flex-direction:column;justify-content:center;min-width:0;background:radial-gradient(circle at 0% 100%,#ffd19838,transparent 48%),#f8f2e9}
+.textHalf.darkCopy{background:#181a18;color:white}
+.textHalf.darkCopy .sceneBody{color:#d5c6b4}
+.sectionStep{font-size:10px;letter-spacing:.22em;font-weight:900;color:#c66827;display:flex;align-items:center;gap:10px}
+.sectionStep:before{display:block;content:"";width:37px;height:2px;background:#dc832f}
+.textHalf h2{font-family:var(--heading);font-size:clamp(37px,4.15vw,78px);letter-spacing:-.074em;font-weight:850;line-height:1.055;margin:24px 0 25px;text-wrap:balance}
+.sceneBody{font-size:clamp(14px,1.2vw,19px);line-height:1.68;max-width:540px;color:#68594d;margin:0}
+.sceneTags{display:flex;gap:8px;flex-wrap:wrap;margin-top:27px}
+.sceneTags span{border:1px solid #d8c8b7;border-radius:100px;padding:9px 12px;font-size:10px;letter-spacing:.08em;font-weight:850;color:#a85b2d}
+.photoHalf{position:relative;overflow:hidden;background:#d8c8ac;min-height:390px}
+.photoBlur{position:absolute;inset:-35px;background-image:var(--back);background-position:center;background-size:cover;filter:blur(28px) brightness(.7)}
+.mainPhoto{position:absolute;z-index:2;width:100%;height:100%;object-fit:contain;object-position:center;filter:drop-shadow(0 10px 28px #0002)}
+.photoHalf:after{pointer-events:none;content:"";position:absolute;z-index:3;inset:0;background:linear-gradient(180deg,#17110a52,transparent 30%,transparent 70%,#130c0890)}
+.photoEyebrow{position:absolute;z-index:4;top:30px;left:28px;font-size:10px;letter-spacing:.18em;font-weight:900;color:#fff;text-shadow:0 2px 10px #0009}
+.photoFoot{position:absolute;z-index:4;bottom:25px;left:28px;right:28px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.photoFoot small{font-size:10px;letter-spacing:.16em;font-weight:900;color:white;text-shadow:0 2px 8px #0009}
+.expandBtn{color:#fff;border:1px solid #ffffff8c;background:#241e16ac;backdrop-filter:blur(10px);border-radius:100px;padding:10px 16px;font-size:11px;font-weight:850}
+.expandBtn:hover{background:#ef862d}
+.scene.photoScene.heroScene{display:block;background:#171713;color:white}
+.heroScene .heroFullPhoto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.5) saturate(.85)}
+.heroScene .heroPhotoWash{position:absolute;inset:0;background:linear-gradient(90deg,#0b100ced 0%,#0e1109ba 55%,#0e0f0a20 100%)}
+.heroScene .heroStory{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(32px,6vw,104px);max-width:980px}
+.heroStory h2{font-family:var(--heading);font-size:clamp(56px,7vw,126px);font-weight:900;letter-spacing:-.08em;line-height:.99;margin:22px 0}
+.heroStory h2 span{color:#ff9c3e}
+.heroStory>p{font-size:clamp(14px,1.6vw,21px);color:#e8d9c7;line-height:1.55;max-width:700px}
+.heroStory .sceneStamp{font-size:10px;letter-spacing:.22em;font-weight:900;color:#ffb982}
+.heroSide{position:absolute;z-index:2;top:36px;right:45px;font-size:10px;letter-spacing:.16em;font-weight:900;color:#fff9}
+.scene.videoScene{background:#0d0e0e;display:flex;flex-direction:column;padding:clamp(14px,2.1vw,31px);gap:12px}
+.filmTop{display:flex;justify-content:space-between;gap:10px;align-items:end;color:white}
+.filmTop span{font-size:10px;font-weight:900;letter-spacing:.18em;color:#ffad68}
+.filmTop h2{font-size:clamp(24px,2.6vw,42px);margin:8px 0 4px;font-family:var(--heading);letter-spacing:-.05em}
+.filmTop small{font-size:11px;color:#a9a9a4}
+.videoHolder{min-height:260px;flex:1;display:grid;place-items:center;position:relative;overflow:hidden;border:1px solid #fff3;border-radius:10px;background:black}
+.videoHolder video{display:block;width:100%;height:100%;max-height:calc(100dvh - 325px);max-width:min(100%,1350px);object-fit:contain;background:#000}
+.videoHint{font-size:12px;color:#f2cda7;min-height:20px;display:flex;align-items:center;gap:8px}
+.videoHint small{margin-left:auto;color:#a1a3a0}
+.videoMissing{position:absolute;z-index:5;inset:0;display:grid;place-items:center;align-content:center;gap:16px;background:#160f0eea;color:#eed6bc}
+.videoMissing button{border:0;background:#f58326;color:#170c08;border-radius:100px;padding:11px 17px;font-weight:900}
+.scene.duoScene{display:grid;grid-template-columns:minmax(0,33%) minmax(0,67%);background:#201a15}
+.duoContent{padding:clamp(24px,4vw,66px);display:flex;flex-direction:column;justify-content:center;min-width:0;z-index:4}
+.duoContent h2{font-size:clamp(34px,3.3vw,62px);font-family:var(--heading);letter-spacing:-.062em;line-height:1.07;margin:21px 0 18px}
+.duoContent p{font-size:clamp(13px,1.13vw,17px);line-height:1.6;color:#dcc7b4}
+.duoImages{display:grid;grid-template-columns:1fr 1fr;min-height:100%;gap:3px;background:#31241c}
+.duoImages button{position:relative;display:block;padding:0;border:0;background:#241c18;min-width:0;overflow:hidden}
+.duoImages button:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#000b,transparent 36%)}
+.duoImages button img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+.duoImages button:hover img{transform:scale(1.07)}
+.duoImages button span{position:absolute;bottom:28px;left:20px;z-index:2;color:white;font-size:11px;letter-spacing:.16em;font-weight:900;text-shadow:0 2px 8px #000b}
+.scene.finalScene{background:radial-gradient(ellipse at 50% 48%,#60300f53,transparent 50%),#151514;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:17px;padding:35px}
+.finalGraphic{width:min(470px,60%);max-height:260px;object-fit:contain;filter:drop-shadow(0 16px 24px #0007);animation:logoLevitate 7s ease-in-out infinite}
+.finalKicker{font-size:10px;letter-spacing:.27em;color:#ffb16e;font-weight:900}
+.finalScene h2{font-family:var(--heading);font-size:clamp(43px,5.5vw,90px);letter-spacing:-.069em;line-height:1.06;max-width:1000px;margin:0}
+.finalScene h2 em{font-style:normal;color:#ff963b}
+.finalScene p{font-size:clamp(14px,1.3vw,18px);color:#c7b5a0;max-width:590px;line-height:1.7;margin:4px 0}
+.finalMotto{font-size:10px;letter-spacing:.16em;border-top:1px solid #ffffff36;margin-top:12px;padding-top:18px;color:#ffbf86;font-weight:850}
+.controlDock{height:80px;flex:none;display:flex;align-items:center;padding:10px clamp(18px,3vw,52px);gap:20px;background:#10110e;border-top:1px solid #ffffff1d}
+.dockMeta{display:flex;flex-direction:column;min-width:175px;gap:5px;font-size:11px;font-weight:850;letter-spacing:.06em}
+.dockMeta small{color:#af9379;font-size:10px;letter-spacing:.15em}
+.sceneDots{display:flex;align-items:center;gap:6px;flex:1}
+.sceneDots button{height:6px;border:0;border-radius:9px;background:#ffffff3f;flex:1;min-width:0;padding:0;transition:background .25s,transform .25s}
+.sceneDots button.active{background:#ff9539;transform:scaleY(1.55)}
+.sceneDots button.done{background:#a65a25}
+.sceneDots button:hover{background:#ffc784;transform:scaleY(1.65)}
+.dockActions{margin-left:auto;display:flex;align-items:center;gap:10px}
+.dockActions button{border:1px solid #ffffff48;border-radius:100px;background:transparent;color:white;min-height:46px;padding:0 17px;font-size:12px;font-weight:850}
+.dockActions button:disabled{opacity:.32;cursor:not-allowed}
+.dockActions .forward{border:0;background:#f8872e;color:#191108;padding:0 25px}
+.dockActions .forward:hover{background:#ffaf5e}
+.endCredits{display:flex;justify-content:space-between;gap:14px;padding:8px clamp(18px,3vw,52px);background:#181915;color:#9c907f;font-size:9px;font-weight:750;letter-spacing:.05em}
+.notesPane{position:fixed;z-index:18;right:18px;top:100px;width:min(380px,calc(100vw - 36px));padding:24px 25px;border:1px solid #f7af5c80;border-radius:17px;background:#161a18ed;box-shadow:0 20px 80px #000c;backdrop-filter:blur(22px)}
+.notesPane h3{font-family:var(--heading);font-size:22px;letter-spacing:-.04em;margin:7px 0 10px}
+.notesPane p{font-size:14px;line-height:1.7;color:#eddfcd}
+.notesPane strong{color:#ffad66;font-size:9px;letter-spacing:.15em}
+.notesClose{position:absolute;top:13px;right:13px;background:transparent;color:white;border:1px solid #ffffff77;width:30px;height:30px;border-radius:50%}
+.viewer{border:1px solid #ffffff2f;border-radius:18px;padding:0;width:min(1200px,calc(100vw - 30px));height:min(800px,calc(100dvh - 30px));max-width:none;max-height:none;background:#161614;color:white;overflow:hidden}
+.viewer::backdrop{background:#050604dc;backdrop-filter:blur(13px)}
+.viewerInner{display:flex;flex-direction:column;height:100%}
+.viewerHeader{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 22px;border-bottom:1px solid #ffffff24}
+.viewerHeader h3{font-family:var(--heading);font-size:22px;margin:0}.viewerHeader button{background:#ffffff22;border:1px solid #fff6;border-radius:50%;color:white;width:36px;height:36px}
+.viewerMedia{display:grid;place-items:center;position:relative;min-height:0;flex:1;padding:15px 65px;background:#0f100f}
+.viewerMedia img{max-width:100%;max-height:100%;object-fit:contain;border-radius:9px}
+.viewerMedia button{position:absolute;top:50%;transform:translateY(-50%);border:1px solid #fff7;background:#272b28;color:#fff;width:44px;height:44px;border-radius:50%;font-size:22px}
+.viewerMedia button:first-of-type{left:12px}.viewerMedia button:last-of-type{right:12px}
+.viewerFooter{padding:14px 22px;border-top:1px solid #ffffff27;color:#cfbaa5;font-size:10px;letter-spacing:.12em;display:flex;justify-content:space-between}
+@media(max-width:1120px){.waitCore{grid-template-columns:minmax(0,1.15fr) minmax(200px,.85fr);gap:20px}.waitProduct{max-height:62vh}.textHalf{padding:38px}.expTopTitle{display:none}}
+@media(max-width:850px){
+.waitCore{grid-template-columns:1fr;gap:10px;padding:12px 24px 22px}.waitContent{padding:0}.heroBrandBox{height:180px;max-width:410px;margin:10px 0}.waitContent h1{font-size:clamp(40px,7vw,67px)}.waitProduct{display:none}
+.waitTop{padding:18px 24px}.waitFooter{margin:0 24px;padding:17px 0}.waitTopRight{font-size:8px}
+.expTop{height:75px;padding:7px 15px}.expTop .brandBtn{height:58px;width:130px}.expTools{gap:4px}.expTools button{font-size:10px;padding:8px}.expTools .fullscreenBtn{display:none}
+.scene{min-height:670px}
+.scene.photoScene,.scene.photoScene.reverse{grid-template-columns:1fr;grid-template-rows:minmax(280px,auto) minmax(330px,1fr)}
+.scene.photoScene .textHalf,.scene.photoScene.reverse .textHalf{grid-column:1;grid-row:1}
+.scene.photoScene .photoHalf,.scene.photoScene.reverse .photoHalf{grid-column:1;grid-row:2}
+.textHalf{padding:35px}.textHalf h2{font-size:clamp(39px,6vw,54px);margin:17px 0}.sceneBody{font-size:15px}
+.scene.duoScene{grid-template-columns:1fr;grid-template-rows:minmax(260px,auto) minmax(330px,1fr)}
+.duoContent{padding:35px}.duoImages{min-height:330px}
+.controlDock{height:72px;padding:10px 15px}.dockMeta{min-width:112px;font-size:10px}
+.videoHolder video{max-height:550px}
+}
+@media(max-width:600px){
+.waitTopRight{max-width:150px;letter-spacing:.04em}.miniBrand{font-size:10px}
+.waitContent h1{font-size:clamp(42px,10vw,59px)}.waitIntro{font-size:14px}
+.waitBtns{gap:8px;margin-top:24px}.mainStart,.altStart{width:100%;min-height:51px}
+.waitFooter{font-size:8px;letter-spacing:.05em}.waitFooter .ticker{display:none}
+.stageHost{padding:7px}.scene{min-height:580px;border-radius:12px}.scene.photoScene{grid-template-rows:minmax(280px,auto) minmax(290px,1fr)}
+.textHalf{padding:27px}.textHalf h2{font-size:clamp(34px,8.2vw,49px)}.sceneBody{font-size:13px}
+.sectionStep{font-size:9px}.sceneTags{gap:5px;margin-top:15px}.sceneTags span{font-size:8px}
+.photoHalf{min-height:290px}.photoEyebrow{left:17px;top:18px;font-size:9px}.photoFoot{left:17px;right:17px;bottom:18px}.photoFoot small{font-size:8px;max-width:140px}.expandBtn{font-size:10px;padding:9px}
+.heroStory{padding:27px}.heroStory h2{font-size:clamp(49px,12vw,74px)}.heroSide{top:17px;right:15px;font-size:8px}
+.duoContent{padding:26px}.duoImages button span{font-size:9px;left:11px;bottom:13px}
+.filmTop h2{font-size:22px}.filmTop small{display:none}.scene.videoScene{min-height:390px;padding:11px}
+.videoHolder{min-height:200px}.videoHolder video{max-height:62vh}.videoHint{font-size:10px}
+.expTools button{padding:7px;font-size:9px}.expTools .hideMobile{display:none}
+.dockMeta{display:none}.dockActions{gap:5px}.dockActions button{padding:0 10px;min-height:38px;font-size:10px}.sceneDots{gap:3px}
+.endCredits{padding:9px 14px;line-height:1.5;flex-wrap:wrap;font-size:8px}
+.finalGraphic{width:min(380px,82%);max-height:200px}.finalScene h2{font-size:clamp(43px,9vw,61px)}
+.viewerMedia{padding:10px 38px}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style></head><body>
+<div id="app">
+<section class="wait" id="hold" aria-labelledby="waitTitle">
+ <div class="waitBackdrop" aria-hidden="true">
+  <div class="waitPhoto"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg0M6eW4DuzGMoyV9k0BGSsNYZTNd0UBsXjztg7Enw2U0sHlO0EIRUebCFhVv3gvjaPAi-2eQrM9PO3LJDdKqKlyfjbBGmJ3XWgjxUqokaE5aShUqvG5X1gRLon6UlGyvfzDJRO2umW1YgTujBeqZ2qsioUJBIr5JrxBhLmrlkeTA0Buk3ZUDQ0mkPY6lo/s1600/image.png" alt=""></div><div class="waitGrain"></div>
+ </div>
+ <header class="waitTop">
+  <div class="miniBrand"><i></i> POLLAZO GALAPAGUEÑO</div>
+  <div class="waitTopRight"><span class="glowDot"></span> PRESENTACIÓN · 23 OCTUBRE 2026 <span style="color:#ffb067">/</span> SANTA CRUZ</div>
+ </header>
+ <main class="waitCore">
+  <div class="waitContent">
+   <div class="topline">DEL CUIDADO A CADA ENTREGA</div>
+   <div class="heroBrandBox"><img class="heroLogo" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPiFlnDAIqYkcjYOq7GqeHClxkSC9yrmNm0UypICcP-HfjzV2zxtWUrPqqYrYgU-acx7q4lHjYuN4qIqrxozuphAsy0Ezq5dhZy0u5ZG5rKH2xC7OKyI-n4HwlhLQ2WZKj6ydM1UOLEKw_LDh04yQEqYU_QuA1OqAB90XfhmZ9fw-Rzkvm4TNRvV180YQ/s1600/image.png" alt="Logotipo de Pollazo Galapagueño"></div>
+   <h1 id="waitTitle">Nuestra historia <em>comienza aquí.</em></h1>
+   <p class="waitIntro">Un recorrido por las personas, las instalaciones y el trabajo detrás de cada producto de Pollazo Galapagueño.</p>
+   <div class="waitBtns">
+    <button class="mainStart" id="startManual"><span>▶</span> COMENZAR PRESENTACIÓN <b aria-hidden="true">↗</b></button>
+    <button class="altStart" id="startAuto">↻ &nbsp; VER EN AUTOMÁTICO</button>
+   </div>
+   <div class="waitKeyboard"><span class="keycap">↵ Enter</span> Pulsa Enter para iniciar. La pantalla permanece en espera hasta entonces.</div>
+  </div>
+  <aside class="waitProduct" aria-label="Producto de Pollazo Galapagueño">
+   <div class="productPhoto"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlQpxGdvW92bMS1ui0IWAKPesrfYWDytrHoxYh8MWl_owF7WHxxlAeSGGWXR3NexCsUg2WdRvtwfc-oDLKAE-Qpu1fePYSkBNVkkDfviMdEKplHnXAdD4aFxP0tukaZ6QtUdOQ__s_MMxYMLAiiqd7FTdzGXWo3keYeCTNHgDQ8Ni2vLvH6m_-Gdk4Q3w/s1600/image.png" alt="Pollo crudo enfundado de Pollazo Galapagueño"></div>
+   <span class="productTag">NUESTRO PRODUCTO</span>
+   <div class="productCaption"><strong>Una marca.<br>Un recorrido.</strong><small>SANTA CRUZ<br>GALÁPAGOS</small></div>
+  </aside>
+ </main>
+ <footer class="waitFooter"><span>UNA PRESENTACIÓN QUE CUENTA <b>NUESTRA HISTORIA</b></span><div class="ticker" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><span>¡EL NÚMERO UNO EN EL MERCADO!</span></footer>
+</section>
+<div class="experience" id="experience" hidden>
+ <header class="expTop">
+  <button class="brandBtn" id="expHome" title="Volver a la bienvenida" aria-label="Volver a la bienvenida"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPiFlnDAIqYkcjYOq7GqeHClxkSC9yrmNm0UypICcP-HfjzV2zxtWUrPqqYrYgU-acx7q4lHjYuN4qIqrxozuphAsy0Ezq5dhZy0u5ZG5rKH2xC7OKyI-n4HwlhLQ2WZKj6ydM1UOLEKw_LDh04yQEqYU_QuA1OqAB90XfhmZ9fw-Rzkvm4TNRvV180YQ/s1600/image.png" alt="Pollazo Galapagueño"></button>
+  <div class="expTopTitle"><small>RECORRIDO INTERACTIVO</small><strong>Pollazo Galapagueño · 23 octubre 2026</strong></div>
+  <nav class="expTools" aria-label="Herramientas de presentación">
+   <button type="button" id="notesToggle">☷ Notas</button>
+   <button type="button" id="sound" aria-pressed="false" class="hideMobile">♫ Sonido no</button>
+   <button type="button" id="auto" aria-pressed="false">↻ Manual</button>
+   <button type="button" id="full" class="fullscreenBtn">⛶ Pantalla completa</button>
+  </nav>
+ </header>
+ <main id="stage" class="stageHost" aria-live="polite"></main>
+ <footer class="controlDock">
+  <div class="dockMeta"><span id="dockLabel">APERTURA</span><small id="dockCounter">01 / 12</small></div>
+  <nav class="sceneDots" id="dots" aria-label="Escenas"></nav>
+  <div class="dockActions"><button type="button" id="prev">←</button><button type="button" id="next" class="forward">Continuar →</button></div>
+ </footer>
+ <div class="endCredits"><span>POLLAZO GALAPAGUEÑO · SANTA CRUZ, GALÁPAGOS</span><span>Diseño de experiencia digital · Stiven Verdesoto</span></div>
+</div>
+<aside id="notes" class="notesPane" hidden aria-label="Guion sugerido para el expositor">
+ <button class="notesClose" type="button" id="notesClose" aria-label="Cerrar notas">×</button><strong>GUION DE APOYO · SOLO SI LO NECESITAS</strong><h3 id="notesTitle">Apertura</h3><p id="notesBody"> </p>
+</aside>
+<dialog id="viewer" class="viewer" aria-labelledby="viewerTitle">
+ <div class="viewerInner"><header class="viewerHeader"><h3 id="viewerTitle">Fotografía</h3><button type="button" id="viewerClose" aria-label="Cerrar">×</button></header>
+  <div class="viewerMedia"><button type="button" id="viewPrev" aria-label="Imagen anterior">‹</button><img id="viewerPhoto" alt=""><button type="button" id="viewNext" aria-label="Imagen siguiente">›</button></div>
+  <footer class="viewerFooter"><span id="viewerSubtitle"></span><span id="viewerCount"></span></footer>
+ </div>
+</dialog>
+</div>
+<script type="application/json" id="contentData">[{"title":"Todo empieza aquí.","label":"INGRESO E INSTALACIONES","chapter":"ORIGEN","body":"Desde el ingreso a nuestras instalaciones, conocemos las etapas que conectan la crianza, la preparación y la entrega de nuestros productos en Santa Cruz.","detail":"Esta imagen introduce el recorrido por las instalaciones del Pollazo Galapagueño y conecta visualmente el origen con las siguientes etapas.","source":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhm8Zh-Pd546b63tQekbcmBoZBTu49z4OnOfpQz3BY96mlTHnk4Uk3P0QybVSyPIYHfOm-Zb9i4Kc0JWSDNw_QM_mzxU2HTTNzLtPsJJEuffMsQZUdMuUFpHivpCg4SzZ2JfRvIMZH6FOAYgb27gPx4Dstdn-wR3so2fz_2OhXAfAXQucYwXoy91o7e60A/s1600/image.png","alt":"Imagen de entrada y presentación del recorrido","gallery":[],"caption":"EL INICIO DE NUESTRO RECORRIDO","footer":"INGRESO · INSTALACIONES · SANTA CRUZ","talk":"Comenzamos por nuestras instalaciones. A continuación veremos el recorrido de Pollazo Galapagueño, desde la crianza hasta la entrega del producto.","tags":["INSTALACIONES","SANTA CRUZ"],"style":"intro"},{"title":"El cuidado comienza desde el primer día.","label":"POLLITOS BEBÉS","chapter":"CRIANZA","body":"El recorrido comienza con la llegada de los pollitos. Desde sus primeros días, acompañamos las etapas de su crecimiento.","detail":"Durante esta etapa conocemos los primeros días de las aves y el entorno donde se desarrolla su crecimiento.","source":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjmbsdztBPDEQkXxFFtSevUKQXHvci3x3vdsdm-yFEFLbmPHDUQg_b3BhtO3_c2ycz9lfSlNeSZDKbHgJPhAa_5WjA3T6essjTnIfK9r2nOdF8YiGdLIJkx3JBlP26qKo8euQCc0Wlks1lhlQBZwpk2AquHJMSY5ya8ba1OGjiulpMUzbUB8IcxLeagNI8/s1600/image.png","alt":"Pollitos bebés en el galpón avícola","gallery":[],"caption":"PRIMEROS DÍAS DE CRIANZA","footer":"CRIANZA · LLEGADA DE LOS POLLITOS","talk":"Aquí podemos observar los primeros días de los pollitos y el entorno donde empieza su crecimiento.","tags":["CUIDADO","TRABAJO DIARIO"],"style":"right"},{"title":"Alimentar también es cuidar.","label":"ALIMENTACIÓN","chapter":"CRIANZA","body":"La alimentación forma parte del trabajo diario en los galpones, donde los comederos permiten el acceso de las aves a su alimento.","detail":"En esta etapa se muestran los comederos y las tareas de alimentación que acompañan el crecimiento de las aves.","source":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiGDMBpHpo1p3ifr5AYhQTB0AsMhfaoQDWLwPDVreBZY2JVToff8p_hi6vttwti4ntuGLzajzxyhSUQfevRHWfzTTlKIdf2cS17XLH2PHYQPVpenhQF7lAF4L4dNP5YmadJrayXDoLcayRpcLbu-KRKIKYPbrKzPvLaKylyQVfKapPqyW8KdxtsRB7jcpM/s1600/image.png","alt":"Pollitos y comederos durante la alimentación","gallery":[],"caption":"ALIMENTACIÓN EN LOS GALPONES","footer":"COMEDEROS · ALIMENTACIÓN","talk":"En esta etapa mostramos el área de alimentación y los comederos que forman parte del trabajo cotidiano.","tags":["CUIDADO","TRABAJO DIARIO"],"style":"left"},{"title":"El agua es parte de cada jornada.","label":"AGUA Y BEBEDEROS","chapter":"CRIANZA","body":"Desde las instalaciones de suministro y las tuberías hasta los bebederos, cada elemento forma parte del funcionamiento cotidiano de los galpones.","detail":"Observa dos partes del suministro de agua: los bebederos utilizados en el galpón y los filtros del sistema. Las imágenes cambian automáticamente para mostrar ambas instalaciones.","source":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgSF5CC2_DG_N5FGyVwJVAGsNnpHoZc6slNmRdo-IEwThZ9rNOmpH9IW99Nm3POHZo2SCqtHKMY5HGtRnCM_5ohKatbGTD9ANztNotlPEn2Mi_af1FuoyoYcm2oVR06bu1VTLxvBe0Op0jadfJ0aB3BchnbQfmmn_LStSYJVuS7K4V5fadJMzyKJjzskqk/s1600/image.png","alt":"Sistema de agua y bebederos en el galpón","gallery":[{"src":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgSF5CC2_DG_N5FGyVwJVAGsNnpHoZc6slNmRdo-IEwThZ9rNOmpH9IW99Nm3POHZo2SCqtHKMY5HGtRnCM_5ohKatbGTD9ANztNotlPEn2Mi_af1FuoyoYcm2oVR06bu1VTLxvBe0Op0jadfJ0aB3BchnbQfmmn_LStSYJVuS7K4V5fadJMzyKJjzskqk/s1600/image.png","alt":"Bebederos y suministro de agua en el galpón","label":"BEBEDEROS"},{"src":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjOUY_KGxqPaf7gaSV279yw-RnAw2XNLsXjiKSPYwWF13hGjuTjcyPPeYGs98rMvMAuiB38oq0OV-PbJlgHGQQZ0CpYF4uHSKZHqwtKYXBf5MKUfVfHspsR9v3D0IIiKOzZvwVyLp8VLNo1x-DWEUs-dwBnSfQ7Nqq6ayTxtIAkGjli2and0Vj8AZbjRMY/s1600/image.png","alt":"Filtros del sistema de suministro de agua","label":"FILTROS DE AGUA"}],"caption":"SUMINISTRO, FILTROS Y BEBEDEROS","footer":"AGUA · TUBERÍAS · BEBEDEROS","talk":"Aquí vemos los bebederos y los filtros de agua, dos elementos importantes del funcionamiento del galpón.","tags":["CUIDADO","TRABAJO DIARIO"],"style":"duo"},{"title":"Hay personas detrás de cada proceso.","label":"PERSONAL Y SUPERVISIÓN","chapter":"PERSONAS","body":"Nuestro equipo participa en las actividades diarias, la supervisión y la preparación del producto, aportando esfuerzo y dedicación.","detail":"Cada etapa de la actividad requiere coordinación, trabajo y atención de las personas que forman parte del proceso.","source":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJ3zo8ByHtFnb4d-wL8CXClKfQix9nuUW1WLOp2MnUqeSEA36jNAO4bn8nHRLipMlWOwqZ_XopJNGJ0Nib8QM4D9N8QyVBrQZwPvEhyziePG7wWmL6TfFUSG3RM12-ql_JSGh78BJ10WTknZ6PChtTzPiifXYjrciEcjNURNHGx3vGam7mcL6RFBc_Aes/s1600/image.png","alt":"Equipo de personal y supervisión","gallery":[],"caption":"EL TRABAJO DE NUESTRO EQUIPO","footer":"PERSONAL · TRABAJO DIARIO","talk":"Este trabajo es posible gracias a las personas que participan en las actividades diarias y la supervisión.","tags":["EQUIPO","DEDICACIÓN"],"style":"people"},{"title":"Preparar. Empacar. Continuar.","label":"PREPARACIÓN Y EMPAQUE","chapter":"PRODUCTO","body":"El recorrido continúa hacia el área de preparación, donde el pollo crudo se coloca en su empaque con la identidad del Pollazo Galapagueño.","detail":"Conoce la etapa de presentación del producto y el trabajo de empaque que lo prepara para los siguientes procesos.","source":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg0M6eW4DuzGMoyV9k0BGSsNYZTNd0UBsXjztg7Enw2U0sHlO0EIRUebCFhVv3gvjaPAi-2eQrM9PO3LJDdKqKlyfjbBGmJ3XWgjxUqokaE5aShUqvG5X1gRLon6UlGyvfzDJRO2umW1YgTujBeqZ2qsioUJBIr5JrxBhLmrlkeTA0Buk3ZUDQ0mkPY6lo/s1600/image.png","alt":"Proceso de preparación y enfundado del pollo","gallery":[],"caption":"PREPARACIÓN Y EMPAQUE","footer":"ÁREA DE PREPARACIÓN · EMPAQUE","talk":"Seguimos con la etapa de preparación y empaque del pollo crudo, tal como llega a su presentación comercial.","tags":["EMPAQUE","PRESENTACIÓN"],"style":"right"},{"title":"Nuestra identidad, en cada empaque.","label":"PRODUCTO EMPACADO","chapter":"PRODUCTO","body":"El pollo crudo empacado llega a su presentación final, con los colores y la identidad de la marca.","detail":"La presentación empacada ayuda a reconocer el producto y la identidad visual de la empresa.","source":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlQpxGdvW92bMS1ui0IWAKPesrfYWDytrHoxYh8MWl_owF7WHxxlAeSGGWXR3NexCsUg2WdRvtwfc-oDLKAE-Qpu1fePYSkBNVkkDfviMdEKplHnXAdD4aFxP0tukaZ6QtUdOQ__s_MMxYMLAiiqd7FTdzGXWo3keYeCTNHgDQ8Ni2vLvH6m_-Gdk4Q3w/s1600/image.png","alt":"Pollo crudo en el empaque de Pollazo Galapagueño","gallery":[],"caption":"PRESENTACIÓN DEL PRODUCTO","footer":"PRODUCTO · IDENTIDAD DE MARCA","talk":"Aquí podemos observar el producto ya enfundado, con la presentación que identifica a nuestra marca.","tags":["EMPAQUE","PRESENTACIÓN"],"style":"pack"},{"title":"El recorrido sigue en movimiento.","label":"TRANSPORTE Y DISTRIBUCIÓN","chapter":"DISTRIBUCIÓN","body":"Después del empaque y la conservación refrigerada, los productos se preparan para salir hacia los diferentes puntos de entrega.","detail":"El recorrido incluye la preparación del transporte y el traslado del producto hacia los puntos de entrega.","source":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjht_vnDY6pUC6c38gIImF1FSQzImw2bqhnWNLo3BE253CoZq3VM15ybeZQzB8akHuVDDJ_33dbLGoO1Xwqm-09dbTQ9jidrtcDaTz5pQRLbMt8i_A__JpGC7VjOC-POFfqd39H8C-Vj5HWmHeFIPZK63BB501OeUQzxbEd1yDADQwPmy7sYpFRDCFJmyg/s1600/image.png","alt":"Vehículo de distribución de Pollazo Galapagueño","gallery":[],"caption":"TRANSPORTE Y DISTRIBUCIÓN","footer":"CONSERVACIÓN · TRANSPORTE","talk":"Una vez preparado, el producto continúa hacia la etapa de transporte y entrega.","tags":["TRANSPORTE","ENTREGA"],"style":"delivery"},{"title":"De nuestras instalaciones a Santa Cruz.","label":"PUNTOS DE VENTA","chapter":"DISTRIBUCIÓN","body":"El recorrido llega a tiendas y puntos de venta de Santa Cruz, acercando los productos del Pollazo Galapagueño a sus clientes.","detail":"Esta etapa muestra el destino del recorrido: los puntos de venta y la conexión con quienes adquieren el producto.","source":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEinCrQQbTEuXChskVZWjnxUJlpbeCQsGv8qm_OOz0NGOJqdhjBJhQu1cbS_2R9YgnIqNQ48KsJsvEpUm3QFkSZkNhwPg-L1XJb81S5SDXwXrt9fwHNIGosVGnwQvyI3tUh7ZDaP7bIlYwWzD5r3DabYYuBANi81YGOt2tLSzN-3mFmk42Bj-UzUtTQig6Q/s1600/image.png","alt":"Punto de venta y comercialización de productos","gallery":[],"caption":"LLEGADA A LOS PUNTOS DE VENTA","footer":"ENTREGA · COMERCIO LOCAL","talk":"El recorrido llega a los puntos de venta de Santa Cruz y a los clientes que conocen nuestra marca.","tags":["TRANSPORTE","ENTREGA"],"style":"left"},{"title":"Gracias por conocer nuestra historia.","label":"CIERRE Y MARCA","chapter":"CIERRE","body":"Del cuidado en cada etapa a la confianza en cada entrega. Gracias por acompañarnos. ¿Tienes alguna pregunta? Estamos aquí para conversar.","detail":"Con esto termina la presentación. Invitamos a los visitantes a preguntar sobre los productos, el trabajo de la empresa y su disponibilidad.","source":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjZteixGJnzoj1Dsc-hW252osa1CaAEsKcqOVFNmDYYeVxewkoLp4UcWPEwNa_EhcGT9rxNLiYLF_w0HGHFouREsvoxOVgQDgLiQi6Ce6hSDvsALvffn51YuNK64MxO4Nksmnk2IveSvfAjpNeFhUt2nm8ZqUcqL9xlqD-5hM3DX4daB5Ku5ua872YJGP0/s1600/image.png","alt":"Imagen de cierre e identidad de marca de Pollazo Galapagueño","gallery":[],"caption":"POLLAZO GALAPAGUEÑO","footer":"EL NÚMERO UNO EN EL MERCADO · SANTA CRUZ","talk":"Muchas gracias por acompañarnos. Con gusto podemos responder sus preguntas.","tags":["GRACIAS","GALÁPAGOS"],"style":"end"}]</script>
+<script type="application/json" id="assetData">{"logo":"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPiFlnDAIqYkcjYOq7GqeHClxkSC9yrmNm0UypICcP-HfjzV2zxtWUrPqqYrYgU-acx7q4lHjYuN4qIqrxozuphAsy0Ezq5dhZy0u5ZG5rKH2xC7OKyI-n4HwlhLQ2WZKj6ydM1UOLEKw_LDh04yQEqYU_QuA1OqAB90XfhmZ9fw-Rzkvm4TNRvV180YQ/s1600/image.png","video":"https://m4lcas1da6glkve7.public.blob.vercel-storage.com/lv_0_20261020075359.mp4"}</script>
+<script>
+(function(){
+"use strict";
+const CHAPTERS=JSON.parse(document.getElementById("contentData").textContent);
+const ASSETS=JSON.parse(document.getElementById("assetData").textContent);
+const $=s=>document.querySelector(s);
+const total=CHAPTERS.length+2;
+let current=-1,automatic=false,sfx=false,video=null,autoTimer=null,viewItems=[],viewIndex=0,lastFocus=null,notes=false,startTime=0;
+const h=$("#hold"),exp=$("#experience"),stage=$("#stage"),dots=$("#dots"),viewer=$("#viewer");
+const escapeHtml=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const sceneName=n=>n===0?"Apertura":n===1?"Video narrado":CHAPTERS[n-2]?.label||"Presentación";
+function resetTimer(){if(autoTimer!==null){clearTimeout(autoTimer);autoTimer=null}}
+function playFx(){if(!sfx||window.matchMedia("(prefers-reduced-motion:reduce)").matches)return;try{
+ const ctx=window.__pgAudio||(window.__pgAudio=new (window.AudioContext||window.webkitAudioContext)());
+ const osc=ctx.createOscillator(),gain=ctx.createGain(),t=ctx.currentTime;
+ osc.type="sine";osc.frequency.setValueAtTime(440,t);osc.frequency.exponentialRampToValueAtTime(550,t+.12);
+ gain.gain.setValueAtTime(.0001,t);gain.gain.exponentialRampToValueAtTime(.022,t+.015);gain.gain.exponentialRampToValueAtTime(.0001,t+.18);
+ osc.connect(gain);gain.connect(ctx.destination);osc.start(t);osc.stop(t+.2);
+ }catch(_){}}
+function start(isAuto){automatic=!!isAuto;h.hidden=true;exp.hidden=false;current=0;startTime=Date.now();syncModes();show();scrollTo({top:0,behavior:"instant"})}
+function standby(){resetTimer();if(video){video.pause();video=null}if(viewer.open)viewer.close();exp.hidden=true;h.hidden=false;current=-1;notes=false;$("#notes").hidden=true;scrollTo({top:0,behavior:"instant"})}
+function syncModes(){
+ $("#auto").setAttribute("aria-pressed",String(automatic));
+ $("#auto").textContent=automatic?"↻ Automático":"↻ Manual";
+ $("#sound").setAttribute("aria-pressed",String(sfx));
+ $("#sound").textContent=sfx?"♫ Sonido sí":"♫ Sonido no";
+}
+function goto(n,play){
+ if(n<0)return standby();
+ if(n>=total){if(automatic)return goto(0,false);return standby()}
+ resetTimer();if(video){video.pause();video=null}
+ if(viewer.open)viewer.close();
+ current=n;show();playFx();
+ if(current===1&&play)tryVideo();
+}
+function next(){goto(current+1,current+1===1)}
+function prev(){goto(current-1,false)}
+function autoSchedule(){
+ resetTimer();
+ if(!automatic||current===1||viewer.open||!$("#notes").hidden)return;
+ const ms=current===0?6200:current===total-1?17000:11500;
+ autoTimer=setTimeout(next,ms);
+}
+function show(){
+ const idx=current-2;
+ stage.innerHTML=current===0?opening():current===1?videoScene():idx===9?ending():idx===3?water(CHAPTERS[idx]):idx===0?first(CHAPTERS[idx]):picture(CHAPTERS[idx],idx);
+ dots.innerHTML=Array.from({length:total},(_,i)=>'<button type="button" data-scene="'+i+'" title="'+escapeHtml(sceneName(i))+'" aria-label="Ir a '+escapeHtml(sceneName(i))+'" class="'+(current===i?"active":i<current?"done":"")+'"></button>').join("");
+ $("#dockLabel").textContent=sceneName(current);
+ $("#dockCounter").textContent=String(current+1).padStart(2,"0")+" / "+total;
+ $("#prev").disabled=current===0;
+ $("#next").textContent=current===0?"Ver video →":current===total-1?"Finalizar ↺":"Continuar →";
+ if(current===1){video=$("#narratedVideo");video.addEventListener("ended",()=>{if(automatic){autoTimer=setTimeout(next,1300)}else $("#videoHint").textContent="Video finalizado. Presiona Continuar para avanzar."});video.addEventListener("error",()=>{$("#missingVideo").hidden=false;$("#videoHint").textContent="Video no disponible"});$("#videoSkip").addEventListener("click",next);$("#videoUnmute").addEventListener("click",()=>{video.muted=false;$("#videoUnmute").hidden=true;video.play().catch(()=>{})})}
+ if(current>=2&&current<total-1){
+ const chapter=CHAPTERS[idx];
+ stage.querySelectorAll("[data-open]").forEach(btn=>btn.addEventListener("click",()=>openPhoto(chapter,Number(btn.dataset.open))));
+ }
+ if(notes)renderNotes();
+ autoSchedule();
+}
+function opening(){
+ return '<section class="scene photoScene heroScene" aria-label="Apertura"><img class="heroFullPhoto" src="'+CHAPTERS[0].source+'" alt=""><div class="heroPhotoWash"></div><div class="heroSide">23 OCTUBRE · SANTA CRUZ</div><div class="heroStory"><div class="sceneStamp">POLLAZO GALAPAGUEÑO / PRESENTACIÓN ESPECIAL</div><h2>Detrás de cada entrega, <span>hay una historia.</span></h2><p>Un recorrido por las personas, la crianza, las instalaciones y el trabajo que forman parte de Pollazo Galapagueño.</p></div></section>'
+}
+function videoScene(){
+ return '<section class="scene videoScene" aria-label="Video narrado"><div class="filmTop"><div><span>01 / VIDEO DE PRESENTACIÓN</span><h2>Antes de comenzar, conozca nuestra historia.</h2></div><small>VIDEO NARRADO · APROX. 1:38</small></div><div class="videoHolder"><video id="narratedVideo" src="'+ASSETS.video+'" playsinline controls preload="metadata" aria-label="Video narrado de Pollazo Galapagueño"></video><button id="videoUnmute" class="videoUnmute" type="button" hidden>🔊 Activar narración</button><div id="missingVideo" class="videoMissing" hidden><strong>No se pudo reproducir el video.</strong><button id="videoSkip" type="button">Seguir con las imágenes →</button></div></div><div class="videoHint"><span id="videoHint">Presiona reproducir para escuchar el video.</span><small>Se muestra sin recortes</small></div></section>'
+}
+function first(c){
+ return '<section class="scene photoScene heroScene" aria-label="'+escapeHtml(c.label)+'"><img class="heroFullPhoto" src="'+c.source+'" alt="'+escapeHtml(c.alt)+'"><div class="heroPhotoWash"></div><div class="heroSide">ETAPA 01 / 10</div><div class="heroStory"><div class="sceneStamp">'+escapeHtml(c.label)+'</div><h2>Todo empieza <span>aquí.</span></h2><p>'+escapeHtml(c.body)+'</p><button type="button" class="expandBtn" data-open="0" style="align-self:flex-start;margin-top:20px">Ver fotografía ↗</button></div></section>'
+}
+function picture(c,index){
+ const reverse=index%2===0&&index!==6;
+ const isDark=index===6||index===7;
+ return '<section class="scene photoScene '+(reverse?"reverse":"")+'" aria-label="'+escapeHtml(c.label)+'"><div class="textHalf '+(isDark?"darkCopy":"")+'"><div class="sectionStep">'+String(index+1).padStart(2,"0")+' / 10 · '+escapeHtml(c.chapter)+'</div><h2>'+escapeHtml(c.title)+'</h2><p class="sceneBody">'+escapeHtml(c.body)+'</p><div class="sceneTags">'+c.tags.map(t=>'<span>'+escapeHtml(t)+'</span>').join("")+'</div></div><div class="photoHalf" style="--back:url(&quot;'+c.source+'&quot;)"><div class="photoBlur"></div><img class="mainPhoto" src="'+c.source+'" alt="'+escapeHtml(c.alt)+'"><div class="photoEyebrow">'+escapeHtml(c.label)+'</div><div class="photoFoot"><small>'+escapeHtml(c.caption)+'</small><button type="button" class="expandBtn" data-open="0">Ampliar ↗</button></div></div></section>'
+}
+function water(c){
+ const gallery=c.gallery.length===2?c.gallery:[{src:c.source,alt:c.alt,label:c.caption}];
+ return '<section class="scene duoScene" aria-label="Agua y bebederos"><div class="duoContent"><div class="sectionStep">04 / 10 · CRIANZA</div><h2>'+escapeHtml(c.title)+'</h2><p>'+escapeHtml(c.body)+'</p><div class="sceneTags"><span>SUMINISTRO</span><span>INSTALACIONES</span></div></div><div class="duoImages">'+gallery.map((item,i)=>'<button type="button" data-open="'+i+'" aria-label="Ampliar '+escapeHtml(item.label)+'"><img src="'+item.src+'" alt="'+escapeHtml(item.alt)+'"><span>'+escapeHtml(item.label)+' ↗</span></button>').join("")+'</div></section>'
+}
+function ending(){
+ return '<section class="scene finalScene" aria-label="Cierre"><span class="finalKicker">UN RECORRIDO QUE NOS REPRESENTA</span><img class="finalGraphic" src="'+ASSETS.logo+'" alt="Pollazo Galapagueño"><h2>Gracias por conocer <em>nuestra historia.</em></h2><p>Del cuidado durante la crianza al trabajo de las personas y la entrega del producto. Gracias por acompañarnos.</p><span class="finalMotto">¡EL NÚMERO UNO EN EL MERCADO! · SANTA CRUZ, GALÁPAGOS</span></section>';
+}
+function tryVideo(){if(!video)return;const thisVideo=video;const p=thisVideo.play();if(p&&p.catch)p.catch(async()=>{
+ if(automatic){try{thisVideo.muted=true;await thisVideo.play();if(thisVideo===video){$("#videoUnmute").hidden=false;$("#videoHint").textContent="Video en reproducción sin sonido. Pulsa Activar narración."}return}catch(_){}}
+ if(thisVideo===video)$("#videoHint").textContent="Haz clic en ▶ para reproducir el video.";
+});}
+function openPhoto(c,index){
+ if(!viewer.showModal)return;
+ lastFocus=document.activeElement;
+ viewItems=c.gallery?.length?c.gallery:[{src:c.source,alt:c.alt,label:c.caption}];
+ viewIndex=index;viewer.showModal();updateViewer();autoSchedule();
+}
+function updateViewer(){
+ const item=viewItems[viewIndex],img=$("#viewerPhoto");
+ $("#viewerTitle").textContent=CHAPTERS[current-2].label;
+ img.alt=item.alt||"Fotografía del recorrido";img.src=item.src;
+ $("#viewerSubtitle").textContent=item.label||"FOTOGRAFÍA DEL RECORRIDO";
+ $("#viewerCount").textContent=(viewIndex+1)+" / "+viewItems.length;
+ $("#viewPrev").hidden=$("#viewNext").hidden=viewItems.length<2;
+}
+function switchPhoto(delta){if(viewItems.length<2)return;viewIndex=(viewIndex+delta+viewItems.length)%viewItems.length;updateViewer()}
+function renderNotes(){
+ $("#notesTitle").textContent=sceneName(current);
+ $("#notesBody").textContent=current===0?"Bienvenidos. Vamos a conocer Pollazo Galapagueño y el trabajo detrás de nuestro producto.":current===1?"Ahora vamos a ver un video breve de presentación. Después explicaré las etapas principales.":CHAPTERS[current-2]?.talk||"Muchas gracias por acompañarnos. ¿Tienen preguntas?";
+}
+$("#startManual").addEventListener("click",()=>start(false));
+$("#startAuto").addEventListener("click",()=>start(true));
+$("#expHome").addEventListener("click",standby);
+$("#prev").addEventListener("click",prev);
+$("#next").addEventListener("click",next);
+$("#auto").addEventListener("click",()=>{automatic=!automatic;syncModes();autoSchedule()});
+$("#sound").addEventListener("click",()=>{sfx=!sfx;syncModes();playFx()});
+$("#full").addEventListener("click",()=>{if(!document.fullscreenElement){document.documentElement.requestFullscreen?.().catch(()=>{})}else document.exitFullscreen?.().catch(()=>{})});
+$("#notesToggle").addEventListener("click",()=>{notes=!notes;$("#notes").hidden=!notes;if(notes)renderNotes();autoSchedule()});
+$("#notesClose").addEventListener("click",()=>{notes=false;$("#notes").hidden=true;autoSchedule()});
+dots.addEventListener("click",e=>{let b=e.target.closest("[data-scene]");if(b)goto(Number(b.dataset.scene),false)});
+$("#viewerClose").addEventListener("click",()=>viewer.close());
+$("#viewPrev").addEventListener("click",()=>switchPhoto(-1));
+$("#viewNext").addEventListener("click",()=>switchPhoto(1));
+viewer.addEventListener("click",e=>{if(e.target===viewer)viewer.close()});
+viewer.addEventListener("close",()=>{if(lastFocus?.isConnected)lastFocus.focus({preventScroll:true});autoSchedule()});
+document.addEventListener("keydown",e=>{
+ if(viewer.open){if(e.key==="ArrowRight"){e.preventDefault();switchPhoto(1)}else if(e.key==="ArrowLeft"){e.preventDefault();switchPhoto(-1)}return}
+ if(["INPUT","TEXTAREA","SELECT"].includes(document.activeElement?.tagName)||e.altKey||e.metaKey||e.ctrlKey)return;
+ if(current===-1&&e.key==="Enter"){e.preventDefault();start(false);return}
+ if(current<0)return;
+ if(e.key==="ArrowRight"||e.key==="PageDown"){e.preventDefault();next()}
+ else if(e.key==="ArrowLeft"||e.key==="PageUp"){e.preventDefault();prev()}
+ else if(e.key===" "&&current!==1&&document.activeElement?.tagName!=="BUTTON"){e.preventDefault();next()}
+});
+window.addEventListener("pagehide",()=>{if(video)video.pause()});
+})();</script></body></html>
