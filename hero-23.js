@@ -32,15 +32,6 @@
      img.hidden=false;
      if(key==="background")document.querySelector(".hero23SceneSky")?.classList.add("hero23HasBackground");
      if(key==="subject")document.querySelector(".hero23ProductStage")?.classList.add("hero23HasProduct");
-     // Mismo fotograma de hojas, alineado al lienzo completo: atraviesa
-     // ligeramente la curva y queda delante de ella solo en el borde inferior.
-     if(key==="leavesFront"){
-       const bridge=document.getElementById("hero23BridgeLeavesAsset");
-       if(bridge){
-         bridge.src=img.src;
-         bridge.hidden=false;
-       }
-     }
      if(fallbackId){
        const fallback=document.getElementById(fallbackId)||document.querySelector("."+fallbackId);
        if(fallback)fallback.hidden=true;
