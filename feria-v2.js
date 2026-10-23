@@ -99,14 +99,11 @@ function soundFx(type){
  }catch(_){}
 }
 function clearTimers(){if(autoTimer){clearTimeout(autoTimer);autoTimer=null}if(waterTimer){clearInterval(waterTimer);waterTimer=null}}
-function setMode(on){auto=!!on;$("#autoToggle")?.setAttribute("aria-pressed",String(auto));if($("#autoText"))$("#autoText").textContent=auto?"Automático":"Manual";if(step>=0)scheduleAuto()}
 function enterPresentation(autoRequested){
  auto=!!autoRequested;
  hold.hidden=true;app.hidden=false;
  document.body.style.background="#f8f4ee";
  step=0;
- $("#autoToggle")?.setAttribute("aria-pressed",String(auto));
- if($("#autoText"))$("#autoText").textContent=auto?"Automático":"Manual";
  render();
  window.scrollTo({top:0,behavior:"auto"});
  soundFx("start");
