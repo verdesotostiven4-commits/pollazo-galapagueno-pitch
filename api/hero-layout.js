@@ -1,7 +1,7 @@
-import { get, put } from '@vercel/blob';
-import { createHash, timingSafeEqual } from 'node:crypto';
+import { get, put, list } from '@vercel/blob';
+import { createHash, timingSafeEqual, randomUUID } from 'node:crypto';
 
-const PATH = 'pollazo/editor/portada-layout.json';
+const PREFIX = 'pollazo/editor/portada-';
 const ALLOWED = new Set(['background','subject','leavesBack','leavesFront','logo']);
 const FIELDS = ['x','y','scale','opacity','z','clipTop','clipRight','clipBottom','clipLeft','feather','visible'];
 const ranges = {x:[-120,120],y:[-120,120],scale:[.2,3.5],opacity:[0,1],z:[0,30],
@@ -48,7 +48,19 @@ export default async function handler(request) {
     if(url.pathname!== '/api/hero-layout')return json({error:'Ruta inválida'},404);
     if(request.method==='GET') {
       if(!process.env.BLOB_READ_WRITE_TOKEN)return json({error:'Almacenamiento no configurado'},503);
-      const stored=await get(PATH,{access:'private'});
+
+      // Nombres únicos evitan recuperar una versión antigua de la CDN
+      // después de pulsar Guardar (Blob puede cachear sobrescrituras).
+      let cursor,latest=null;
+      do {
+        const batch=await list({prefix:PREFIX,limit:1000,...(cursor?{cursor}:{})});
+        for(const entry of batch.blobs){
+          if(!latest||entry.pathname>latest)latest=entry.pathname;
+        }
+        cursor=batch.hasMore?batch.cursor:null;
+      }while(cursor);
+      if(!latest)return json({layout:null});
+      const stored=await get(latest,{access:'private'});
       if(!stored)return json({layout:null});
       if(stored.statusCode!==200||!stored.stream)return json({error:'Almacenamiento temporalmente no disponible'},503);
       return json({layout:JSON.parse(await new Response(stored.stream).text())});
@@ -63,8 +75,8 @@ export default async function handler(request) {
     const payload=await request.text();
     if(payload.length>12000)return json({error:'El diseño es demasiado grande'},413);
     const layout=clean(JSON.parse(payload));
-    await put(PATH,JSON.stringify(layout),{
-      access:'private',allowOverwrite:true,addRandomSuffix:false,contentType:'application/json',
+    await put(PREFIX+Date.now()+'-'+randomUUID()+'.json',JSON.stringify(layout),{
+      access:'private',addRandomSuffix:false,contentType:'application/json',
       cacheControlMaxAge:60
     });
     return json({ok:true,layout});
