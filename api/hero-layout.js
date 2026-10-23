@@ -42,9 +42,9 @@ function clean(input) {
   output.updatedAt=new Date().toISOString();
   return output;
 }
-export default async function handler(request) {
+async function handler(request) {
   try {
-    const url=new URL(request.url);
+    const url=new URL(request.url, 'https://'+(request.headers.get('x-forwarded-host')||request.headers.get('host')||'pollazo-galapagueno-pitch.vercel.app'));
     if(url.pathname!== '/api/hero-layout')return json({error:'Ruta inválida'},404);
     if(request.method==='GET') {
       if(!process.env.BLOB_READ_WRITE_TOKEN)return json({error:'Almacenamiento no configurado'},503);
@@ -89,3 +89,7 @@ export default async function handler(request) {
     return json({error:'No se pudo completar la operación. Inténtalo de nuevo.'},503);
   }
 }
+
+// Vercel Web Handler API: default-exported Response objects are ignored.
+export async function GET(request) {return handler(request)}
+export async function PUT(request) {return handler(request)}
