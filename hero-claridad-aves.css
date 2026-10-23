@@ -45,3 +45,55 @@
 @media(prefers-reduced-motion:reduce) {
   .holdScreen.hero23 .hero23BirdFlight {display:none!important;}
 }
+
+/* HOTFIX: evita el flash de fotografías rectangulares durante la carga.
+   JS desoculta las capas juntas y solo entonces activa SceneReady. */
+.holdScreen.hero23:not(.hero23SceneReady) .hero23Scene .hero23FutureAsset {
+  visibility: hidden !important;
+}
+
+/* Una máscara más interior oculta las orillas rectangulares que existen
+   dentro de los PNG originales. Solo se toca el pollo y hojas de abajo. */
+@media(min-width:761px) {
+  .holdScreen.hero23 .hero23ProductStage .hero23SubjectAsset {
+    mask-image: radial-gradient(ellipse 40% 63% at 66% 59%,
+      #000 0%, #000 51%, rgba(0,0,0,.9) 61%,
+      rgba(0,0,0,.5) 78%,transparent 96%) !important;
+    -webkit-mask-image: radial-gradient(ellipse 40% 63% at 66% 59%,
+      #000 0%, #000 51%, rgba(0,0,0,.9) 61%,
+      rgba(0,0,0,.5) 78%,transparent 96%) !important;
+  }
+  .holdScreen.hero23 .hero23Scene .hero23LeavesFrontAsset {
+    mask-image: radial-gradient(ellipse 27% 34% at 82% 104%,
+      #000 0%,#000 53%,rgba(0,0,0,.9) 64%,
+      rgba(0,0,0,.4) 78%,transparent 95%) !important;
+    -webkit-mask-image: radial-gradient(ellipse 27% 34% at 82% 104%,
+      #000 0%,#000 53%,rgba(0,0,0,.9) 64%,
+      rgba(0,0,0,.4) 78%,transparent 95%) !important;
+    filter:none !important;
+  }
+}
+/* Un pequeño descenso del pollo y de la vegetación de primer plano.
+   Suavidad continua: no deformar, no modificar las otras capas. */
+@keyframes heroFinalChickenLife {
+  0% {transform:translate3d(6%,5.6%,0) scale(.82) rotate(-.2deg)}
+  50% {transform:translate3d(6.18%,4.85%,0) scale(.826) rotate(.12deg)}
+  100% {transform:translate3d(6.35%,5.7%,0) scale(.82) rotate(.25deg)}
+}
+@keyframes heroFinalLeavesFront {
+  0% {transform:translate3d(8%,12%,0) scale(.8) rotate(-1.05deg)}
+  54% {transform:translate3d(8.5%,11.3%,0) scale(.807) rotate(.5deg)}
+  100% {transform:translate3d(9%,10.8%,0) scale(.8) rotate(1.2deg)}
+}
+@keyframes heroFinalChickenLifeMobile {
+  0% {transform:translate3d(7%,5.6%,0) scale(.9)}
+  100% {transform:translate3d(7.4%,4%,0) scale(.905) rotate(.15deg)}
+}
+@media (prefers-reduced-motion:reduce) and (min-width:761px) {
+  .holdScreen.hero23 .hero23ProductStage .hero23SubjectAsset {
+    transform:translate3d(6%,5.6%,0) scale(.82) !important;
+  }
+  .holdScreen.hero23 .hero23Scene .hero23LeavesFrontAsset {
+    transform:translate3d(8%,12%,0) scale(.8) !important;
+  }
+}
