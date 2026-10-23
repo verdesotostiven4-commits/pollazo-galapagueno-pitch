@@ -482,3 +482,20 @@
     transform:translate3d(6%,3%,0) scale(.82)!important;
   }
 }
+
+/* Brisa visible, pero orgánica: cada grupo tiene frecuencia y dirección propia. */
+@keyframes heroFinalLeavesTop {
+  0% {transform:translate3d(6%,-8%,0) scale(.84) rotate(-1deg)}
+  47% {transform:translate3d(6.45%,-8.35%,0) scale(.845) rotate(.65deg)}
+  100% {transform:translate3d(6.95%,-8.85%,0) scale(.84) rotate(1.25deg)}
+}
+@keyframes heroFinalLeavesFront {
+  0% {transform:translate3d(7%,7%,0) scale(.8) rotate(-1.05deg)}
+  54% {transform:translate3d(7.55%,6.35%,0) scale(.807) rotate(.5deg)}
+  100% {transform:translate3d(8.1%,5.8%,0) scale(.8) rotate(1.2deg)}
+}
+@keyframes heroFinalLeavesBlur {
+  0% {transform:translate3d(7%,8%,0) scale(.76) rotate(-1.4deg)}
+  55% {transform:translate3d(7.4%,6.9%,0) scale(.765) rotate(.7deg)}
+  100% {transform:translate3d(8%,6.1%,0) scale(.76) rotate(1.6deg)}
+}
