@@ -143,3 +143,93 @@
  .hero23 *{animation:none!important;transition:none!important}
  .hero23BirdFlight{display:none!important}
 }
+
+
+/* ─── Composición de cinco capas fotográficas con mismo lienzo 16:9 ─── */
+.hero23Scene{isolation:isolate}
+.hero23FutureAsset{pointer-events:none;user-select:none;-webkit-user-drag:none}
+.hero23SceneSky .hero23SkyAsset,
+.hero23ProductStage .hero23SubjectAsset,
+.hero23Scene .hero23LeavesBackAsset,
+.hero23Scene .hero23LeavesFrontAsset,
+.hero23Scene .hero23LeavesBlurAsset{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center center;transform-origin:center;
+  will-change:transform;pointer-events:none;
+}
+.hero23SceneSky.hero23HasBackground .hero23Atmosphere,
+.hero23SceneSky.hero23HasBackground .hero23Sun,
+.hero23SceneSky.hero23HasBackground .hero23Landscape,
+.hero23SceneSky.hero23HasBackground .hero23Rock{opacity:0}
+.hero23SceneSky .hero23SkyAsset{
+ z-index:2;filter:saturate(.98) contrast(.98);
+ animation:hero23PhotoBackground 30s ease-in-out infinite alternate;
+}
+.hero23ProductStage.hero23HasProduct{
+  inset:0;z-index:4;
+  animation:hero23ProductEnter 1.25s cubic-bezier(.18,.85,.25,1) both,hero23ProductFloat 11s ease-in-out 1.25s infinite alternate;
+}
+.hero23ProductStage.hero23HasProduct .hero23ProductGlow{opacity:0}
+.hero23ProductStage.hero23HasProduct .hero23SubjectAsset{
+  object-fit:cover;z-index:4;filter:drop-shadow(0 13px 19px #19201830);
+  -webkit-mask-image:none;mask-image:none;
+}
+.hero23Scene .hero23LeavesBackAsset{
+ z-index:3;inset:0;width:100%;height:100%;opacity:.91;
+ animation:hero23PhotoLeavesBack 12.7s ease-in-out infinite alternate;
+}
+.hero23Scene .hero23LeavesFrontAsset{
+ z-index:6;inset:0;width:100%;height:100%;opacity:.85;
+ animation:hero23PhotoLeavesFront 10.3s ease-in-out infinite alternate;
+}
+.hero23Scene .hero23LeavesBlurAsset{
+ z-index:8;inset:0;width:100%;height:100%;opacity:.54;filter:blur(2.5px);
+ animation:hero23PhotoLeavesBlur 13.2s ease-in-out infinite alternate-reverse;
+}
+/* Bird is behind the main product. Three real photographs are animated
+   as a 3-frame cycle; the existing SVG remains the network-error fallback. */
+.hero23BirdFlight{z-index:3;width:170px;height:90px;left:0;opacity:0}
+.hero23BirdRaster .hero23BirdFrame{
+ position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+ opacity:0;filter:grayscale(1) brightness(.56) sepia(.13) blur(.2px);
+ animation-duration:.51s;animation-timing-function:steps(1,end);
+ animation-iteration-count:infinite;animation-play-state:paused;
+}
+.hero23BirdRaster.hero23BirdFlying .hero23BirdFrame{animation-play-state:running}
+.hero23BirdRaster .hero23BirdFrame0{animation-name:hero23BirdFrameUp}
+.hero23BirdRaster .hero23BirdFrame1{animation-name:hero23BirdFrameMiddle}
+.hero23BirdRaster .hero23BirdFrame2{animation-name:hero23BirdFrameDown}
+@keyframes hero23BirdFrameUp{0%,32.9%{opacity:1}33%,100%{opacity:0}}
+@keyframes hero23BirdFrameMiddle{0%,32.9%{opacity:0}33%,66%{opacity:1}66.1%,100%{opacity:0}}
+@keyframes hero23BirdFrameDown{0%,66%{opacity:0}66.1%,100%{opacity:1}}
+@keyframes hero23PhotoBackground{
+ 0%{transform:scale(1.015) translate3d(-.3%,0,0)}
+ 100%{transform:scale(1.05) translate3d(.7%,-.6%,0)}
+}
+@keyframes hero23PhotoLeavesBack{
+ 0%{transform:scale(1.025) rotate(-.35deg) translate3d(0,0,0)}
+ 100%{transform:scale(1.045) rotate(.7deg) translate3d(0,6px,0)}
+}
+@keyframes hero23PhotoLeavesFront{
+ 0%{transform:scale(1.04) rotate(.25deg) translate3d(-3px,2px,0)}
+ 100%{transform:scale(1.06) rotate(-.65deg) translate3d(3px,-5px,0)}
+}
+@keyframes hero23PhotoLeavesBlur{
+ 0%{transform:scale(1.035) rotate(.7deg) translate3d(3px,0,0)}
+ 100%{transform:scale(1.06) rotate(-.5deg) translate3d(-4px,6px,0)}
+}
+@media(max-width:760px){
+ .hero23Scene .hero23LeavesBackAsset{opacity:.87}
+ .hero23Scene .hero23LeavesFrontAsset{opacity:.77}
+ .hero23Scene .hero23LeavesBlurAsset{opacity:.45}
+ .hero23BirdFlight{width:110px;height:65px}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero23Scene .hero23SkyAsset,
+ .hero23Scene .hero23SubjectAsset,
+ .hero23Scene .hero23LeavesBackAsset,
+ .hero23Scene .hero23LeavesFrontAsset,
+ .hero23Scene .hero23LeavesBlurAsset,
+ .hero23BirdFrame{animation:none!important;transform:none!important}
+ .hero23BirdFlight{display:none!important}
+}
