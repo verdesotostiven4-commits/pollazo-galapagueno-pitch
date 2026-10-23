@@ -588,3 +588,126 @@
     transform: none !important;
   }
 }
+
+
+/* ─────────────────────────────────────────────────────────────────────────
+   FIX DEL REPORTE VISUAL 23/10 — sin imágenes nuevas.
+   El recorte frontal duplicado creaba un RECTÁNGULO sobre el CTA.
+   El producto y las hojas se escala como un único lienzo transparente,
+   evitando que la altura de la ventana amplíe el pollo.
+   ───────────────────────────────────────────────────────────────────────── */
+
+@media (min-width: 761px) {
+  /* No añadir manchas gigantes encima del diseño de referencia. */
+  .holdScreen.hero23::before,
+  .holdScreen.hero23::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .hero23ForegroundBridge { display: none !important; }
+
+  /* Mantener visible el mar y la montaña: el fondo sí cubre el viewport,
+     mientras los recortes transparentes del sujeto conservan escala. */
+  .hero23ProductStage.hero23HasProduct .hero23SubjectAsset,
+  .hero23Scene .hero23LeavesBackAsset,
+  .hero23Scene .hero23LeavesFrontAsset,
+  .hero23Scene .hero23LeavesBlurAsset {
+    object-fit: contain;
+    object-position: center;
+  }
+
+  /* Los distintos elementos ya vienen alineados en archivos 16:9.
+     Movimientos intencionalmente tenues para preservar esa alineación. */
+  .hero23Scene .hero23LeavesBackAsset {
+    opacity: .85;
+    animation: heroReferenceCanopyGap 12.4s ease-in-out infinite alternate;
+  }
+  .hero23Scene .hero23LeavesFrontAsset {
+    opacity: .83;
+    animation: heroReferenceLeavesLower 12s ease-in-out infinite alternate;
+  }
+  .hero23Scene .hero23LeavesBlurAsset {
+    opacity: .19;
+    filter: blur(2px);
+  }
+  .hero23Scene .hero23DepthTint {
+    background: linear-gradient(0deg, rgba(18,32,19,.08), transparent 23%);
+  }
+
+  /* Jerarquía de la captura: el logo arriba, título a media altura,
+     beneficios legibles y CTA despejado al pie; sin hueco entre ambos. */
+  .hero23Inner {
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  .hero23LogoReveal {
+    flex: 0 0 auto;
+    align-self: stretch;
+    overflow: visible;
+  }
+
+  /* El PNG del logo tiene margen transparente alrededor; ampliar solo
+     el contenido visual, conservando el espacio reservado al diseño. */
+  .hero23Logo {
+    animation: none;
+    transform: scale(1.53) translateY(-5px);
+    transform-origin: center;
+  }
+
+  .hero23Copy {
+    margin-top: auto;
+    padding-bottom: clamp(8px, 1.2vh, 18px);
+  }
+
+  .hero23AccentLine { margin-bottom: clamp(15px, 2vh, 23px); }
+
+  .hero23Intro {
+    max-width: 555px;
+    line-height: 1.35;
+  }
+
+  .hero23Benefits {
+    margin-top: clamp(22px, 3.4vh, 38px);
+    margin-bottom: clamp(25px, 3.2vh, 39px);
+  }
+}
+
+/* Animar el follaje superior hacia arriba y a la derecha, para que no
+   descanse encima del pollo. El fondo y las hojas tienen ritmos distintos. */
+@keyframes heroReferenceCanopyGap {
+  from { transform: translate3d(40px,-48px,0) scale(.88) rotate(-.13deg); }
+  to   { transform: translate3d(47px,-52px,0) scale(.88) rotate(.29deg); }
+}
+
+/* Evitar que el logotipo se coma el título en laptops bajas. */
+@media (min-width: 761px) and (max-height: 770px) {
+  .hero23Logo { transform: scale(1.32) translateY(-3px); }
+  .hero23Benefits { margin-block: 12px 18px; }
+  .hero23Intro { margin-top: 10px; }
+}
+@media (min-width: 761px) and (max-width: 1200px) {
+  .hero23Logo { transform: scale(1.35) translateY(-3px); }
+  .hero23Benefits { margin-top: 16px; margin-bottom: 19px; }
+}
+
+/* Móvil mantiene las hojas en sus propias capas, nunca sobre el texto. */
+@media (max-width: 760px) {
+  .hero23ForegroundBridge { display: none !important; }
+  .hero23ProductStage.hero23HasProduct .hero23SubjectAsset,
+  .hero23Scene .hero23LeavesBackAsset,
+  .hero23Scene .hero23LeavesFrontAsset,
+  .hero23Scene .hero23LeavesBlurAsset {
+    object-fit: contain;
+    object-position: center;
+  }
+  .hero23Scene .hero23LeavesBackAsset { opacity: .79; }
+  .hero23Scene .hero23LeavesFrontAsset { opacity: .72; }
+}
+
+/* Accesibilidad: ninguna posición depende de animaciones para ser visible. */
+@media (prefers-reduced-motion: reduce) {
+  .hero23Scene .hero23LeavesBackAsset { transform: translate3d(44px,-50px,0) scale(.88) !important; }
+  .hero23Logo { animation: none !important; }
+}
