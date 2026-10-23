@@ -1,0 +1,9 @@
+{
+  "name": "pollazo-galapagueno-pitch",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@vercel/blob": "^2.3.0"
+  }
+}

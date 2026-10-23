@@ -72,6 +72,7 @@ document.addEventListener("visibilitychange",()=>{if(!document.hidden)warmNextSc
 /* Primer clic: pedir pantalla completa UNA sola vez. F11 utiliza el modo
    del navegador, distinto a la Fullscreen API. No invocamos exitFullscreen. */
 document.addEventListener("click",()=>{
+ if(new URLSearchParams(location.search).get("editor")==="1")return;
  warmVideo();
  if(document.fullscreenElement||!document.fullscreenEnabled)return;
  const available=window.screen?.availHeight||window.innerHeight;

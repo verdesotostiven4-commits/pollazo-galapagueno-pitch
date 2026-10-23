@@ -1,0 +1,44 @@
+/* Los archivos originales conservan sus bordes y toda su opacidad.
+   Un ajuste de feather=0 significa SIN degradado ni blur. */
+.holdScreen.hero23 .hero23Scene .hero23FutureAsset:not([hidden]),
+.holdScreen.hero23 .hero23ProductStage .hero23SubjectAsset:not([hidden]) {
+  filter: none !important;
+}
+.holdScreen.hero23 .hero23Scene .hero23LeavesFrontAsset {
+  opacity: 1 !important;
+  filter: none !important;
+}
+.holdScreen.hero23 .hero23Scene .hero23LeavesBlurAsset { display:none!important; }
+.holdScreen.hero23 .hero23Scene .hero23LeavesBackAsset,
+.holdScreen.hero23 .hero23Scene .hero23LeavesFrontAsset,
+.holdScreen.hero23 .hero23ProductStage .hero23SubjectAsset {
+  -webkit-mask-image:none!important;
+  mask-image:none!important;
+}
+/* En la vista normal y en F11 el logo mantiene proporciones similares,
+   reservando espacio real sin superponerse sobre el encabezado. */
+@media(min-width:761px) {
+ .holdScreen.hero23 .hero23LogoReveal {
+   height:clamp(206px,35dvh,335px)!important;
+   margin-bottom:clamp(12px,2dvh,24px)!important;
+   flex-shrink:0;
+ }
+ .holdScreen.hero23 .hero23Logo {
+   --expo-logo-size:1.32!important;
+   width:100%;height:100%;object-fit:contain;
+ }
+}
+@media(min-width:761px) and (max-height:680px) {
+ .holdScreen.hero23 .hero23LogoReveal {
+   height:clamp(165px,31dvh,228px)!important;
+   margin-bottom:8px!important;
+ }
+}
+.pollazo-edit-mode #holdScreen,
+.pollazo-edit-mode .hero23Scene {touch-action:none;}
+.pollazo-edit-mode .hero23Scene {pointer-events:auto!important;cursor:grab;}
+.pollazo-edit-mode #holdScreen:active .hero23Scene {cursor:grabbing;}
+.pollazo-edit-mode .hero23BirdFlight {display:none!important;}
+@media (prefers-reduced-motion:reduce) {
+ .holdScreen.hero23 .hero23Logo {animation:none!important;}
+}
