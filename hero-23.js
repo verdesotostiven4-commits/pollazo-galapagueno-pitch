@@ -17,29 +17,47 @@
     "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgcx13Jzco5yqY4J7TxoIDvCsUe_FQ1pK9iHhrk64lcpjpRA2yuuwlXh9ib39-N7VfJgzCyCRilzpsJEqEnpk3rFO_3mpsOuF_IQ_z2KGDthg17FVnOs8xxJJJMVzhgqAoJ-E-Lw4yy4wXR0D3PchuJqttZv-2dLQA08Rl8aOYA89B_5dSMfVTi7beQQ9c/s1600/image.png"  // alas abajo
   ]
 };
+ // Montamos la escena completa de una sola vez. Antes, cada imagen se hacía
+ // visible apenas cargaba y por unos fotogramas dejaba ver rectángulos sueltos.
+ // La capa borrosa ya no se utiliza y no debe ocupar ancho de banda.
  const map=[
    ["background","hero23SkyAsset",null],
    ["subject","hero23SubjectAsset","hero23ProductBase"],
    ["leavesBack","hero23LeavesBackAsset","hero23LeafBack"],
-   ["leavesFront","hero23LeavesFrontAsset","hero23LeafFront"],
-   ["leavesBlur","hero23LeavesBlurAsset","hero23LeafBlur"]
+   ["leavesFront","hero23LeavesFrontAsset","hero23LeafFront"]
  ];
- for(const [key,id,fallbackId] of map){
-   const url=ASSETS[key];if(!url)continue;
-   const img=document.getElementById(id);
-   img.onload=()=>{
-     if(!img.naturalWidth)return;
-     img.hidden=false;
+ const loaded=new Map();
+ const prepare=map.map(async ([key,id,fallbackId])=>{
+   const element=document.getElementById(id);
+   if(!element||!ASSETS[key])return;
+   element.hidden=true;
+   // Primero se carga y se decodifica la imagen antes de mostrar la escena.
+   return new Promise(resolve=>{
+     element.onload=async ()=>{
+       if(!element.naturalWidth){resolve();return}
+       try { await element.decode?.(); } catch(_) {}
+       loaded.set(key,{element,fallbackId});
+       resolve();
+     };
+     element.onerror=()=>resolve();
+     element.src=ASSETS[key];
+   });
+ });
+ Promise.all(prepare).then(()=>{
+   // Una sola composición evita que se vean capas incompletas al refrescar.
+   // La siguiente pintura deja listo el cielo, el pollo y las hojas juntas.
+   if(!host.isConnected)return;
+   for(const [key,{element,fallbackId}] of loaded){
+     element.hidden=false;
      if(key==="background")document.querySelector(".hero23SceneSky")?.classList.add("hero23HasBackground");
      if(key==="subject")document.querySelector(".hero23ProductStage")?.classList.add("hero23HasProduct");
      if(fallbackId){
        const fallback=document.getElementById(fallbackId)||document.querySelector("."+fallbackId);
        if(fallback)fallback.hidden=true;
      }
-   };
-   img.onerror=()=>{img.hidden=true;};
-   img.src=url;
- }
+   }
+   host.classList.add("hero23SceneReady");
+ });
  const bird=document.getElementById("hero23BirdFlight");
  const noMotion=window.matchMedia("(prefers-reduced-motion:reduce)");
  const random=(min,max)=>min+Math.random()*(max-min);
