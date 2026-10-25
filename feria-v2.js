@@ -11,7 +11,7 @@ let audioContext=null,modalItems=[],modalIndex=0,originFocus=null;
 const prefersReduced=()=>window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* Un único elemento de video conserva su buffer al cambiar de escena.
-   Se crea sin autoplay. El navegador decide si acepta preload="auto". */
+   No se solicita su archivo hasta entrar en la escena del video. */
 const mediaDepot=document.createElement("div");
 mediaDepot.id="expoMediaDepot";
 mediaDepot.hidden=true;
@@ -21,9 +21,8 @@ const preparedVideo=document.createElement("video");
 preparedVideo.id="embeddedVideo";
 preparedVideo.controls=true;
 preparedVideo.playsInline=true;
-preparedVideo.preload="metadata";
+preparedVideo.preload="none";
 preparedVideo.setAttribute("aria-label","Video narrado de Pollazo Galapagueño");
-preparedVideo.src=narratedVideo;
 mediaDepot.appendChild(preparedVideo);
 
 /* Precarga gradual de fotos: primero la apertura, luego las siguientes
@@ -56,14 +55,8 @@ function warmNextImage(){
 function warmNextScene(){
  if(warmCursor<warmAssets.length&&!dataSaver&&!slowNetwork)warmNextImage();
 }
-function warmVideo(){
- if(dataSaver||slowNetwork)return;
- // Prepárate para reproducir, pero nunca llames play() aquí.
- preparedVideo.preload="auto";
- if(preparedVideo.readyState===0)preparedVideo.load();
-}
 window.addEventListener("load",()=>{
- const run=()=>{warmNextImage();warmVideo();};
+ const run=warmNextImage;
  if("requestIdleCallback" in window)window.requestIdleCallback(run,{timeout:1800});
  else window.setTimeout(run,900);
 },{once:true});
@@ -73,7 +66,6 @@ document.addEventListener("visibilitychange",()=>{if(!document.hidden)warmNextSc
    del navegador, distinto a la Fullscreen API. No invocamos exitFullscreen. */
 document.addEventListener("click",()=>{
  if(new URLSearchParams(location.search).get("editor")==="1")return;
- warmVideo();
  if(document.fullscreenElement||!document.fullscreenEnabled)return;
  const available=window.screen?.availHeight||window.innerHeight;
  const alreadyBrowserFullscreen=window.innerHeight>=available-12;
@@ -208,10 +200,11 @@ function render(){
  else stage.innerHTML=chapterScreen(chapters[chapterIndex],chapterIndex);
  progressBar();
  if(step===videoId){
-  // Reutilizamos exactamente el mismo elemento y su descarga ya iniciada.
+  // Reutilizamos el reproductor; pedimos los datos solo al entrar en esta escena.
+  if(!preparedVideo.getAttribute("src"))preparedVideo.src=narratedVideo;
   $("#filmFrame").prepend(preparedVideo);
   liveVideo=preparedVideo;
-  liveVideo.preload="auto";
+  liveVideo.preload="metadata";
   liveVideo.onended=()=>{
    if(step!==videoId)return;
    $("#videoHint").textContent="Video finalizado. Continuamos con el recorrido…";
